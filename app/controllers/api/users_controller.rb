@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
 
-  before_action :require_logged_in, only: [:show, :index]
+  before_action :require_logged_in, only: [:show]
 
   def new
     @user = User.new
@@ -8,12 +8,12 @@ class Api::UsersController < ApplicationController
   end
   
   def create
-    console.log('controller')
+    puts 'controller'
     @user = User.new(user_params)
 
     if @user.save
       login!(@user)
-      redirect_to users_url
+      puts 'controller'
     else
       flash[:errors] = @user.errors.full_messages
       render :new
@@ -36,7 +36,7 @@ class Api::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:name, :email, :password)
   end
 
 end
