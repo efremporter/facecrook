@@ -186,20 +186,18 @@ var NavBar = function NavBar(_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout;
   var name;
-  var display = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello, ", currentUser.firstName, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  var display = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: logout
   }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    className: "btn",
+    className: "button",
     to: "/signup"
   }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    className: "btn",
+    className: "button",
     to: "/login"
   }, "Log In"));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: "nav-bar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
-    className: "logo"
-  }, "FaceCrook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, display));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, display));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavBar);
@@ -353,17 +351,31 @@ var Login = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "login-form-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "splash-logo"
+      }, "facecrook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "welcome-message"
+      }, "Connect with felons and the world around you on Facecrook."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "login-form",
         onSubmit: this.handleSubmit.bind(this)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Login!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "login-input",
+        id: "first-login-input",
         type: "text",
+        placeholder: "Email",
         value: this.state.email,
         onChange: this.handleChange('email')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "login-input",
         type: "password",
+        placeholder: "Password",
         value: this.state.password,
         onChange: this.handleChange('password')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sign in"));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "login-button"
+      }, "Log In")));
     }
   }]);
 
@@ -703,7 +715,7 @@ var Protected = function Protected(_ref2) {
     path: path,
     render: function render(props) {
       return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        to: "/signup"
+        to: "/login"
       });
     }
   });

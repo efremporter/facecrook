@@ -19,16 +19,15 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <h2>Login!</h2>
-        <label>Email
-          <input type="text" value={this.state.email} onChange={this.handleChange('email')} />
-        </label>
-        <label>Password
-          <input type="password" value={this.state.password} onChange={this.handleChange('password')} />
-        </label>
-        <button>Sign in</button>
-      </form>
+      <div className="login-form-div">
+        <h2 className="splash-logo">facecrook</h2>
+        <div className="welcome-message">Connect with felons and the world around you on Facecrook.</div>
+        <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
+          <input className="login-input" id="first-login-input" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange('email')} />
+          <input className="login-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange('password')} />
+          <button className="login-button">Log In</button>
+        </form>
+      </div>
     )
   }
 }
