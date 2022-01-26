@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props) {
@@ -26,6 +27,9 @@ class Login extends React.Component {
           <input className="login-input" id="first-login-input" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange('email')} />
           <input className="login-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange('password')} />
           <button className="login-button">Log In</button>
+          <button className="demo-user-login">Demo User</button>
+          <div className="login-divider">______________________________________________</div>
+          <button type="button" className="create-user-redirect"><Link className="create-user-redirect" to="/signup">Create new account</Link></button>
         </form>
       </div>
     )
