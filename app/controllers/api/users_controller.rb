@@ -8,15 +8,13 @@ class Api::UsersController < ApplicationController
   end
   
   def create
-    puts 'controller'
     @user = User.new(user_params)
 
     if @user.save
       login!(@user)
-      puts 'controller'
+      render json: @user
     else
       flash[:errors] = @user.errors.full_messages
-      render :new
     end
 
   end
@@ -26,7 +24,7 @@ class Api::UsersController < ApplicationController
     if @user
       render :show
     else  
-      redirect_to new_session_url
+      # redirect_to new_session_url
     end
   end
 
@@ -36,7 +34,7 @@ class Api::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 
 end

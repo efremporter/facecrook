@@ -19,7 +19,7 @@ const logoutCurrentUser = () => {
 export const createNewUser = formUser => dispatch => {
   return postUser(formUser)
   .then( user => {
-    console.log("dispatched")
+
     dispatch(receiveCurrentUser(user))
   })
 }

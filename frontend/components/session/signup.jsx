@@ -4,7 +4,7 @@ class SignUp extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {name: '', email: '', password: ''}
+    this.state = {firstName: '', last_name: '', email: '', password: ''}
   }
 
   handleChange(key) {
@@ -17,6 +17,7 @@ class SignUp extends React.Component {
     e.preventDefault()
     this.props.createNewUser(this.state)
     .then( () => this.props.history.push('/'))
+    this.setState({firstName: '', last_name: '', email: '', password: ''})
   }
 
   render() {
@@ -24,8 +25,11 @@ class SignUp extends React.Component {
       <div className='session-form'>  
         <h2>Sign Up!</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>Username 
-            <input type="text" value={this.state.name} onChange={this.handleChange('name')} />
+          <label>First Name
+            <input type="text" value={this.state.firstName} onChange={this.handleChange('firstName')} />
+          </label>
+          <label>Last Name
+            <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} />
           </label>
           <label>Email 
             <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
@@ -33,7 +37,8 @@ class SignUp extends React.Component {
           <label>Password 
             <input type="password" value={this.state.password} onChange={this.handleChange('password')} />
           </label>
-          <button>Submit</button>
+          <button type="submit">Submit</button>
+        <button type="button" onClick={this.props.logInGuest}>Guest Login</button>
         </form>
       </div>
     )
