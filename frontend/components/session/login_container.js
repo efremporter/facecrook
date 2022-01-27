@@ -4,7 +4,8 @@ import Login from './login';
 
 const mDTP = dispatch => {
   return {
-    login: user => dispatch(login(user))
+    login: user => dispatch(login(user)),
+    logInGuest: () => dispatch(login({email: 'guest@user.com', password: 'NobodyWillGuessThisPassword17'}))
   }
 }
 

@@ -2,9 +2,9 @@ import React from 'react'
 
 class SignUp extends React.Component {
 
-  constructor(props) {
+  constructor(props) { 
     super(props)
-    this.state = {firstName: '', last_name: '', email: '', password: ''}
+    this.state = {first_name: '', last_name: '', email: '', password: ''}
   }
 
   handleChange(key) {
@@ -17,7 +17,7 @@ class SignUp extends React.Component {
     e.preventDefault()
     this.props.createNewUser(this.state)
     .then( () => this.props.history.push('/'))
-    this.setState({firstName: '', last_name: '', email: '', password: ''})
+    this.setState({first_name: '', last_name: '', email: '', password: ''})
   }
 
   render() {
@@ -26,7 +26,7 @@ class SignUp extends React.Component {
         <h2>Sign Up!</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>First Name
-            <input type="text" value={this.state.firstName} onChange={this.handleChange('firstName')} />
+            <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} />
           </label>
           <label>Last Name
             <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} />

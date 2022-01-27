@@ -12,9 +12,9 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
-      render json: @user
+      render :_user
     else
-      flash[:errors] = @user.errors.full_messages
+      puts 'User not created'
     end
 
   end
@@ -22,15 +22,10 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render :show
+      render :_user
     else  
-      # redirect_to new_session_url
+      puts 'User not found'
     end
-  end
-
-  def index
-    @users = User.all
-    render :index
   end
 
   def user_params
