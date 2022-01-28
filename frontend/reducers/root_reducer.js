@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import sessionReducer from './session_reducer';
-import PostsReducer from './post_reducer';
-import UsersReducer from './users_reducer';
+import EntitiesReducer from './entities_reducer';
+import UI_Reducer from './ui_reducer';
 
 const RootReducer = combineReducers({
+  entities: EntitiesReducer,
   session: sessionReducer,
-  users: UsersReducer,
-  posts: PostsReducer
+  ui: UI_Reducer
 })
 
 export default RootReducer;

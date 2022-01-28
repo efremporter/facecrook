@@ -6,9 +6,10 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import NavBarContainer from './nav_bar/nav_bar_container'
 import FeedIndex from "./feed/feed_index";
 import ProfileContainer from "./profile/profile_container";
-
+import ModalContainer from "./modal/modal_container";
 const App = () => {
   return <div>
+    <ModalContainer/>
     <Route path="/" component={NavBarContainer} />
     <Switch>
       <AuthRoute path="/signup" component={SignUpContainer} />

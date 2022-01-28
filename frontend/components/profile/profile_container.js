@@ -4,16 +4,14 @@ import { fetchUser } from "../../actions/user_actions";
 import Profile from "./profile";
 
 const mSTP = (state, ownProps) => {
-  console.log(ownProps.match.params.userId)
   return {
     userId: ownProps.match.params.userId,
-    state
+    posts: Object.values(state.entities.posts)
   }
 }
 
 const mDTP = dispatch => {
   return {
-    fetchPosts: authorId => dispatch(fetchPosts(authorId)),
     createPost: post => dispatch(createPost(post)),
     fetchUser: userId => dispatch(fetchUser(userId))
   }
