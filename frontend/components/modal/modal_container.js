@@ -1,5 +1,6 @@
 import Modal from "./modal";
 import { connect } from "react-redux";
+import { closeModal } from "../../actions/modal_actions";
 
 const mSTP = state => {
   return {

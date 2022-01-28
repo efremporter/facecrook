@@ -23,22 +23,16 @@ class SignUp extends React.Component {
   render() {
     return (
       <div className='session-form'>  
-        <h2>Sign Up!</h2>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>First Name
-            <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} />
-          </label>
-          <label>Last Name
-            <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} />
-          </label>
-          <label>Email 
-            <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-          </label>
-          <label>Password 
-            <input type="password" value={this.state.password} onChange={this.handleChange('password')} />
-          </label>
+        <h2 className='sign-up'>Sign Up</h2>
+        <div className='sub-header'>It's quick and easy</div>
+        <div className='sign-up-divider'>______________________________________________</div>
+        <form className='sign-up-form' onSubmit={this.handleSubmit.bind(this)}>
+            <input className="sign-up-input" type="text" placeholder='First name' value={this.state.first_name} onChange={this.handleChange('first_name')} />
+            <input className="sign-up-input" id="sign-up-last-name" type="text" placeholder='Last name' value={this.state.last_name} onChange={this.handleChange('last_name')} />
+            <input className="sign-up-input" id="sign-up-email-password" type="text" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
+            <input className="sign-up-input" id="sign-up-email-password" type="password" placeholder='New password' value={this.state.password} onChange={this.handleChange('password')} />
           <button type="submit">Submit</button>
-        <button type="button" onClick={this.props.logInGuest}>Guest Login</button>
+          <button type="button" onClick={this.props.logInGuest}>Guest Login</button>
         </form>
       </div>
     )

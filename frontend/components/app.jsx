@@ -7,15 +7,16 @@ import NavBarContainer from './nav_bar/nav_bar_container'
 import FeedIndex from "./feed/feed_index";
 import ProfileContainer from "./profile/profile_container";
 import ModalContainer from "./modal/modal_container";
+
 const App = () => {
   return <div>
-    <ModalContainer/>
     <Route path="/" component={NavBarContainer} />
+    <Route path="/" component={ModalContainer}/>
     <Switch>
-      <AuthRoute path="/signup" component={SignUpContainer} />
-      <AuthRoute path="/login" component={LoginContainer} />
-      <ProtectedRoute exact path="/" component={FeedIndex} />
       <ProtectedRoute path="/users/:userId" component={ProfileContainer}/>
+      <AuthRoute path="/signup" component={SignUpContainer} />
+      <AuthRoute exact path="/" component={LoginContainer} />
+      <ProtectedRoute exact path="/feed" component={FeedIndex} />
     </Switch>
   </div>
 }

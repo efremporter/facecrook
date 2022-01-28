@@ -31,7 +31,8 @@ class Login extends React.Component {
           <button className="login-button">Log In</button>
           <button type="button" className="demo-user-login" onClick={this.props.logInGuest}>Sign In As Guest</button>
           <div className="login-divider">______________________________________________</div>
-          <button type="button" className="create-user-redirect"><Link className="create-user-redirect" to="/signup">Create new account</Link></button>
+          <button type="button" className="create-user-redirect" onClick={() => this.props.openModal('signup')}>Create new account</button>
+          
         </form>
       </div>
     )

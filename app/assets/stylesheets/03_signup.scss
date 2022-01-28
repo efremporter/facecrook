@@ -1,0 +1,70 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  width: 432px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+}
+
+.sign-up {
+  color: #1C1E21;
+  font-weight: bold;
+  line-height: 38px;
+  font-size: 32px;
+  margin-top: 10px;
+  margin-left: 16px;
+}
+
+.sub-header {
+  font-weight: normal;
+  font-size: 15px;
+  margin-left: 16px;
+  color: #606770;
+  line-height: 24px;
+}
+
+.session-form {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+}
+
+.sign-up-form {
+  margin-left: 16px
+}
+
+.sign-up-input {
+  background: #F5F6F7;
+  width: 170px;
+  font-size: 15px;
+  line-height: 16px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccd0d5;
+  padding: 11px;
+}
+
+#sign-up-last-name {
+  margin-left: 10px;
+}
+
+#sign-up-email-password {
+  width: 375px;
+}
+
+.sign-up-divider {
+  color: #dddfe2;
+  margin-top: -1px;
+  margin-left: 16px
+}
