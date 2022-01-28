@@ -1,3 +1,21 @@
-.button {
-  margin-left: 100px
+.nav-bar-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+.nav-bar-container li {
+  color: white;
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.nav-bar-home {
+  text-decoration: none;
+  color: white;
 }

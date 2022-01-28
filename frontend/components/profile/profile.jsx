@@ -1,5 +1,6 @@
 import React from "react";
 import PostIndexContainer from "../posts/post_index_container";
+import PostIndexItem from "../posts/post_index_item";
 import ProfilePicture from "./profile_picture";
 
 class Profile extends React.Component {
@@ -31,6 +32,8 @@ class Profile extends React.Component {
       return (
         <div>
           <h1>Other Profile</h1>
+          <ProfilePicture />
+          <PostIndexContainer userId={this.props.userId} />
         </div>
       )
     }
