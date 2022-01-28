@@ -9,10 +9,7 @@ const NavBar = ({ currentUser, logout }) => {
       <button onClick={logout}>Log Out</button>
     </div>
   ) : (
-    <div>
-      <Link className="button" to="/signup">Sign Up</Link>
-      <Link className="button" to="/login">Log In</Link>
-    </div>
+    null
   );
 
   return (

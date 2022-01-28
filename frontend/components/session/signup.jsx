@@ -20,19 +20,25 @@ class SignUp extends React.Component {
     this.setState({first_name: '', last_name: '', email: '', password: ''})
   }
 
+  handleClick() {
+    this.props.logInGuest();
+    setTimeout(() => {this.props.closeModal()}, 330)
+  }
+
   render() {
     return (
       <div className='session-form'>  
         <h2 className='sign-up'>Sign Up</h2>
+        <img className='x-button' onClick={this.props.closeModal} src="https://static.xx.fbcdn.net/rsrc.php/v3/yX/r/TdCEremeWv5.png"></img>
         <div className='sub-header'>It's quick and easy</div>
-        <div className='sign-up-divider'>______________________________________________</div>
+        <hr className='sign-up-divider'></hr>
         <form className='sign-up-form' onSubmit={this.handleSubmit.bind(this)}>
-            <input className="sign-up-input" type="text" placeholder='First name' value={this.state.first_name} onChange={this.handleChange('first_name')} />
-            <input className="sign-up-input" id="sign-up-last-name" type="text" placeholder='Last name' value={this.state.last_name} onChange={this.handleChange('last_name')} />
-            <input className="sign-up-input" id="sign-up-email-password" type="text" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
-            <input className="sign-up-input" id="sign-up-email-password" type="password" placeholder='New password' value={this.state.password} onChange={this.handleChange('password')} />
-          <button type="submit">Submit</button>
-          <button type="button" onClick={this.props.logInGuest}>Guest Login</button>
+          <input className="sign-up-input" type="text" placeholder='First name' value={this.state.first_name} onChange={this.handleChange('first_name')} />
+          <input className="sign-up-input" id="sign-up-last-name" type="text" placeholder='Last name' value={this.state.last_name} onChange={this.handleChange('last_name')} />
+          <input className="sign-up-input" id="sign-up-email" type="text" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
+          <input className="sign-up-input" id="sign-up-password" type="password" placeholder='New password' value={this.state.password} onChange={this.handleChange('password')} />
+          <button className="sign-up-button" type="submit">Sign Up</button>
+          <button className="sign-up-demo" type="button" onClick={this.handleClick.bind(this)}>Guest Login</button>
         </form>
       </div>
     )

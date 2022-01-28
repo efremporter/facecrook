@@ -3,10 +3,10 @@ import { closeModal } from '../../actions/modal_actions';
 import SignupContainer from '../session/signup_container';
 
 const Modal = ({modal, closeModal}) => {
-  console.log(modal)
-  // if (!modal) {
-  //   return null;
-  // }
+
+  if (!modal) {
+    return null;
+  }
 
   return (
     <div>
