@@ -1,4 +1,5 @@
 import { postUser, postSession, deleteSession } from '../utils/session_utils'
+import { closeModal } from './modal_actions'
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'
@@ -19,13 +20,17 @@ const logoutCurrentUser = () => {
 export const createNewUser = formUser => dispatch => {
   return postUser(formUser)
   .then( user => {
+    dispatch(closeModal());
     dispatch(receiveCurrentUser(user))
   })
 }
 
 export const login = formUser => dispatch => {
   return postSession(formUser)
-  .then( user => dispatch(receiveCurrentUser(user)))
+  .then( user => {
+    dispatch(closeModal())
+    dispatch(receiveCurrentUser(user))
+  })
 }
 
 export const logout = () => dispatch => {

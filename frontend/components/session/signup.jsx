@@ -22,7 +22,6 @@ class SignUp extends React.Component {
 
   handleClick() {
     this.props.logInGuest();
-    setTimeout(() => {this.props.closeModal()}, 330)
   }
 
   render() {

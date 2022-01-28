@@ -130,6 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "logout": () => (/* binding */ logout)
 /* harmony export */ });
 /* harmony import */ var _utils_session_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/session_utils */ "./frontend/utils/session_utils.js");
+/* harmony import */ var _modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
@@ -150,6 +152,7 @@ var logoutCurrentUser = function logoutCurrentUser() {
 var createNewUser = function createNewUser(formUser) {
   return function (dispatch) {
     return (0,_utils_session_utils__WEBPACK_IMPORTED_MODULE_0__.postUser)(formUser).then(function (user) {
+      dispatch((0,_modal_actions__WEBPACK_IMPORTED_MODULE_1__.closeModal)());
       dispatch(receiveCurrentUser(user));
     });
   };
@@ -157,7 +160,8 @@ var createNewUser = function createNewUser(formUser) {
 var login = function login(formUser) {
   return function (dispatch) {
     return (0,_utils_session_utils__WEBPACK_IMPORTED_MODULE_0__.postSession)(formUser).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
+      dispatch((0,_modal_actions__WEBPACK_IMPORTED_MODULE_1__.closeModal)());
+      dispatch(receiveCurrentUser(user));
     });
   };
 };
@@ -1035,12 +1039,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
-      var _this4 = this;
-
       this.props.logInGuest();
-      setTimeout(function () {
-        _this4.props.closeModal();
-      }, 330);
     }
   }, {
     key: "render",
