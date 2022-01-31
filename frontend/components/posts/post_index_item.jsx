@@ -1,11 +1,20 @@
 import React from "react";
 
 const PostIndexItem = ({post}) => {
-  return (
-    <div>
-      {post.id}
-    </div>
-  )
+  if (post.photoUrl) {
+    return (
+      <div>
+        {post.id}
+        <img src={post.photoUrl}/>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        {post.id}
+      </div>
+    )
+  }
 }
 
 export default PostIndexItem

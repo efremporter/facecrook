@@ -19,24 +19,21 @@ class Profile extends React.Component {
     // } else {
 
     // }
+    let component;
     if (window.currentUser.id === parseInt(this.props.userId)) {
-      return (
-        <div>
-          <h1>My profile</h1>
-          <ProfilePicture />
-          <PostIndexContainer userId={this.props.userId}/>
-
-        </div>
-      )
+      component = <div>
+        <h1>My profile</h1>
+        <ProfilePicture userId={this.props.userId} createProfilePicture={this.props.createProfilePicture} updateProfilePicture={this.props.updateProfilePicture}/>
+        <PostIndexContainer userId={this.props.userId}/>
+      </div>
     } else {
-      return (
-        <div>
-          <h1>Other Profile</h1>
-          <ProfilePicture />
-          <PostIndexContainer userId={this.props.userId} />
-        </div>
-      )
+      component = <div>
+        <h1>Other Profile</h1>
+        <ProfilePicture />
+        <PostIndexContainer userId={this.props.userId} />
+      </div>  
     }
+    return component;
   }
 }
 

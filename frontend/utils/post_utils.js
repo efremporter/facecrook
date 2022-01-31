@@ -9,7 +9,8 @@ export const fetchPosts = authorId => {
 export const fetchPost = postId => {
   return $.ajax({
     method: 'GET',
-    url: `api/posts/${postId}`
+    url: `api/posts/${postId}`,
+    data: {post_id: postId}
   })
 }
 

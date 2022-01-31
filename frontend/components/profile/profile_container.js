@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { createPost, fetchPosts } from "../../actions/post_actions";
+import { createProfilePicture, updateProfilePicture } from "../../actions/profile_picture_actions";
 import { fetchUser } from "../../actions/user_actions";
 import Profile from "./profile";
 
@@ -13,7 +14,9 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
   return {
     createPost: post => dispatch(createPost(post)),
-    fetchUser: userId => dispatch(fetchUser(userId))
+    fetchUser: userId => dispatch(fetchUser(userId)),
+    createProfilePicture: picture => dispatch(createProfilePicture(picture)),
+    updateProfilePicture: picture => dispatch(updateProfilePicture(picture))
   }
 }
 
