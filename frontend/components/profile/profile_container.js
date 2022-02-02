@@ -1,6 +1,4 @@
 import { connect } from "react-redux";
-import { openModal } from "../../actions/modal_actions";
-import { createPost, fetchPosts } from "../../actions/post_actions";
 import { fetchUser } from "../../actions/user_actions";
 import Profile from "./profile";
 

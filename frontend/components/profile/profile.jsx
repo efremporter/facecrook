@@ -1,6 +1,7 @@
 import React from "react";
 import PostFormContainer from "../posts/post_form_container";
 import PostIndexContainer from "../posts/post_index_container";
+import ProfileHeader from "./profile_header";
 import ProfilePicture from "./profile_picture";
 
 class Profile extends React.Component {
@@ -22,7 +23,10 @@ class Profile extends React.Component {
         <div className="my-profile-background">
           <div className="my-cover-photo"></div>
           <ProfilePicture user={this.props.user} userId={this.props.userId}/>
-          <PostFormContainer/>
+          <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
+          <hr className="header-divider"></hr>
+          <ProfileHeader/>
+          <PostFormContainer />
           <PostIndexContainer userId={this.props.userId}/>
         </div>
       </div>

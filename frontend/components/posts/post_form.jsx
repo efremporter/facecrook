@@ -20,9 +20,12 @@ class PostForm extends React.Component {
   render() {
     if (!this.props.modal) {
       return (
-        <form>
-          <input type="text" placeholder="What's on your mind?" onClick={this.props.openModal}/>
-        </form>
+        <div>
+          <form className="post-form">
+            <input className="post-form-file" type="text" placeholder="What's on your mind?" onClick={this.props.openModal}/>
+            <hr className="post-form-divider"></hr>
+          </form>
+        </div>
       )
     } else {
       return <div>hihihihih</div>

@@ -33,9 +33,9 @@ class ProfilePicture extends React.Component {
           <br></br>
           <label>
             <img className="camera-icon" src={window.cameraIcon}/>
-            <input className="edit-profile-pic" type="file" onChnge={this.handleFile.bind(this)}/>
+            <input className="edit-profile-pic" type="file" onChange={this.handleFile.bind(this)}/>
           </label>
-          <button className="submit-profile-pic">Submit</button>
+          {/* <button className="submit-profile-pic">Submit</button> */}
         </form> 
       )
     } else {
