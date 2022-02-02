@@ -1,9 +1,13 @@
+.nav-bar-container {
+  box-shadow: 0px 1px 1px rgba(180, 180, 180, 0.3);
+}
+
 .nav-bar-container ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: #FFFFFF;
 }
 
 .nav-bar-container li {
@@ -11,11 +15,32 @@
   float: left;
   display: block;
   text-align: center;
-  padding: 16px;
+  padding-left: 19px;
+  padding-top: 7px;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.nav-bar-home {
-  text-decoration: none;
-  color: white;
+.nav-bar-f-logo {
+  height: 40px;
+  cursor: pointer;
+  padding-bottom: 6px
+}
+
+.nav-bar-home-button {
+  height: 40px;
+  cursor: pointer;
+  margin-left: 375px;
+}
+
+.nav-bar-linked-in-logo {
+  height: 40px;
+  cursor: pointer;
+  margin-left: 120px;
+}
+
+.nav-bar-github-logo {
+  height: 40px;
+  cursor: pointer;
+  margin-left: 120px;
 }

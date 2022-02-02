@@ -1,16 +1,16 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
-import PostForm from '../posts/post_form';
-import SignupContainer from '../session/signup_container';
+import PostFormContainer from '../posts/post_form_container';
 
-const Modal = ({modal, closeModal}) => {
+const PostModal = ({modal, closeModal}) => {
 
-  if (modal === 'signup') {
+  if (modal === "post") {
     return (
       <div>
         <div className="modal-background" onClick={closeModal}></div>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
-          <SignupContainer />
+          <PostFormContainer />
+          Hey
         </div>
       </div>
     );
@@ -18,4 +18,4 @@ const Modal = ({modal, closeModal}) => {
   return null;
 }
 
-export default Modal;
+export default PostModal

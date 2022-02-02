@@ -1,22 +1,20 @@
 import { connect } from "react-redux";
+import { openModal } from "../../actions/modal_actions";
 import { createPost, fetchPosts } from "../../actions/post_actions";
-import { createProfilePicture, updateProfilePicture } from "../../actions/profile_picture_actions";
 import { fetchUser } from "../../actions/user_actions";
 import Profile from "./profile";
 
 const mSTP = (state, ownProps) => {
+  const userId = ownProps.match.params.userId
   return {
-    userId: ownProps.match.params.userId,
-    posts: Object.values(state.entities.posts)
+    user: state.entities.users[userId],
+    userId
   }
 }
 
 const mDTP = dispatch => {
   return {
-    createPost: post => dispatch(createPost(post)),
     fetchUser: userId => dispatch(fetchUser(userId)),
-    createProfilePicture: picture => dispatch(createProfilePicture(picture)),
-    updateProfilePicture: picture => dispatch(updateProfilePicture(picture))
   }
 }
 

@@ -4,14 +4,17 @@ const PostIndexItem = ({post}) => {
   if (post.photoUrl) {
     return (
       <div>
-        {post.id}
+        <div>Post id: {post.id}</div>
+        {post.body}
+        <br />
         <img src={post.photoUrl}/>
       </div>
     )
   } else {
     return (
       <div>
-        {post.id}
+        <div>Post id: {post.id}</div> 
+        {post.body}
       </div>
     )
   }

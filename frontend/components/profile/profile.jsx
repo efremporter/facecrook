@@ -1,6 +1,6 @@
 import React from "react";
+import PostFormContainer from "../posts/post_form_container";
 import PostIndexContainer from "../posts/post_index_container";
-import PostIndexItem from "../posts/post_index_item";
 import ProfilePicture from "./profile_picture";
 
 class Profile extends React.Component {
@@ -14,26 +14,30 @@ class Profile extends React.Component {
   }
 
   render() {
-    // if (!this.props.posts) {
-    //   return null
-    // } else {
-
-    // }
+    if (!this.props.user) return null;
     let component;
     if (window.currentUser.id === parseInt(this.props.userId)) {
+      console.log('My profile')
       component = <div>
-        <h1>My profile</h1>
-        <ProfilePicture userId={this.props.userId} createProfilePicture={this.props.createProfilePicture} updateProfilePicture={this.props.updateProfilePicture}/>
-        <PostIndexContainer userId={this.props.userId}/>
+        <div className="my-profile-background">
+          <div className="my-cover-photo"></div>
+          <ProfilePicture user={this.props.user} userId={this.props.userId}/>
+          <PostFormContainer/>
+          <PostIndexContainer userId={this.props.userId}/>
+        </div>
       </div>
     } else {
+      console.log('Other profile')
       component = <div>
-        <h1>Other Profile</h1>
-        <ProfilePicture />
+        <ProfilePicture user={this.props.user} userId={this.props.userId}/>
         <PostIndexContainer userId={this.props.userId} />
       </div>  
     }
-    return component;
+    return (
+    <div className="profile-background">
+      {component}
+    </div>
+    )
   }
 }
 

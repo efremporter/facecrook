@@ -9,6 +9,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :posts, foreign_key: :author_id
+  has_one_attached :profile_picture 
 
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)

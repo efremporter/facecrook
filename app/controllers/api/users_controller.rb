@@ -12,6 +12,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
+      @user.profile_picture.attach(io: File.open("/Users/efrem/Desktop/FaceCrook/app/assets/images/default-male-pic.jpeg"), filename: "Default")
       render :_user
     else
       puts 'User not created'

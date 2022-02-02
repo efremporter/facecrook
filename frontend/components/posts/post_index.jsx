@@ -12,12 +12,15 @@ class PostIndex extends React.Component {
   }
 
   render() {
+    if (!this.props.posts.length) {
+      return null;
+    }
     return (
       <ul>
-        {this.props.posts.map( post => {
-          return <li><PostIndexItem post={post}/></li>
+        <div>Posts:</div>
+        {this.props.posts.map( (post, idx) => {
+          return <li><PostIndexItem key={idx} post={post}/></li>
         })}
-        <div>hi</div>
       </ul>
     )
   }

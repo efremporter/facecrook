@@ -10,15 +10,12 @@ const NavBar = ({ currentUser, logout }) => {
   const display = currentUser ? (
     <div className="nav-bar-container">
       <ul>
-        {/* <li><Link className='nav-bar-home' to={"/feed"}><img src="f-logo.png"/></Link></li>
-        <li>Search button logo</li>
-        <li><Link to={"/feed"}><img src="../../../app/assets/images/home-button.png" /></Link></li>
-        <li>Friends button</li>
-        <li><a target="_blank" href="https://www.linkedin.com/in/efrem-porter-550b0b224"><img src="../../../app/assets/images/linked-in-logo.png"/></a></li>
-        <li><a target="_blank" href="https://github.com/efremporter"><img src="../../../app/assets/images/github-logo.png"/></a></li> */}
-
+        <li><Link to={"/feed"}><img className='nav-bar-f-logo' src={window.fLogo}/></Link></li>
+        <li><Link to={"/feed"}><img className='nav-bar-home-button' src={window.homeButton} /></Link></li>
+        <li><a target="_blank" href="https://www.linkedin.com/in/efrem-porter-550b0b224"><img className="nav-bar-linked-in-logo" src={window.linkedInLogo}/></a></li>
+        <li><a target="_blank" href="https://github.com/efremporter"><img className="nav-bar-github-logo" src={window.githubLogo}/></a></li>
+        <li><button className="logout-button" onClick={logout}>Log Out</button></li>
       </ul>
-      <button onClick={logout}>Log Out</button>
     </div>
   ) : (
     null
