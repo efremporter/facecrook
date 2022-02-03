@@ -8,9 +8,8 @@ const PostModal = ({modal, closeModal}) => {
     return (
       <div>
         <div className="modal-background" onClick={closeModal}></div>
-        <div className="modal-child" onClick={e => e.stopPropagation()}>
+        <div className="modal-child" id="post-form" onClick={e => e.stopPropagation()}>
           <PostFormContainer />
-          Hey
         </div>
       </div>
     );

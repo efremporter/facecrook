@@ -17,6 +17,11 @@ class PostForm extends React.Component {
     }
   }
 
+  handleSubmit() {
+    this.props.createPost(this.state)
+    this.props.closeModal();
+  }
+
   render() {
     if (!this.props.modal) {
       return (
@@ -28,7 +33,18 @@ class PostForm extends React.Component {
         </div>
       )
     } else {
-      return <div>hihihihih</div>
+      return (
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <div>
+            <h2 className="post-form-title" >Create Post</h2>
+            <hr className='open-post-form-divider'/>
+            <img className='x-button' onClick={this.props.closeModal} src="https://static.xx.fbcdn.net/rsrc.php/v3/yX/r/TdCEremeWv5.png"></img>
+          </div>
+          <textarea autofocus="autofocus" placeholder="What's on your mind?" className='post-text-area'></textarea>
+          <div className="add-to-post"><div className='add-to-post-text'>Add to your post</div></div>
+          <button className='post-form-button'>Post</button>
+        </form>
+      )
     }
   }
 

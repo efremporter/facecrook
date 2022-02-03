@@ -62,9 +62,10 @@
 }
 
 .header-divider {
-  margin-top: 25px;
+  margin-top: 1.7%;
   opacity: 30%;
   width: 61.5%;
+  margin-bottom: 0px;
 }
 
 .profile-header {
@@ -73,7 +74,7 @@
   font-size: 32px;
   color: #050505;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 1%;
 }
 
 .post-form {
@@ -104,4 +105,95 @@
   width: 422px;
   opacity: 30%;
   margin-top: 12px;
+}
+
+.post-form-title {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #050505;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 28px;
+  margin-top: 5%;
+}
+
+#post-form {
+  width: 35.4%;
+  height: 58%;
+  margin-top: 0.5%;
+}
+
+.open-post-form-divider {
+  width: 100%;
+  opacity: 0.3;
+  margin-top: 4%;
+}
+
+.x-button {
+  cursor: pointer;
+}
+
+.route-post-form-container {
+  // display: none;
+  background-color: orange;
+}
+
+.post-text-area {
+  border: none;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  background-color: #FFFFFF;
+  cursor: none;
+  display: block;
+  margin: auto;
+  font-size: 23px;
+  width: 92%;
+  padding-bottom: 35%;
+  outline: none;
+  resize: none;
+}
+
+::placeholder {
+  color: #65676B;
+}
+
+#text-area-divider {
+  margin-top: 1%;
+}
+
+.post-form-button {
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #1B74E4;
+  width: 92.2%;
+  display: block;
+  height: 38px;
+  // height: 60%;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+  margin-top: 4%;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.post-form-button:hover {
+  background-color: #1a6cd1;
+}
+
+.add-to-post {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  height: 44px;
+  width: 88.4%;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+  border: 1px solid rgb(197, 197, 197);
+  font-size: 15px;
+  color: #050505;
+  padding-left: 18px;
+}
+
+.add-to-post-text {
+  margin-top: 3.2%;
 }
