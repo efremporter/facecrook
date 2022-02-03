@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions/post_actions";
+import { fetchAuthor } from "../../actions/user_actions";
 import PostIndex from "./post_index";
 
 const mSTP = state => {
@@ -11,6 +12,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
   return {
     fetchPosts: authorId => dispatch(fetchPosts(authorId)),
+    fetchAuthor: authorId => fetchAuthor(authorId)
   }
 }
 

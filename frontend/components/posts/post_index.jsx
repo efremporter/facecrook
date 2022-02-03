@@ -17,9 +17,8 @@ class PostIndex extends React.Component {
     }
     return (
       <ul>
-        <div>Posts:</div>
         {this.props.posts.map( (post, idx) => {
-          return <li><PostIndexItem key={idx} post={post}/></li>
+          return <li><PostIndexItem fetchAuthor={this.props.fetchAuthor} key={idx} user={this.props.user} post={post}/></li>
         })}
       </ul>
     )

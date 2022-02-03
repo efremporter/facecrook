@@ -37,6 +37,7 @@ export const fetchPost = postId => dispatch => {
 }
 
 export const createPost = post => dispatch => {
+  console.log('here')
   return PostUtils.createPost(post)
   .then( post => dispatch(receivePost(post)))
 }

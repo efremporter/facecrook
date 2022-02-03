@@ -27,7 +27,7 @@ class Profile extends React.Component {
           <hr className="header-divider"></hr>
           <ProfileHeader/>
           <PostFormContainer />
-          <PostIndexContainer userId={this.props.userId}/>
+          <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
         </div>
       </div>
     } else {

@@ -4,7 +4,7 @@ class PostForm extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {body: "", photo: null}
+    this.state = {body: "", author_id: window.currentUser.id, photo: null}
   }
 
   handleChange(key) {
@@ -18,6 +18,8 @@ class PostForm extends React.Component {
   }
 
   handleSubmit() {
+    console.log('postpost')
+    console.log(this.props)
     this.props.createPost(this.state)
     this.props.closeModal();
   }
@@ -40,9 +42,12 @@ class PostForm extends React.Component {
             <hr className='open-post-form-divider'/>
             <img className='x-button' onClick={this.props.closeModal} src="https://static.xx.fbcdn.net/rsrc.php/v3/yX/r/TdCEremeWv5.png"></img>
           </div>
-          <textarea autofocus="autofocus" placeholder="What's on your mind?" className='post-text-area'></textarea>
-          <div className="add-to-post"><div className='add-to-post-text'>Add to your post</div></div>
-          <button className='post-form-button'>Post</button>
+          <textarea onChange={this.handleChange('body')} value={this.state.body} autofocus="autofocus" placeholder="What's on your mind?" className='post-text-area'></textarea>
+          <div className="add-to-post">
+            <div className='add-to-post-text'>Add to your post</div>
+            <div className='post-picture-icon-container'><img className="post-picture-icon" src={window.pictureIcon}/></div>
+          </div>
+          <button type="submit" className='post-form-button'>Post</button>
         </form>
       )
     }

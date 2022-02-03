@@ -83,7 +83,7 @@
   height: 125px;
   background-color: white;
   width: 500px;
-  margin-left: 48.2%;
+  margin-left: 32.4%;
   border-radius: 8px;
 }
 
@@ -196,4 +196,48 @@
 
 .add-to-post-text {
   margin-top: 3.2%;
+}
+
+.post-picture-icon {
+  width: 27px;
+  padding-top: 5px;
+  padding-left: 3.1px;
+}
+
+.post-picture-icon-container {
+  margin-top: -5.6%;
+  margin-left: 91%;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.post-picture-icon-container:hover {
+  background-color: #E4E6EA;
+}
+
+.profile-post-container {
+  margin-top: 37px;
+  height: 125px;
+  background-color: white;
+  width: 500px;
+  margin-left: 32.4%;
+  border-radius: 8px;
+}
+
+.mini-profile-pic-post {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(204, 204, 204);
+  margin: 12px 16px 10px;
+}
+
+.name-profile-post {
+  margin-top: -50px;
+  margin-left: 65px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }

@@ -8,6 +8,8 @@ class Api::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    puts 'HLAERRAE'
+    puts params[:photo]
     if @post
       render :show
     else  

@@ -9,6 +9,10 @@ const receiveUser = user => {
 }
 
 export const fetchUser = userId => dispatch => {
-  UserUtils.fetchUser(userId)
+  return UserUtils.fetchUser(userId)
   .then( user => dispatch(receiveUser(user)))
+}
+
+export const fetchAuthor = authorId  => {
+  return UserUtils.fetchUser(authorId)
 }
