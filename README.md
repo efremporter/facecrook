@@ -25,4 +25,9 @@ In order to build this app, I used a number of technologies. For my backend, I u
 I'm particularly proud of the feature that allows a user to post. This feature took me well over a full workday to complete. The biggest issue that I ran into was fetching the correct user to display on the post, and more importantly, how to fetch that user. I ended up using a router to wrap the component, which gave it access to the "ownProps" variable, which I then keyed into to access the userId.
 
 Future directions for project:
-* hello
+* Feed
+  * Show the current user a curated feed of their friend's posts
+* Profile
+* Friends
+* Likes
+* Comments
