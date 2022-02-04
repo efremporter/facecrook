@@ -21,3 +21,8 @@ Users can also navigate to another person's profile by typing in their user id. 
 <img height="300" alt="Screen Shot 2022-02-04 at 10 10 20 AM" src="https://user-images.githubusercontent.com/89431346/152580893-ad5cea17-8991-4457-8e73-dc33fbe9aae6.png">
 
 In order to build this app, I used a number of technologies. For my backend, I used Ruby on rails and a PostgreSQL database. For my frontend, I used react/redux and javascript. For styling, I used HTML and CSS. In order to get pictures to show and persist (like profile pictures), I used Amazon Web Services (AWS).
+
+I'm particularly proud of the feature that allows a user to post. This feature took me well over a full workday to complete. The biggest issue that I ran into was fetching the correct user to display on the post, and more importantly, how to fetch that user. I ended up using a router to wrap the component, which gave it access to the "ownProps" variable, which I then keyed into to access the userId.
+
+Future directions for project:
+** a
