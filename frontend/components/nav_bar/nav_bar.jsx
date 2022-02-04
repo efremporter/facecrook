@@ -10,7 +10,7 @@ const NavBar = ({ currentUser, logout }) => {
   const display = currentUser ? (
     <div className="nav-bar-container">
       <ul>
-        <li><Link to={"/feed"}><img className='nav-bar-f-logo' src={window.fLogo}/></Link></li>
+        <li><Link to={`/users/${currentUser.id}`}><img className='nav-bar-f-logo' src={window.fLogo}/></Link></li>
         <li><Link to={"/feed"}><img className='nav-bar-home-button' src={window.homeButton} /></Link></li>
         <li><a target="_blank" href="https://www.linkedin.com/in/efrem-porter-550b0b224"><img className="nav-bar-linked-in-logo" src={window.linkedInLogo}/></a></li>
         <li><a target="_blank" href="https://github.com/efremporter"><img className="nav-bar-github-logo" src={window.githubLogo}/></a></li>
