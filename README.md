@@ -17,6 +17,6 @@ Users can then navigate to their own profile by clicking on the Facecrook logo i
 
 
 Users can also navigate to another person's profile by typing in their user id. Users can then create posts on another person's wall! It will display the post as well as who wrote it!
-<img width="520" alt="Screen Shot 2022-02-04 at 10 10 20 AM" src="https://user-images.githubusercontent.com/89431346/152580893-ad5cea17-8991-4457-8e73-dc33fbe9aae6.png">
+<img height="300" alt="Screen Shot 2022-02-04 at 10 10 20 AM" src="https://user-images.githubusercontent.com/89431346/152580893-ad5cea17-8991-4457-8e73-dc33fbe9aae6.png">
 
 In order to build this app, I used a number of technologies. For my backend, I used Ruby on rails and a PostgreSQL database. For my frontend, I used react/redux and javascript. For styling, I used HTML and CSS. In order to get pictures to show and persist (like profile pictures), I used Amazon Web Services (AWS).
