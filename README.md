@@ -14,7 +14,7 @@ Once logged in, users are redirected to the feed page. While a user is logged in
 Users can then navigate to their own profile by clicking on the Facecrook logo in the top left hand corner. Here, users can create posts and have them update in real-time!
 <br />
 <img width="300" alt="Screen Shot 2022-02-04 at 10 08 45 AM" src="https://user-images.githubusercontent.com/89431346/152580650-63caecbd-0440-4675-bca4-0cbe81f1c955.png">
-<img width="450" alt="Screen Shot 2022-02-04 at 10 09 34 AM" src="https://user-images.githubusercontent.com/89431346/152580791-bcd8be89-8c5c-4944-b9d2-6c31ff3cb33d.png">
+<img width="400" alt="Screen Shot 2022-02-04 at 10 09 34 AM" src="https://user-images.githubusercontent.com/89431346/152580791-bcd8be89-8c5c-4944-b9d2-6c31ff3cb33d.png">
 
 
 Users can also navigate to another person's profile by typing in their user id. Users can then create posts on another person's wall! It will display the post as well as who wrote it!
