@@ -18,24 +18,29 @@ class Profile extends React.Component {
     if (!this.props.user) return null;
     let component;
     if (window.currentUser.id === parseInt(this.props.userId)) {
-      console.log('My profile')
       component = <div>
         <div className="my-profile-background">
           <div className="my-cover-photo"></div>
           <ProfilePicture user={this.props.user} userId={this.props.userId}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
-          <hr className="header-divider"></hr>
+          {/* <hr className="header-divider"></hr> */}
           <ProfileHeader/>
           <PostFormContainer />
           <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
         </div>
       </div>
     } else {
-      console.log('Other profile')
       component = <div>
-        <ProfilePicture user={this.props.user} userId={this.props.userId}/>
-        <PostIndexContainer userId={this.props.userId} />
-      </div>  
+        <div className="my-profile-background">
+          <div className="my-cover-photo"></div>
+          <ProfilePicture user={this.props.user} userId={this.props.userId}/>
+          <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
+          {/* <hr className="header-divider"></hr> */}
+          <ProfileHeader/>
+          <PostFormContainer />
+          <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
+        </div>
+      </div>
     }
     return (
     <div className="profile-background">

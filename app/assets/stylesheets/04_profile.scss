@@ -75,11 +75,12 @@
   color: #050505;
   text-align: center;
   margin-top: 1%;
+  margin-bottom: 7%;
 }
 
 .post-form {
   text-align: center;
-  margin-top: 37px;
+  margin-top: 30px;
   height: 125px;
   background-color: white;
   width: 500px;
@@ -219,6 +220,7 @@
 }
 
 .profile-post-container {
+  margin-bottom: 15px;
   margin-top: 37px;
   height: 125px;
   background-color: white;
@@ -240,4 +242,18 @@
   margin-left: 65px;
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
   font-weight: bold;
+}
+
+.profile-date-time {
+  font-size: 13px;
+  color: #65676B;
+  margin-left: 65px;
+}
+
+.profile-post-body {
+  font-size: 15px;
+  color: #050505;
+  margin-left: 16px;
+  width: 465px;
+  margin-bottom: 50px;
 }

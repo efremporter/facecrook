@@ -6,7 +6,7 @@ import { openModal } from '../../actions/modal_actions';
 const mDTP = dispatch => {
   return {
     login: user => dispatch(login(user)),
-    logInGuest: () => dispatch(login({email: 'guest@user.com', password: 'NobodyWillGuessThisPassword17'})),
+    logInGuest: () => dispatch(login({email: 'guestuser@gmail.com', password: 'NobodyWillGuessThisPassword17'})),
     openModal: () => dispatch(openModal('signup'))
   }
 }

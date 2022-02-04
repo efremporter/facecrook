@@ -1,6 +1,7 @@
 class Api::PostsController < ApplicationController
 
   def index
+    @all_posts = Post.all
     user = User.find_by_id(params[:author_id])
     @posts = user.posts;
     render :index
@@ -8,8 +9,6 @@ class Api::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    puts 'HLAERRAE'
-    puts params[:photo]
     if @post
       render :show
     else  

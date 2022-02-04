@@ -6,7 +6,7 @@ import SignUp from './signup'
 const mDTP = dispatch => {
   return {
     createNewUser: formUser => dispatch(createNewUser(formUser)),
-    logInGuest: () => dispatch(login({email: 'guest@user.com', password: 'NobodyWillGuessThisPassword17'})),
+    logInGuest: () => dispatch(login({email: 'guestuser@gmail.com', password: 'NobodyWillGuessThisPassword17'})),
     closeModal: () => dispatch(closeModal())
   }
 }

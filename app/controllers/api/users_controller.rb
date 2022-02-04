@@ -9,7 +9,6 @@ class Api::UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-
     if @user.save
       login!(@user)
       @user.profile_picture.attach(io: File.open("/Users/efrem/Desktop/FaceCrook/app/assets/images/default-male-pic.jpeg"), filename: "Default")

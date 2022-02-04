@@ -41,8 +41,9 @@ class ProfilePicture extends React.Component {
     } else {
       return (
         <div>
-          Profile Picture
-          <img className="profile-picture" src={this.props.user.photoUrl}/>
+          <div className="profile-pic-container">
+            <img className="profile-picture" src={this.props.user.photoUrl}/>
+          </div>
         </div>
       )
     }
