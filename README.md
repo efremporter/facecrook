@@ -26,8 +26,13 @@ I'm particularly proud of the feature that allows a user to post. This feature t
 
 Future directions for project:
 * Feed
-  * Show the current user a curated feed of their friend's posts
-* Profile
+ * Show the current user a curated feed of their friend's posts
+ * Allow navigation to other profiles by clicking the name or profile picture on posts
 * Friends
+ * Allow users to add friends
 * Likes
+ * Allow users to like posts
 * Comments
+ * Allow users to comment on posts
+* Search
+ * Allow users to search for other users
