@@ -84,7 +84,9 @@
   font-size: 18px;
   background-color: #00a400;
   margin-left: 103px;
+  margin-bottom: 0px;
   display: block;
+  margin-top: 10px;
 }
 
 .sign-up-button:hover {
@@ -97,6 +99,7 @@
   width: 196px;
   font-size: 18px;
   margin-left: 103px;
+  margin-top: 10px;
   display: block;
   background-color: #1877F2;
 }
@@ -114,3 +117,10 @@
   height: 24px;
   cursor: pointer;
 }
+
+.sign-up-error {
+  color: red;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+

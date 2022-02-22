@@ -1,8 +1,10 @@
 import { postUser, postSession, deleteSession } from '../utils/session_utils'
 import { closeModal } from './modal_actions'
 
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
-export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const REMOVE_SESSION_ERRORS = 'REMOVE_SESSION_ERRORS';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 
 const receiveCurrentUser = user => {
   return {
@@ -10,6 +12,20 @@ const receiveCurrentUser = user => {
     user
   }
 }
+
+const receiveSessionErrors = errors => {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors
+  }
+}
+
+const removeSessionErrors = () => {
+  return {
+    type: REMOVE_SESSION_ERRORS
+  }
+}
+
 
 const logoutCurrentUser = () => {
   return {
@@ -23,6 +39,7 @@ export const createNewUser = formUser => dispatch => {
     dispatch(closeModal());
     dispatch(receiveCurrentUser(user))
   })
+  .catch(errors => dispatch(receiveSessionErrors(errors.responseJSON)))
 }
 
 export const login = formUser => dispatch => {
@@ -31,6 +48,7 @@ export const login = formUser => dispatch => {
     dispatch(closeModal())
     dispatch(receiveCurrentUser(user))
   })
+  .catch(errors => dispatch(receiveSessionErrors(errors.responseJSON)))
 }
 
 export const logout = () => dispatch => {

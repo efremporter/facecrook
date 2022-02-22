@@ -2,10 +2,6 @@
     margin-left: 15.9%;
 }
 
-.welcome-component {
-  // display: flex;ccccc
-}
-
 .splash-logo {
   color: #1877F2;
   font-size: 58px;
@@ -24,7 +20,6 @@
   color: #1C1E21;
   // display: inline-block;
   text-rendering: optimizeLegibility;
-  max-width: 35%;
   margin-top: 15px;
 }
 
@@ -120,7 +115,14 @@
 }
 
 .login-form-container {
-  margin-left: 570px;
+  margin-left: 47%;
   margin-top: -238px;
 }
 
+.login-form-errors {
+  color: red;
+}
+
+.create-user-redirect {
+  margin-top: 5%;
+}

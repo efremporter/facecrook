@@ -1,5 +1,5 @@
-import * as UserUtils from "../utils/user_utils"
-export const RECEIVE_USER = 'RECEIVE_USER'
+import * as UserUtils from "../utils/user_utils";
+export const RECEIVE_USER = 'RECEIVE_USER';
 
 const receiveUser = user => {
   return {
@@ -10,7 +10,7 @@ const receiveUser = user => {
 
 export const fetchUser = userId => dispatch => {
   return UserUtils.fetchUser(userId)
-  .then( user => dispatch(receiveUser(user)))
+  .then(user => dispatch(receiveUser(user)))
 }
 
 export const fetchAuthor = authorId  => {

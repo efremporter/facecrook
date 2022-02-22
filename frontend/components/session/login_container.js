@@ -3,6 +3,12 @@ import { login } from '../../actions/session_actions';
 import Login from './login';
 import { openModal } from '../../actions/modal_actions';
 
+const mSTP = state => {
+  return {
+    errors: state.errors.session
+  }
+}
+
 const mDTP = dispatch => {
   return {
     login: user => dispatch(login(user)),
@@ -11,4 +17,4 @@ const mDTP = dispatch => {
   }
 }
 
-export default connect(null, mDTP)(Login)
+export default connect(mSTP, mDTP)(Login)

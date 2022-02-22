@@ -4,7 +4,7 @@ class SignUp extends React.Component {
 
   constructor(props) { 
     super(props)
-    this.state = {first_name: '', last_name: '', email: '', password: ''}
+    this.state = {first_name: '', last_name: '', email: '', password: '', errors: []}
   }
 
   handleChange(key) {
@@ -16,12 +16,30 @@ class SignUp extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.createNewUser(this.state)
-    .then( () => this.props.history.push('/'))
-    this.setState({first_name: '', last_name: '', email: '', password: ''})
+    .then(() => {
+      this.props.history.push('/');
+      this.setState({first_name: '', last_name: '', email: '', password: ''})
+  })
+    .catch(() => this.handleErrors())
+  }
+
+  isEmpty(str) {
+    return str.length === 0
   }
 
   handleClick() {
     this.props.logInGuest();
+  }
+
+  handleErrors() {
+    if (!this.props.errors) return null;
+    let errors = [];
+    if (this.isEmpty(this.state.first_name) || this.isEmpty(this.state.last_name)) {
+      errors.push('First and Last name required')
+    }
+    if (this.isEmpty(this.state.email)) errors.push('Email field required')
+    if (this.state.password.length < 6) errors.push('Password must be at least 6 characters')
+    this.setState({errors: errors});
   }
 
   render() {
@@ -32,10 +50,13 @@ class SignUp extends React.Component {
         <div className='sub-header'>It's quick and easy</div>
         <hr className='sign-up-divider'></hr>
         <form className='sign-up-form' onSubmit={this.handleSubmit.bind(this)}>
-          <input className="sign-up-input" type="text" placeholder='First name' value={this.state.first_name} onChange={this.handleChange('first_name')} />
+          <input className="sign-up-input" id="sign-up-first-name" type="text" placeholder='First name' value={this.state.first_name} onChange={this.handleChange('first_name')} />
           <input className="sign-up-input" id="sign-up-last-name" type="text" placeholder='Last name' value={this.state.last_name} onChange={this.handleChange('last_name')} />
           <input className="sign-up-input" id="sign-up-email" type="text" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
           <input className="sign-up-input" id="sign-up-password" type="password" placeholder='New password' value={this.state.password} onChange={this.handleChange('password')} />
+          <ul>{this.state.errors.map(error => {
+            return <li className='sign-up-error'>{error}</li>
+          })}</ul>
           <button className="sign-up-button" type="submit">Sign Up</button>
           <button className="sign-up-demo" type="button" onClick={this.handleClick.bind(this)}>Guest Login</button>
         </form>

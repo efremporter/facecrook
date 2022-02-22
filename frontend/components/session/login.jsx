@@ -18,6 +18,16 @@ class Login extends React.Component {
     }
   }
 
+  getErrors() {
+    if (this.props.errors) {
+      if (this.props.errors[0] === 'Invalid email/password combination') {
+        console.log('here')
+        return this.props.errors[0]
+      }
+    }
+    return null;
+  }
+
   render() {
     return (
       <div className="login-form-div">
@@ -29,6 +39,7 @@ class Login extends React.Component {
           <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
             <input className="login-input" id="first-login-input" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange('email')} />
             <input className="login-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange('password')} />
+            <div className="login-form-errors">{this.getErrors()}</div>
             <button className="login-button">Log In</button>
             <button type="button" className="demo-user-login" onClick={this.props.logInGuest}>Sign In As Guest</button>
             <div className="login-divider">______________________________________________</div>

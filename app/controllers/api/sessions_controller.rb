@@ -1,7 +1,7 @@
 class Api::SessionsController < ApplicationController
   before_action :require_logged_in, only: [:destroy]
 
-  def new
+  def new 
     render :new
   end
 
@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render "api/sessions/show.json.jbuilder"
     else
-      flash[:errors] = ['Invalid email or password']
+      render json: ['Invalid email/password combination'], status: 401
     end
 
   end
