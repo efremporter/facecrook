@@ -41,6 +41,10 @@ User.create!({first_name: 'Sean', last_name: 'Mitchell', email: 'seanmitchell@us
 User.create!({first_name: 'Carter', last_name: 'Roberts', email: 'carterroberts@user.com', password: 'NobodyWillGuessThisPassword17'})
 User.create!({first_name: 'Whitney', last_name: 'Thompson', email: 'whitneythompson@user.com', password: 'NobodyWillGuessThisPassword17'})
 
+User.all.each do |user|
+  user.profile_picture.attach(io: File.open("/Users/efrem/Desktop/FaceCrook/app/assets/images/default-male-pic.jpeg"), filename: "Default")
+end
+
 Post.create!({author_id: 1, body: "Why did the football coach go to the bank? To get his quarter back."})
 Post.create!({author_id: 2, body: "Why can't a leopard hide? She's always spotted."})
 Post.create!({author_id: 3, body: "Air used to be free at the gas station, now it costs 2.50. You want to know why? Inflation."})

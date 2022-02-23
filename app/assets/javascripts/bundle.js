@@ -79,8 +79,7 @@ var removePost = function removePost(postId) {
 var fetchPosts = function fetchPosts(authorId) {
   return function (dispatch) {
     return _utils_post_utils__WEBPACK_IMPORTED_MODULE_0__.fetchPosts(authorId).then(function (posts) {
-      dispatch(receivePosts(posts));
-      console.log(posts);
+      return dispatch(receivePosts(posts));
     });
   };
 };
@@ -208,6 +207,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_USER": () => (/* binding */ RECEIVE_USER),
 /* harmony export */   "fetchUser": () => (/* binding */ fetchUser),
+/* harmony export */   "updateUser": () => (/* binding */ updateUser),
 /* harmony export */   "fetchAuthor": () => (/* binding */ fetchAuthor)
 /* harmony export */ });
 /* harmony import */ var _utils_user_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/user_utils */ "./frontend/utils/user_utils.js");
@@ -226,6 +226,13 @@ var fetchUser = function fetchUser(userId) {
     return _utils_user_utils__WEBPACK_IMPORTED_MODULE_0__.fetchUser(userId).then(function (user) {
       return dispatch(receiveUser(user));
     });
+  };
+};
+var updateUser = function updateUser(user) {
+  return function (dispatch) {
+    return _utils_user_utils__WEBPACK_IMPORTED_MODULE_0__.patchUser(user).then(function (user) {
+      return dispatch(receiveUser(user));
+    }); // .catch(errors => dispatch())
   };
 };
 var fetchAuthor = function fetchAuthor(authorId) {
@@ -905,10 +912,11 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.posts.map(function (post, idx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.posts.map(function (post) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: post.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           fetchAuthor: _this.props.fetchAuthor,
-          key: idx,
           user: _this.props.user,
           post: post
         }));
@@ -1139,15 +1147,19 @@ var Profile = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       if (!this.props.user) return null;
       var component;
+      console.log(this.props.currentUser.id);
+      console.log(this.props.userId);
 
-      if (window.currentUser.id === parseInt(this.props.userId)) {
+      if (this.props.currentUser.id === this.props.userId) {
         component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "my-profile-background"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "my-cover-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_picture__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          currentUser: this.props.currentUser,
           user: this.props.user,
-          userId: this.props.userId
+          userId: this.props.userId,
+          updateUser: this.props.updateUser
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "profile-header-name"
         }, this.props.user.firstName, " ", this.props.user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1160,8 +1172,10 @@ var Profile = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "my-cover-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_picture__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          currentUser: this.props.currentUser,
           user: this.props.user,
-          userId: this.props.userId
+          userId: this.props.userId,
+          updateUser: this.props.updateUser
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "profile-header-name"
         }, this.props.user.firstName, " ", this.props.user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1207,7 +1221,8 @@ var mSTP = function mSTP(state, ownProps) {
   var userId = ownProps.match.params.userId;
   return {
     user: state.entities.users[userId],
-    userId: userId
+    userId: parseInt(userId),
+    currentUser: state.session.currentUser
   };
 };
 
@@ -1218,6 +1233,9 @@ var mDTP = function mDTP(dispatch) {
     },
     openModal: function openModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__.openModal)('post'));
+    },
+    updateUser: function updateUser(user) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.updateUser)(user));
     }
   };
 };
@@ -1336,35 +1354,40 @@ var ProfilePicture = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProfilePicture);
 
     _this = _super.call(this, props);
-    _this.state = {
-      profilePicture: window.currentUser.profilePicture
-    };
+    _this.state = {};
     return _this;
   }
 
   _createClass(ProfilePicture, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      this.setState({
+        id: this.props.user.id,
+        photoUrl: this.props.user.photoUrl
+      });
+    }
   }, {
     key: "handleFile",
     value: function handleFile(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      console.log(e.currentTarget.files[0]);
       this.setState({
-        profilePicture: e.currentTarget.files[0]
+        photoUrl: e.currentTarget.files[0]
+      }, function () {
+        return _this2.props.updateUser(_this2.state);
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       console.log('submit');
-      e.preventDefault();
-      window.currentUser.profilePicture = this.state.profilePicture;
+      e.preventDefault(); // this.props.user.profilePicture = this.state.profilePicture
     }
   }, {
     key: "render",
     value: function render() {
-      if (window.currentUser.id === parseInt(this.props.userId)) {
+      if (this.props.currentUser.id === this.props.userId) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
           onSubmit: this.handleSubmit.bind(this)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2340,12 +2363,25 @@ var deleteSession = function deleteSession() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchUser": () => (/* binding */ fetchUser)
+/* harmony export */   "fetchUser": () => (/* binding */ fetchUser),
+/* harmony export */   "patchUser": () => (/* binding */ patchUser)
 /* harmony export */ });
 var fetchUser = function fetchUser(userId) {
   return $.ajax({
     method: 'GET',
     url: "/api/users/".concat(userId)
+  });
+};
+var patchUser = function patchUser(user) {
+  var formData = new FormData();
+  console.log(user.photoUrl);
+  formData.append("user[photo]", user.photoUrl);
+  return $.ajax({
+    method: 'PATCH',
+    url: "/api/users/".concat(user.id),
+    data: formData,
+    processData: false,
+    contentType: false
   });
 };
 

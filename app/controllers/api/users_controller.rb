@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
 
-  before_action :require_logged_in, only: [:show]
+  before_action :require_logged_in, only: [:show, :update]
 
   def new
     @user = User.new
@@ -28,8 +28,22 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update 
+    @user = User.find(params[:id])
+    if @user
+      @user.profile_picture.attach(params[:user][:photo])
+      if (!params[:user][:photo])
+        @user.update(user_params)
+      end
+      render :_user
+    else  
+      render json: ["Couldn't update user"], status: 404
+    end
+  end
+
+  private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :photo)
   end
 
 end

@@ -13,6 +13,12 @@ export const fetchUser = userId => dispatch => {
   .then(user => dispatch(receiveUser(user)))
 }
 
+export const updateUser = user => dispatch => {
+  return UserUtils.patchUser(user)
+  .then(user => dispatch(receiveUser(user)))
+  // .catch(errors => dispatch())
+}
+
 export const fetchAuthor = authorId  => {
   return UserUtils.fetchUser(authorId)
 }

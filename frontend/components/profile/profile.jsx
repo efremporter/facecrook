@@ -17,11 +17,13 @@ class Profile extends React.Component {
   render() {
     if (!this.props.user) return null;
     let component;
-    if (window.currentUser.id === parseInt(this.props.userId)) {
+    console.log(this.props.currentUser.id)
+    console.log(this.props.userId)
+    if (this.props.currentUser.id === this.props.userId) {
       component = <div>
         <div className="my-profile-background">
           <div className="my-cover-photo"></div>
-          <ProfilePicture user={this.props.user} userId={this.props.userId}/>
+          <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
           {/* <hr className="header-divider"></hr> */}
           <ProfileHeader/>
@@ -33,10 +35,10 @@ class Profile extends React.Component {
       component = <div>
         <div className="my-profile-background">
           <div className="my-cover-photo"></div>
-          <ProfilePicture user={this.props.user} userId={this.props.userId}/>
+          <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
           {/* <hr className="header-divider"></hr> */}
-          <ProfileHeader/>
+          <ProfileHeader />
           <PostFormContainer />
           <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
         </div>

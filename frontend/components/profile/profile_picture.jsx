@@ -4,27 +4,29 @@ class ProfilePicture extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {profilePicture: window.currentUser.profilePicture}
+    this.state = {}
   }
 
   componentDidMount() {
-
+    this.setState({
+      id: this.props.user.id,
+      photoUrl: this.props.user.photoUrl
+    })
   }
 
   handleFile(e) {
     e.preventDefault()
-    console.log(e.currentTarget.files[0])
-    this.setState({profilePicture: e.currentTarget.files[0]})
+    this.setState({photoUrl: e.currentTarget.files[0]}, () => this.props.updateUser(this.state))
   }
 
   handleSubmit(e) {
     console.log('submit')
     e.preventDefault()
-    window.currentUser.profilePicture = this.state.profilePicture
+    // this.props.user.profilePicture = this.state.profilePicture
   } 
 
   render() {
-    if (window.currentUser.id === parseInt(this.props.userId)) {
+    if (this.props.currentUser.id === this.props.userId) {
       return (
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="profile-pic-container">

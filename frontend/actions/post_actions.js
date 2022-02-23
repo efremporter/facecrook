@@ -27,8 +27,7 @@ const removePost = postId => {
 
 export const fetchPosts = authorId => dispatch => {
   return PostUtils.fetchPosts(authorId)
-  .then( posts => {dispatch(receivePosts(posts))
-  console.log(posts)})
+  .then( posts => dispatch(receivePosts(posts)))
 }
 
 export const fetchPost = postId => dispatch => {
