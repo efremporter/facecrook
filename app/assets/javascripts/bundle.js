@@ -1339,35 +1339,14 @@ var ProfileCoverPhoto = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.props.user.coverPhotoUrl === undefined || this.props.user.coverPhotoUrl === null) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "profile-cover-placeholder"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "profile-cover-gradient-bar"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          className: "camera-icon-label"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cover-camera-icon-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          className: "cover-camera-icon",
-          src: window.cameraIcon
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-          className: "add-cover-photo-text"
-        }, "Add Cover Photo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          className: "edit-profile-pic",
-          type: "file",
-          onChange: this.handleFile.bind(this)
-        }))));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "profile-cover-placeholder"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          src: this.props.user.coverPhotoUrl,
-          className: "profile_cover_photo"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "profile-cover-gradient-bar"
-        }, this.changeCoverButton()));
-      }
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "profile-cover-placeholder"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: this.props.user.coverPhotoUrl,
+        className: "profile_cover_photo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "profile-cover-gradient-bar"
+      }, this.changeCoverButton()));
     }
   }]);
 

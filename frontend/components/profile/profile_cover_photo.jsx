@@ -47,30 +47,14 @@ class ProfileCoverPhoto extends React.Component {
   }
 
   render() {
-    if (this.props.user.coverPhotoUrl === undefined || this.props.user.coverPhotoUrl === null) {
-      return (
+    return (
       <div className="profile-cover-placeholder">
+        <img src={this.props.user.coverPhotoUrl} className="profile_cover_photo"/>
         <div className="profile-cover-gradient-bar">
-          <label className="camera-icon-label">
-            <div className="cover-camera-icon-container">
-              <img className="cover-camera-icon" src={window.cameraIcon}/>
-              <span className="add-cover-photo-text">Add Cover Photo</span>
-            </div>
-            <input className="edit-profile-pic" type="file" onChange={this.handleFile.bind(this)}/>
-          </label>
+          {this.changeCoverButton()}
         </div>
       </div>
-      )
-    } else {
-      return (
-        <div className="profile-cover-placeholder">
-          <img src={this.props.user.coverPhotoUrl} className="profile_cover_photo"/>
-          <div className="profile-cover-gradient-bar">
-            {this.changeCoverButton()}
-          </div>
-        </div>
-      )
-    }
+    )
   }
 }
 
