@@ -8,7 +8,6 @@ class PostIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.fetchAuthor(this.props.post.authorId).then(author => {
-      // this.state.posts[author.id] = author
       this.setState({author})
     })
   }
@@ -17,9 +16,10 @@ class PostIndexItem extends React.Component {
     const author = this.state.author;
     const date = this.props.post.createdAt.slice(0, 10)
     window.date = this.props.post.createdAt;
+    console.log(this.props.user)
     return (
       <div className="profile-post-container">
-        <img className="mini-profile-pic-post" src={this.props.user ? this.props.user.photoUrl : null}/>
+        <img className="mini-profile-pic-post" src={this.props.user ? this.props.user.profilePictureUrl : null}/>
         <div className="name-profile-post">{author.firstName} {author.lastName}</div>
         <div className="profile-date-time">{date}</div>
         <br />

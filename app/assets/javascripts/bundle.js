@@ -1031,7 +1031,6 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       this.props.fetchAuthor(this.props.post.authorId).then(function (author) {
-        // this.state.posts[author.id] = author
         _this2.setState({
           author: author
         });
@@ -1043,11 +1042,12 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       var author = this.state.author;
       var date = this.props.post.createdAt.slice(0, 10);
       window.date = this.props.post.createdAt;
+      console.log(this.props.user);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "mini-profile-pic-post",
-        src: this.props.user ? this.props.user.photoUrl : null
+        src: this.props.user ? this.props.user.profilePictureUrl : null
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "name-profile-post"
       }, author.firstName, " ", author.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
