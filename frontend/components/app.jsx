@@ -5,7 +5,7 @@ import LoginContainer from "./session/login_container";
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import NavBarContainer from './nav_bar/nav_bar_container'
 import FeedIndex from "./feed/feed_index";
-import { ProfileContainer } from "./profile/profile_container";
+import ProfileContainer from "./profile/profile_container";
 import ModalContainer from "./modal/modal_container";
 import PostModalContainer from "./modal/post_modal_container"
 import PostFormContainer from "./posts/post_form_container";

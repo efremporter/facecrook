@@ -18,7 +18,6 @@ class PostForm extends React.Component {
   }
 
   handleSubmit() {
-    console.log('postpost')
     console.log(this.props)
     this.props.createPost(this.state)
     this.props.closeModal();
@@ -36,7 +35,7 @@ class PostForm extends React.Component {
       )
     } else {
       return (
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form className="profile-post-form" onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <h2 className="post-form-title" >Create Post</h2>
             <hr className='open-post-form-divider'/>

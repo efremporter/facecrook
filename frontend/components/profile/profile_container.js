@@ -5,6 +5,7 @@ import Profile from "./profile";
 
 const mSTP = (state, ownProps) => {
   const userId = ownProps.match.params.userId
+  console.log(state.entities.users[userId])
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
@@ -20,4 +21,4 @@ const mDTP = dispatch => {
   }
 }
 
-export const ProfileContainer = connect(mSTP, mDTP)(Profile)
+export default connect(mSTP, mDTP)(Profile)

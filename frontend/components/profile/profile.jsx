@@ -12,24 +12,34 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
+    console.log("COMPONENT DID MOUNT FIRING")
+    this.props.fetchUser(this.props.userId)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.userId !== prevProps.userId)
     this.props.fetchUser(this.props.userId)
   }
 
   render() {
-    if (!this.props.user) return null;
+    console.log(this.props.user)
+    if (!this.props.user) {
+      console.log('HITTING NULL CHECK')
+      return null;
+    }
     return (
-    <div className="profile-background">
-      <div>
-        <div className="my-profile-background">
-          <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
-          <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
-          <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
-          <ProfileHeader/>
-          <PostFormContainer />
-          <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
+      <div className="profile-background">
+        <div>
+          <div className="my-profile-background">
+            <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
+            <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
+            <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
+            <ProfileHeader/>
+            <PostFormContainer />
+            <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
+          </div>
         </div>
       </div>
-    </div>
     )
   }
 }
