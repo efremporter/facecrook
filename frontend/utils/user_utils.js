@@ -7,8 +7,15 @@ export const fetchUser = userId => {
 
 export const patchUser = user => {
   let formData = new FormData();
-  console.log(user.photoUrl)
-  formData.append("user[photo]", user.photoUrl)
+
+  if (user.profilePicture) {
+    formData.append("user[profile_picture]", user.profilePicture)
+  }
+
+  if (user.profileCoverPhoto) {
+    formData.append("user[profile_cover_photo]", user.profileCoverPhoto)
+  }
+
   return $.ajax({
     method: 'PATCH',
     url: `/api/users/${user.id}`,

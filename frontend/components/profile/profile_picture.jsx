@@ -10,13 +10,13 @@ class ProfilePicture extends React.Component {
   componentDidMount() {
     this.setState({
       id: this.props.user.id,
-      photoUrl: this.props.user.photoUrl
+      profilePictureUrl: this.props.user.profilePictureUrl
     })
   }
 
   handleFile(e) {
     e.preventDefault()
-    this.setState({photoUrl: e.currentTarget.files[0]}, () => this.props.updateUser(this.state))
+    this.setState({profilePicture: e.currentTarget.files[0]}, () => this.props.updateUser(this.state))
   }
 
   handleSubmit(e) {
@@ -28,23 +28,24 @@ class ProfilePicture extends React.Component {
   render() {
     if (this.props.currentUser.id === this.props.userId) {
       return (
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <div>
           <div className="profile-pic-container">
-            <img className="profile-picture" src={this.props.user.photoUrl}/>
+            <img className="profile-picture" src={this.props.user.profilePictureUrl}/>
+            <label className="camera-icon-label">
+              <div className="camera-icon-container">
+                <img className="camera-icon" src={window.cameraIcon}/>
+              </div>
+              <input className="edit-profile-pic" type="file" onChange={this.handleFile.bind(this)}/>
+            </label>
           </div>
           <br></br>
-          <label>
-            <img className="camera-icon" src={window.cameraIcon}/>
-            <input className="edit-profile-pic" type="file" onChange={this.handleFile.bind(this)}/>
-          </label>
-          {/* <button className="submit-profile-pic">Submit</button> */}
-        </form> 
+        </div> 
       )
     } else {
       return (
         <div>
           <div className="profile-pic-container">
-            <img className="profile-picture" src={this.props.user.photoUrl}/>
+            <img className="profile-picture" src={this.props.user.profilePictureUrl}/>
           </div>
         </div>
       )

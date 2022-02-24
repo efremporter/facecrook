@@ -31,8 +31,13 @@ class Api::UsersController < ApplicationController
   def update 
     @user = User.find(params[:id])
     if @user
-      @user.profile_picture.attach(params[:user][:photo])
-      if (!params[:user][:photo])
+      if (params[:user][:profile_picture])
+        @user.profile_picture.attach(params[:user][:profile_picture])
+      end
+      if (params[:user][:profile_cover_photo])
+        @user.profile_cover_photo.attach(params[:user][:profile_cover_photo])
+      end
+      if (!params[:user][:profile_picture] || !params[:user][:profile_cover_photo])
         @user.update(user_params)
       end
       render :_user
@@ -43,7 +48,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :photo)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :profile_picture, :profile_cover_photo)
   end
 
 end
