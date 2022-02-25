@@ -49,7 +49,7 @@ class PostIndexItem extends React.Component {
   }
 
   getDelete() {
-    if (this.state.author.id === this.props.post.authorId)
+    if (this.props.currentUser.id === this.props.post.authorId || this.props.currentUser.id === this.props.post.profileId)
     {
       return <div className="post-delete-dots">
         <span className="profile-delete-dots-span">...</span>
@@ -61,7 +61,6 @@ class PostIndexItem extends React.Component {
   }
 
   deletePost() {
-    console.log('here')
     this.props.deletePost(this.props.post.id)
   }
 

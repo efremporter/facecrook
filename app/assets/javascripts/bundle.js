@@ -56,7 +56,6 @@ var RECEIVE_POST = 'RECEIVE_POST';
 var REMOVE_POST = 'REMOVE_POST';
 
 var receivePosts = function receivePosts(posts) {
-  console.log(posts);
   return {
     type: RECEIVE_POSTS,
     posts: posts
@@ -1119,6 +1118,7 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: post.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          currentUser: _this.props.currentUser,
           deletePost: _this.props.deletePost,
           fetchAuthor: _this.props.fetchAuthor,
           user: _this.props.user,
@@ -1157,7 +1157,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    posts: Object.values(state.entities.posts).reverse()
+    posts: Object.values(state.entities.posts).reverse(),
+    currentUser: state.session.currentUser
   };
 };
 
@@ -1295,7 +1296,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "getDelete",
     value: function getDelete() {
-      if (this.state.author.id === this.props.post.authorId) {
+      if (this.props.currentUser.id === this.props.post.authorId || this.props.currentUser.id === this.props.post.profileId) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "post-delete-dots"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
@@ -1311,7 +1312,6 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "deletePost",
     value: function deletePost() {
-      console.log('here');
       this.props.deletePost(this.props.post.id);
     }
   }, {
