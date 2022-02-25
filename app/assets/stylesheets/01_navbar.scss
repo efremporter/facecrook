@@ -60,7 +60,7 @@
 }
 
 .nav-bar-linked-in-logo-li {
-  margin-left: 120px;
+  margin-left: 8.4%;
 }
 
 .nav-bar-linked-in-logo:hover {
@@ -74,7 +74,7 @@
 }
 
 .nav-bar-github-logo-li {
-  margin-left: 120px;
+  margin-left: 8.4%;
 }
 
 .nav-bar-github-logo:hover {
@@ -85,8 +85,12 @@
   cursor: pointer;
   background-color: transparent;
   border-radius: 8px;
-  margin-left: 420px;
   width: 50px;
+}
+
+.logout-button-li {
+  position: absolute; 
+  right: 2%;
 }
 
 .logout-button:hover {

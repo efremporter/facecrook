@@ -15,7 +15,7 @@ const NavBar = ({ currentUser, logout }) => {
           <li className='nav-bar-home-button-li'><Link to={"/feed"}><img className='nav-bar-home-button' src={window.homeButton} /></Link></li>
           <li className='nav-bar-linked-in-logo-li'><a target="_blank" href="https://www.linkedin.com/in/efrem-porter-550b0b224"><img className="nav-bar-linked-in-logo" src={window.linkedInLogo}/></a></li>
           <li className='nav-bar-github-logo-li'><a target="_blank" href="https://github.com/efremporter"><img className="nav-bar-github-logo" src={window.githubLogo}/></a></li>
-          <li><button className="logout-button" onClick={logout}>Log Out</button></li>
+          <li className='logout-button-li'><button className="logout-button" onClick={logout}>Log Out</button></li>
         </ul>
       </div>
       <div className='nav-bar-placeholder'></div> 
