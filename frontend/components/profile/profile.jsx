@@ -3,7 +3,8 @@ import PostFormContainer from "../posts/post_form_container";
 import PostIndexContainer from "../posts/post_index_container";
 import ProfileHeader from "./profile_header";
 import ProfilePicture from "./profile_picture";
-import ProfileCoverPhoto from "./profile_cover_photo";
+import ProfileCoverPhoto from "./profile_cover_photo"
+import PostFormClosed from '../posts/post_form_closed';
 
 class Profile extends React.Component {
 
@@ -27,14 +28,15 @@ class Profile extends React.Component {
     return (
       <div className="profile-background">
         <div>
-          <div className="my-profile-background">
-            <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
+          {/* <div className="my-profile-background"> */}
+            {/* <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
             <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
-            <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
-            <ProfileHeader/>
-            <PostFormContainer user={this.props.user}/>
-            <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
-          </div>
+            <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div> */}
+            {/* <ProfileHeader/> */}
+            <PostFormClosed openModal={this.props.openModal}/>
+            {/* <PostFormContainer user={this.props.user}/> */}
+            {/* <PostIndexContainer user={this.props.user} userId={this.props.userId}/> */}
+          {/* </div> */}
         </div>
       </div>
     )
