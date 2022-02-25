@@ -15,7 +15,7 @@ class PostForm extends React.Component {
 
   componentDidUpdate() {
     if (this.props.user) {
-      if (this.state.profileId !== this.props.user.id) {
+      if (this.state.profileId && this.state.profileId !== this.props.user.id) {
         this.setState({profileId: this.props.user.id})
       }
     } 
