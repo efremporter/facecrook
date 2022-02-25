@@ -37,6 +37,7 @@ class PostForm extends React.Component {
   }
 
   render() {
+    console.log('PROPS', this.props)
     return (
       <form className="profile-post-form" onSubmit={this.handleSubmit.bind(this)}>
         <div>

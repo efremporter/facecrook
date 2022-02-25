@@ -15,7 +15,7 @@ const App = () => {
   return <div>
     <Route path="/" component={NavBarContainer} />
     <Route path="/" component={ModalContainer}/>
-    <Route path="/" component={PostModalContainer}/>
+    <Route path="/users/:userId" component={PostModalContainer}/>
     {/* <ProtectedRoute path="/users/:userId" component={PostFormContainer} className="route-post-form-container" /> */}
     <Switch>
       <ProtectedRoute path="/users/:userId" component={ProfileContainer}/>
