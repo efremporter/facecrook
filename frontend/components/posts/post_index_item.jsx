@@ -12,18 +12,22 @@ class PostIndexItem extends React.Component {
     })
   }
 
-  componentDidUpdate(prevProps) {
-
+  getAuthorName() {
+    const author = this.state.author;
+    if (this.state.author.id === this.props.user.id) {
+      return <div className="name-profile-post">{author.firstName} {author.lastName}</div>
+    } else {
+      return <div className="name-profile-post">{author.firstName} {author.lastName} <img className="post-right-arrow" src={window.rightArrow} /> {this.props.user.firstName} {this.props.user.lastName}</div>
+    }
   }
 
   render() {
-    const author = this.state.author;
     const date = this.props.post.createdAt.slice(0, 10)
     window.date = this.props.post.createdAt;
     return (
       <div className="profile-post-container">
         <img className="mini-profile-pic-post" src={this.props.user ? this.props.user.profilePictureUrl : null}/>
-        <div className="name-profile-post">{author.firstName} {author.lastName}</div>
+        {this.getAuthorName()}
         <div className="profile-date-time">{date}</div>
         <br />
         <div className="profile-post-body">{this.props.post.body}</div>

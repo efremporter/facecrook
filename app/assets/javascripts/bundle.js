@@ -599,18 +599,24 @@ var NavBar = function NavBar(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "nav-bar-f-logo",
     src: window.fLogo
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "nav-bar-home-button-li"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
     to: "/feed"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "nav-bar-home-button",
     src: window.homeButton
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "nav-bar-linked-in-logo-li"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     target: "_blank",
     href: "https://www.linkedin.com/in/efrem-porter-550b0b224"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "nav-bar-linked-in-logo",
     src: window.linkedInLogo
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "nav-bar-github-logo-li"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     target: "_blank",
     href: "https://github.com/efremporter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
@@ -1068,12 +1074,26 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {}
+    key: "getAuthorName",
+    value: function getAuthorName() {
+      var author = this.state.author;
+
+      if (this.state.author.id === this.props.user.id) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-profile-post"
+        }, author.firstName, " ", author.lastName);
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-profile-post"
+        }, author.firstName, " ", author.lastName, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "post-right-arrow",
+          src: window.rightArrow
+        }), " ", this.props.user.firstName, " ", this.props.user.lastName);
+      }
+    }
   }, {
     key: "render",
     value: function render() {
-      var author = this.state.author;
       var date = this.props.post.createdAt.slice(0, 10);
       window.date = this.props.post.createdAt;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1081,9 +1101,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "mini-profile-pic-post",
         src: this.props.user ? this.props.user.profilePictureUrl : null
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "name-profile-post"
-      }, author.firstName, " ", author.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), this.getAuthorName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-date-time"
       }, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-body"

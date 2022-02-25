@@ -327,6 +327,7 @@
   margin-left: 65px;
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
   font-weight: bold;
+  color: #050505;
 }
 
 .profile-date-time {
@@ -346,4 +347,10 @@
 .profile-post-form {
   // position: relative;
   // z-index: 10;
+}
+
+.post-right-arrow {
+  color: #606770;
+  height: 11px;
+  margin: 0px 1px 0px 1px;
 }

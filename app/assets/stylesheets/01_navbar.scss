@@ -15,7 +15,6 @@
   float: left;
   display: block;
   text-align: center;
-  padding-left: 19px;
   padding-top: 7px;
   text-decoration: none;
 }
@@ -23,14 +22,20 @@
 .nav-bar-f-logo {
   height: 40px;
   cursor: pointer;
-  padding-bottom: 6px
+  padding-bottom: 6px;
+  margin-left: 17px;
 }
 
 .nav-bar-home-button {
   height: 40px;
   cursor: pointer;
-  margin-left: 436px;
 }
+
+.nav-bar-home-button-li {
+  display: none;
+  margin-left: 480px;
+}
+
 .nav-bar-home-button:hover {
   background-color: #F0F2F5;
 }
@@ -38,6 +43,9 @@
 .nav-bar-linked-in-logo {
   height: 40px;
   cursor: pointer;
+}
+
+.nav-bar-linked-in-logo-li {
   margin-left: 120px;
 }
 
@@ -48,6 +56,9 @@
 .nav-bar-github-logo {
   height: 40px;
   cursor: pointer;
+}
+
+.nav-bar-github-logo-li {
   margin-left: 120px;
 }
 
