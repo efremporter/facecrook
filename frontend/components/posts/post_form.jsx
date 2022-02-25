@@ -4,19 +4,19 @@ class PostForm extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {body: "", author_id: window.currentUser.id, profile_id: null}
+    this.state = {body: "", authorId: window.currentUser.id, profileId: null, photo: null}
   }
 
   componentDidMount() {
     if (this.props.user) {
-      this.setState({profile_id: this.props.user.id})
+      this.setState({profileId: this.props.user.id})
     }
   }
 
   componentDidUpdate() {
     if (this.props.user) {
-      if (this.state.profile_id !== this.props.user.id) {
-        this.setState({profile_id: this.props.user.id})
+      if (this.state.profileId !== this.props.user.id) {
+        this.setState({profileId: this.props.user.id})
       }
     } 
   }
@@ -25,7 +25,7 @@ class PostForm extends React.Component {
     return e => {
       if (key === 'body') {
         this.setState({body: e.currentTarget.value})
-      } else {
+      } else if (key === 'photo') {
         this.setState({photo: e.currentTarget.files[0]})
       }
     }
@@ -33,7 +33,10 @@ class PostForm extends React.Component {
 
   handleSubmit() {
     this.props.createPost(this.state)
-    this.props.closeModal();
+    .then(() => {
+      this.props.closeModal();
+      this.setState({body: '', photo: null})
+    })
   }
 
   render() {
@@ -47,7 +50,12 @@ class PostForm extends React.Component {
         <input onChange={this.handleChange('body')} value={this.state.body} placeholder="What's on your mind?" className='post-text-area'></input>
         <div className="add-to-post">
           <div className='add-to-post-text'>Add to your post</div>
-          <div className='post-picture-icon-container'><img className="post-picture-icon" src={window.pictureIcon}/></div>
+          <label className="post-picture-icon-label">
+            <div className='post-picture-icon-container'>
+              <img className="post-picture-icon" src={window.pictureIcon}/>
+            </div>
+            <input className="add-photo-to-post" type="file" onChange={this.handleChange('photo')}/>
+          </label>
         </div>
         <button type="submit" className='post-form-button'>Post</button>
       </form>

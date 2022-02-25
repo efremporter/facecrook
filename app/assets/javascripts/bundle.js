@@ -800,8 +800,9 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       body: "",
-      author_id: window.currentUser.id,
-      profile_id: null
+      authorId: window.currentUser.id,
+      profileId: null,
+      photo: null
     };
     return _this;
   }
@@ -811,7 +812,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       if (this.props.user) {
         this.setState({
-          profile_id: this.props.user.id
+          profileId: this.props.user.id
         });
       }
     }
@@ -819,9 +820,9 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       if (this.props.user) {
-        if (this.state.profile_id !== this.props.user.id) {
+        if (this.state.profileId !== this.props.user.id) {
           this.setState({
-            profile_id: this.props.user.id
+            profileId: this.props.user.id
           });
         }
       }
@@ -836,7 +837,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
           _this2.setState({
             body: e.currentTarget.value
           });
-        } else {
+        } else if (key === 'photo') {
           _this2.setState({
             photo: e.currentTarget.files[0]
           });
@@ -846,8 +847,16 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      this.props.createPost(this.state);
-      this.props.closeModal();
+      var _this3 = this;
+
+      this.props.createPost(this.state).then(function () {
+        _this3.props.closeModal();
+
+        _this3.setState({
+          body: '',
+          photo: null
+        });
+      });
     }
   }, {
     key: "render",
@@ -872,11 +881,17 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "add-to-post"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "add-to-post-text"
-      }, "Add to your post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Add to your post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "post-picture-icon-label"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "post-picture-icon-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "post-picture-icon",
         src: window.pictureIcon
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "add-photo-to-post",
+        type: "file",
+        onChange: this.handleChange('photo')
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         type: "submit",
         className: "post-form-button"
@@ -1275,7 +1290,10 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "profile-date-time"
       }, this.getPostDate(this.props.post.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-body"
-      }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "post-attached-photo",
+        src: this.props.post.photoUrl
+      }));
     }
   }]);
 
@@ -2577,12 +2595,17 @@ var fetchPost = function fetchPost(postId) {
   });
 };
 var createPost = function createPost(post) {
+  var formData = new FormData();
+  formData.append("post[body]", post.body);
+  formData.append("post[author_id]", post.authorId);
+  formData.append("post[profile_id]", post.profileId);
+  if (post.photo) formData.append("post[photo]", post.photo);
   return $.ajax({
     method: 'POST',
     url: '/api/posts',
-    data: {
-      post: post
-    }
+    data: formData,
+    processData: false,
+    contentType: false
   });
 };
 var updatePost = function updatePost(post) {

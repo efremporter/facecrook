@@ -15,10 +15,18 @@ export const fetchPost = postId => {
 }
 
 export const createPost = post => {
+  let formData = new FormData();
+  formData.append("post[body]", post.body)
+  formData.append("post[author_id]", post.authorId)
+  formData.append("post[profile_id]", post.profileId)
+  if (post.photo) formData.append("post[photo]", post.photo)
+
   return $.ajax({
     method: 'POST',
     url: '/api/posts',
-    data: {post}
+    data: formData,
+    processData: false,
+    contentType: false
   })
 }
 

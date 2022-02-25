@@ -56,7 +56,7 @@ class PostIndexItem extends React.Component {
         <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
         <br />
         <div className="profile-post-body">{this.props.post.body}</div>
-        <br />
+        <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
       </div>
     )
   }
