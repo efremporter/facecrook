@@ -425,9 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _posts_post_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts/post_form */ "./frontend/components/posts/post_form.jsx");
-/* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../session/signup_container */ "./frontend/components/session/signup_container.js");
-
+/* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session/signup_container */ "./frontend/components/session/signup_container.js");
 
 
 
@@ -445,7 +443,7 @@ var Modal = function Modal(_ref) {
       onClick: function onClick(e) {
         return e.stopPropagation();
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signup_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signup_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
   }
 
   return null;

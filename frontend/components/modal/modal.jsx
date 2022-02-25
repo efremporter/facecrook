@@ -1,6 +1,5 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
-import PostForm from '../posts/post_form';
 import SignupContainer from '../session/signup_container';
 
 const Modal = ({modal, closeModal}) => {
