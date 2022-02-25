@@ -329,7 +329,7 @@
 .profile-post-container {
   margin-bottom: 15px;
   margin-top: 37px;
-  min-height: 100px;
+  min-height: 78px;
   background-color: white;
   width: 500px;
   margin-left: 32.4%;
@@ -339,8 +339,9 @@
 .post-attached-photo {
   display: flex;
   margin: auto;
-  width: 80%;
-  max-height: 10%;
+  width: 100%;
+  max-height: 50rem;
+  padding-bottom: 12px;
 }
 
 .mini-profile-pic-post {
@@ -377,7 +378,7 @@
   color: #050505;
   margin-left: 16px;
   width: 465px;
-  // padding-bottom: 50px;
+  padding-bottom: 12px;
 }
 
 .profile-post-form {
