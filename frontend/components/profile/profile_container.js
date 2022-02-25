@@ -8,7 +8,8 @@ const mSTP = (state, ownProps) => {
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    modal: state.ui.modal
   }
 }
 

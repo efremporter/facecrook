@@ -34,7 +34,7 @@ class Profile extends React.Component {
           <ProfileHeader/>
           {/* <PostFormContainer user={this.props.user}/> */}
         </div>
-        <PostFormClosed openModal={this.props.openModal}/>
+        <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
       </div>
     )

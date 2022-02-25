@@ -940,10 +940,20 @@ var PostFormClosed = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(PostFormClosed, [{
+    key: "getDivider",
+    value: function getDivider() {
+      if (this.props.modal) return null;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+        className: "post-form-divider"
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "post-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "post-form-closed-input"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         value: "",
         className: "post-form-file",
@@ -951,9 +961,7 @@ var PostFormClosed = /*#__PURE__*/function (_React$Component) {
         placeholder: "What's on your mind?",
         onClick: this.props.openModal,
         readonly: true
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-        className: "post-form-divider"
-      })));
+      })), this.getDivider()));
     }
   }]);
 
@@ -1386,6 +1394,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-header-name"
       }, this.props.user.firstName, " ", this.props.user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_header__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_closed__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        modal: this.props.modal,
         openModal: this.props.openModal
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         user: this.props.user,
@@ -1426,7 +1435,8 @@ var mSTP = function mSTP(state, ownProps) {
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    modal: state.ui.modal
   };
 };
 
