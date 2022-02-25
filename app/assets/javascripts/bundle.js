@@ -2115,17 +2115,24 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      this.props.createNewUser(this.state).then(function () {
-        _this3.props.history.push('/');
+      var capitalizedFirstName = this.state.first_name[0].toUpperCase() + this.state.first_name.slice(1).toLowerCase();
+      var capitalizedLastName = this.state.last_name[0].toUpperCase() + this.state.last_name.slice(1).toLowerCase();
+      this.setState({
+        first_name: capitalizedFirstName,
+        last_name: capitalizedLastName
+      }, function () {
+        _this3.props.createNewUser(_this3.state).then(function () {
+          _this3.props.history.push('/');
 
-        _this3.setState({
-          first_name: '',
-          last_name: '',
-          email: '',
-          password: ''
+          _this3.setState({
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: ''
+          });
+        })["catch"](function () {
+          return _this3.handleErrors();
         });
-      })["catch"](function () {
-        return _this3.handleErrors();
       });
     }
   }, {

@@ -15,12 +15,16 @@ class SignUp extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.createNewUser(this.state)
-    .then(() => {
-      this.props.history.push('/');
-      this.setState({first_name: '', last_name: '', email: '', password: ''})
-  })
-    .catch(() => this.handleErrors())
+    let capitalizedFirstName = this.state.first_name[0].toUpperCase() + this.state.first_name.slice(1).toLowerCase();
+    let capitalizedLastName = this.state.last_name[0].toUpperCase() + this.state.last_name.slice(1).toLowerCase();
+    this.setState({first_name: capitalizedFirstName, last_name: capitalizedLastName}, () => {
+      this.props.createNewUser(this.state)
+      .then(() => {
+        this.props.history.push('/');
+        this.setState({first_name: '', last_name: '', email: '', password: ''})
+      })
+      .catch(() => this.handleErrors())
+    })
   }
 
   isEmpty(str) {
