@@ -186,6 +186,11 @@
   font-size: 17px;
   text-decoration: none;
   padding-left: 10px;
+  cursor: pointer;
+}
+
+.post-form-file:hover {
+  background-color: #E4E6E9;
 }
 
 .post-form-divider {
