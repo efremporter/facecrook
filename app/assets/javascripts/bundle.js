@@ -510,7 +510,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PostModal = function PostModal(_ref) {
-  var modal = _ref.modal,
+  var user = _ref.user,
+      modal = _ref.modal,
       closeModal = _ref.closeModal;
 
   if (modal === "post") {
@@ -523,7 +524,9 @@ var PostModal = function PostModal(_ref) {
       onClick: function onClick(e) {
         return e.stopPropagation();
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      user: user
+    })));
   }
 
   return null;
@@ -551,8 +554,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state) {
+var mSTP = function mSTP(state, ownProps) {
+  var userId = ownProps.match.params.userId;
   return {
+    user: state.entities.users[userId],
     modal: state.ui.modal
   };
 };
@@ -746,12 +751,12 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      if (!this.props.user) return;
-
-      if (this.state.profile_id !== this.props.user.id) {
-        this.setState({
-          profile_id: this.props.user.id
-        });
+      if (this.props.user) {
+        if (this.state.profile_id !== this.props.user.id) {
+          this.setState({
+            profile_id: this.props.user.id
+          });
+        }
       }
     }
   }, {
@@ -780,49 +785,36 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.modal) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-          className: "post-form"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          className: "post-form-file",
-          type: "text",
-          placeholder: "What's on your mind?",
-          onClick: this.props.openModal
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-          className: "post-form-divider"
-        })));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-          className: "profile-post-form",
-          onSubmit: this.handleSubmit.bind(this)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "post-form-title"
-        }, "Create Post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-          className: "open-post-form-divider"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          className: "x-button",
-          onClick: this.props.closeModal,
-          src: "https://static.xx.fbcdn.net/rsrc.php/v3/yX/r/TdCEremeWv5.png"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-          onChange: this.handleChange('body'),
-          value: this.state.body,
-          autofocus: "autofocus",
-          placeholder: "What's on your mind?",
-          className: "post-text-area"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-to-post"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-to-post-text"
-        }, "Add to your post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "post-picture-icon-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          className: "post-picture-icon",
-          src: window.pictureIcon
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          type: "submit",
-          className: "post-form-button"
-        }, "Post"));
-      }
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "profile-post-form",
+        onSubmit: this.handleSubmit.bind(this)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "post-form-title"
+      }, "Create Post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+        className: "open-post-form-divider"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "x-button",
+        onClick: this.props.closeModal,
+        src: "https://static.xx.fbcdn.net/rsrc.php/v3/yX/r/TdCEremeWv5.png"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+        onChange: this.handleChange('body'),
+        value: this.state.body,
+        autofocus: "autofocus",
+        placeholder: "What's on your mind?",
+        className: "post-text-area"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "add-to-post"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "add-to-post-text"
+      }, "Add to your post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "post-picture-icon-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "post-picture-icon",
+        src: window.pictureIcon
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        type: "submit",
+        className: "post-form-button"
+      }, "Post"));
     }
   }]);
 
