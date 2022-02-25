@@ -47,6 +47,14 @@ class PostForm extends React.Component {
     }
   }
 
+  getSubmitButton() {
+    if (this.state.body) {
+      return <button type="submit" className='post-form-button'>Post</button>
+    } else {
+      return <button type="none" disabled className='post-form-button-disabled'>Post</button>
+    }
+  }
+
   render() {
     return (
       <form className="profile-post-form" onSubmit={this.handleSubmit.bind(this)}>
@@ -65,7 +73,7 @@ class PostForm extends React.Component {
             <input className="add-photo-to-post" type="file" onChange={this.handleChange('photo')}/>
           </label>
         </div>
-        <button type="submit" className='post-form-button'>Post</button>
+        {this.getSubmitButton()}
       </form>
     )
   }

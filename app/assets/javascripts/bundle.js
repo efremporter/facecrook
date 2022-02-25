@@ -872,6 +872,22 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "getSubmitButton",
+    value: function getSubmitButton() {
+      if (this.state.body) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit",
+          className: "post-form-button"
+        }, "Post");
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "none",
+          disabled: true,
+          className: "post-form-button-disabled"
+        }, "Post");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -902,10 +918,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "add-photo-to-post",
         type: "file",
         onChange: this.handleChange('photo')
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        type: "submit",
-        className: "post-form-button"
-      }, "Post"));
+      }))), this.getSubmitButton());
     }
   }]);
 

@@ -457,3 +457,18 @@
   border-radius: 8px;
   z-index: 100;
 }
+
+.post-form-button-disabled {
+  font-size: 16px;
+  color: #BDC0C4;
+  background-color: #E4E6EA;
+  width: 92.2%;
+  display: block;
+  height: 38px;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+  margin-top: 4%;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  cursor: not-allowed;
+}
