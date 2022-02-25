@@ -1098,13 +1098,14 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.props.author);
       var date = this.props.post.createdAt.slice(0, 10);
       window.date = this.props.post.createdAt;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "mini-profile-pic-post",
-        src: this.props.user ? this.props.user.profilePictureUrl : null
+        src: this.props.user ? this.state.author.profilePictureUrl : null
       }), this.getAuthorName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-date-time"
       }, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

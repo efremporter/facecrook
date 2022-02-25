@@ -22,11 +22,12 @@ class PostIndexItem extends React.Component {
   }
 
   render() {
+    console.log(this.props.author)
     const date = this.props.post.createdAt.slice(0, 10)
     window.date = this.props.post.createdAt;
     return (
       <div className="profile-post-container">
-        <img className="mini-profile-pic-post" src={this.props.user ? this.props.user.profilePictureUrl : null}/>
+        <img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/>
         {this.getAuthorName()}
         <div className="profile-date-time">{date}</div>
         <br />
