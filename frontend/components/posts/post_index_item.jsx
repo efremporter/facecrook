@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class PostIndexItem extends React.Component {
     if (this.state.author.id === this.props.user.id) {
       return <div className="name-profile-post">{author.firstName} {author.lastName}</div>
     } else {
-      return <div className="name-profile-post">{author.firstName} {author.lastName} <img className="post-right-arrow" src={window.rightArrow} /> {this.props.user.firstName} {this.props.user.lastName}</div>
+      return <div className="name-profile-post"><Link to={`/users/${author.id}`} className="name-profile-post-link">{author.firstName} {author.lastName}</Link> <img className="post-right-arrow" src={window.rightArrow} /> {this.props.user.firstName} {this.props.user.lastName}</div>
     }
   }
 
@@ -41,7 +42,6 @@ class PostIndexItem extends React.Component {
   } 
 
   getPostDate(dateString) {
-    console.log(dateString)
     const year = dateString.slice(0, 4)
     const month = this.translateMonthIntoWord(dateString.slice(5, 7))
     const day = dateString.slice(8, 10)
@@ -49,9 +49,6 @@ class PostIndexItem extends React.Component {
   }
 
   render() {
-    const date = this.props.post.createdAt.slice(0, 10)
-    window.date = this.props.post.createdAt;
-    this.getPostDate(window.date)
     return (
       <div className="profile-post-container">
         <img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/>

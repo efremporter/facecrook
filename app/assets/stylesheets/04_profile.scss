@@ -36,10 +36,11 @@
   width: 36px;
   right: 43px;
   margin-top: 125.5px;
+  cursor: pointer;
 }
 
 .camera-icon-container:hover {
-  background-color: #d6d8db;
+  background-color: #c2c3c5;
 }
 
 .cover-camera-icon-container {
@@ -61,7 +62,7 @@
 }
 
 .cover-camera-icon-container:hover {
-  background-color: #F0F2F5;
+  background-color: #c2c2c2;
 }
 
 .cover-camera-icon {
@@ -328,6 +329,12 @@
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #050505;
+}
+
+.name-profile-post-link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #050505
 }
 
 .profile-date-time {
