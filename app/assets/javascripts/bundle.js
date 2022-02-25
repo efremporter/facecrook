@@ -1096,11 +1096,38 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "translateMonthIntoWord",
+    value: function translateMonthIntoWord(monthNumber) {
+      var monthString;
+      monthNumber === '01' ? monthString = 'January' : null;
+      monthNumber === '02' ? monthString = 'February' : null;
+      monthNumber === '03' ? monthString = 'March' : null;
+      monthNumber === '04' ? monthString = 'April' : null;
+      monthNumber === '05' ? monthString = 'May' : null;
+      monthNumber === '06' ? monthString = 'June' : null;
+      monthNumber === '07' ? monthString = 'July' : null;
+      monthNumber === '08' ? monthString = 'August' : null;
+      monthNumber === '09' ? monthString = 'September' : null;
+      monthNumber === '10' ? monthString = 'October' : null;
+      monthNumber === '11' ? monthString = 'November' : null;
+      monthNumber === '12' ? monthString = 'December' : null;
+      return monthString;
+    }
+  }, {
+    key: "getPostDate",
+    value: function getPostDate(dateString) {
+      console.log(dateString);
+      var year = dateString.slice(0, 4);
+      var month = this.translateMonthIntoWord(dateString.slice(5, 7));
+      var day = dateString.slice(8, 10);
+      return "".concat(month, " ").concat(day, ", ").concat(year);
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.props.author);
       var date = this.props.post.createdAt.slice(0, 10);
       window.date = this.props.post.createdAt;
+      this.getPostDate(window.date);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
@@ -1108,7 +1135,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         src: this.props.user ? this.state.author.profilePictureUrl : null
       }), this.getAuthorName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-date-time"
-      }, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.getPostDate(this.props.post.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-body"
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
     }
