@@ -4,7 +4,20 @@ class PostForm extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {body: "", author_id: window.currentUser.id, photo: null}
+    this.state = {body: "", author_id: window.currentUser.id, profile_id: null}
+  }
+
+  componentDidMount() {
+    if (this.props.user) {
+      this.setState({profile_id: this.props.user.id})
+    }
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user) return
+    if (this.state.profile_id !== this.props.user.id) {
+      this.setState({profile_id: this.props.user.id})
+    }
   }
 
   handleChange(key) {
@@ -18,7 +31,6 @@ class PostForm extends React.Component {
   }
 
   handleSubmit() {
-    console.log(this.props)
     this.props.createPost(this.state)
     this.props.closeModal();
   }

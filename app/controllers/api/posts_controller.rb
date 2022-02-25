@@ -2,8 +2,9 @@ class Api::PostsController < ApplicationController
 
   def index
     @all_posts = Post.all
-    user = User.find_by_id(params[:author_id])
-    @posts = user.posts;
+    # user = User.find_by_id(params[:author_id])
+    # print params[:profile_id]
+    @posts = Post.where(profile_id: params[:profile_id]);
     render :index
   end
 
@@ -16,9 +17,8 @@ class Api::PostsController < ApplicationController
     end
   end
 
-  def create 
+  def create
     @post = Post.new(post_params)
-
     if @post.save
       render :show
     else
@@ -40,13 +40,14 @@ class Api::PostsController < ApplicationController
     post = Post.find(params[:id])
     
     if post
-      post.delete
+      post.photo.delete
+      # post.delete
     else
       puts 'Post not found, therefore not deleted'
     end
   end
 
   def post_params 
-    params.require(:post).permit(:author_id, :body, :photo_url)
+    params.require(:post).permit(:profile_id, :author_id, :body, :photo)
   end
 end

@@ -11,6 +11,14 @@ class PostIndex extends React.Component {
     this.props.fetchPosts(this.props.userId)
   }
 
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.posts)
+    console.log(this.props.posts)
+    if (prevProps.posts !== this.props.posts) {
+      // this.props.fetchPosts(this.props.userId)
+    }
+  }
+
   render() {
     if (!this.props.posts.length) {
       return null;

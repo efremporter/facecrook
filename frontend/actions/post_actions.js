@@ -2,7 +2,7 @@ import * as PostUtils from '../utils/post_utils'
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const RECEIVE_POST = 'RECEIVE_POST'
-export const DELETE_POST = 'DELETE POST'
+export const REMOVE_POST = 'REMOVE_POST'
 
 const receivePosts = posts => {
   return {
@@ -20,13 +20,13 @@ const receivePost = post => {
 
 const removePost = postId => {
   return {
-    type: DELETE_POST,
+    type: REMOVE_POST,
     postId
   }
 }
 
-export const fetchPosts = authorId => dispatch => {
-  return PostUtils.fetchPosts(authorId)
+export const fetchPosts = profileId => dispatch => {
+  return PostUtils.fetchPosts(profileId)
   .then( posts => dispatch(receivePosts(posts)))
 }
 

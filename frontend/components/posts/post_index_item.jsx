@@ -12,11 +12,14 @@ class PostIndexItem extends React.Component {
     })
   }
 
+  componentDidUpdate(prevProps) {
+
+  }
+
   render() {
     const author = this.state.author;
     const date = this.props.post.createdAt.slice(0, 10)
     window.date = this.props.post.createdAt;
-    console.log(this.props.user)
     return (
       <div className="profile-post-container">
         <img className="mini-profile-pic-post" src={this.props.user ? this.props.user.profilePictureUrl : null}/>
@@ -25,7 +28,6 @@ class PostIndexItem extends React.Component {
         <br />
         <div className="profile-post-body">{this.props.post.body}</div>
         <br />
-        {/* <img src={post.photoUrl}/> */}
       </div>
     )
   }

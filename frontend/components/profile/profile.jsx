@@ -12,7 +12,6 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    console.log("COMPONENT DID MOUNT FIRING")
     this.props.fetchUser(this.props.userId)
   }
 
@@ -22,9 +21,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.props.user)
     if (!this.props.user) {
-      console.log('HITTING NULL CHECK')
       return null;
     }
     return (
@@ -35,7 +32,7 @@ class Profile extends React.Component {
             <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
             <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
             <ProfileHeader/>
-            <PostFormContainer />
+            <PostFormContainer user={this.props.user}/>
             <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
           </div>
         </div>

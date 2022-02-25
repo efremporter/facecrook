@@ -307,7 +307,7 @@
 .profile-post-container {
   margin-bottom: 15px;
   margin-top: 37px;
-  height: 125px;
+  min-height: 100px;
   background-color: white;
   width: 500px;
   margin-left: 32.4%;
@@ -340,7 +340,7 @@
   color: #050505;
   margin-left: 16px;
   width: 465px;
-  margin-bottom: 50px;
+  // padding-bottom: 50px;
 }
 
 .profile-post-form {

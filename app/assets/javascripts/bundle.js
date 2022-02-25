@@ -42,7 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_POSTS": () => (/* binding */ RECEIVE_POSTS),
 /* harmony export */   "RECEIVE_POST": () => (/* binding */ RECEIVE_POST),
-/* harmony export */   "DELETE_POST": () => (/* binding */ DELETE_POST),
+/* harmony export */   "REMOVE_POST": () => (/* binding */ REMOVE_POST),
 /* harmony export */   "fetchPosts": () => (/* binding */ fetchPosts),
 /* harmony export */   "fetchPost": () => (/* binding */ fetchPost),
 /* harmony export */   "createPost": () => (/* binding */ createPost),
@@ -53,7 +53,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_POSTS = 'RECEIVE_POSTS';
 var RECEIVE_POST = 'RECEIVE_POST';
-var DELETE_POST = 'DELETE POST';
+var REMOVE_POST = 'REMOVE_POST';
 
 var receivePosts = function receivePosts(posts) {
   return {
@@ -71,14 +71,14 @@ var receivePost = function receivePost(post) {
 
 var removePost = function removePost(postId) {
   return {
-    type: DELETE_POST,
+    type: REMOVE_POST,
     postId: postId
   };
 };
 
-var fetchPosts = function fetchPosts(authorId) {
+var fetchPosts = function fetchPosts(profileId) {
   return function (dispatch) {
-    return _utils_post_utils__WEBPACK_IMPORTED_MODULE_0__.fetchPosts(authorId).then(function (posts) {
+    return _utils_post_utils__WEBPACK_IMPORTED_MODULE_0__.fetchPosts(profileId).then(function (posts) {
       return dispatch(receivePosts(posts));
     });
   };
@@ -719,12 +719,32 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       body: "",
       author_id: window.currentUser.id,
-      photo: null
+      profile_id: null
     };
     return _this;
   }
 
   _createClass(PostForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.user) {
+        this.setState({
+          profile_id: this.props.user.id
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (!this.props.user) return;
+
+      if (this.state.profile_id !== this.props.user.id) {
+        this.setState({
+          profile_id: this.props.user.id
+        });
+      }
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(key) {
       var _this2 = this;
@@ -744,7 +764,6 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      console.log(this.props);
       this.props.createPost(this.state);
       this.props.closeModal();
     }
@@ -904,6 +923,15 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchPosts(this.props.userId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      console.log(prevProps.posts);
+      console.log(this.props.posts);
+
+      if (prevProps.posts !== this.props.posts) {// this.props.fetchPosts(this.props.userId)
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -959,11 +987,14 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    fetchPosts: function fetchPosts(authorId) {
-      return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.fetchPosts)(authorId));
+    fetchPosts: function fetchPosts(profileId) {
+      return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.fetchPosts)(profileId));
     },
     fetchAuthor: function fetchAuthor(authorId) {
       return (0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAuthor)(authorId);
+    },
+    deletePost: function deletePost(postId) {
+      return (0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.deletePost)(postId);
     }
   };
 };
@@ -1037,12 +1068,14 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {}
+  }, {
     key: "render",
     value: function render() {
       var author = this.state.author;
       var date = this.props.post.createdAt.slice(0, 10);
       window.date = this.props.post.createdAt;
-      console.log(this.props.user);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
@@ -1142,7 +1175,6 @@ var Profile = /*#__PURE__*/function (_React$Component) {
   _createClass(Profile, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("COMPONENT DID MOUNT FIRING");
       this.props.fetchUser(this.props.userId);
     }
   }, {
@@ -1153,10 +1185,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props.user);
-
       if (!this.props.user) {
-        console.log('HITTING NULL CHECK');
         return null;
       }
 
@@ -1176,7 +1205,9 @@ var Profile = /*#__PURE__*/function (_React$Component) {
         updateUser: this.props.updateUser
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-header-name"
-      }, this.props.user.firstName, " ", this.props.user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, this.props.user.firstName, " ", this.props.user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        user: this.props.user
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         user: this.props.user,
         userId: this.props.userId
       }))));
@@ -1212,7 +1243,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   var userId = ownProps.match.params.userId;
-  console.log(state.entities.users[userId]);
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
@@ -2044,14 +2074,14 @@ var PostsReducer = function PostsReducer() {
 
   switch (action.type) {
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POSTS:
-      nextState = Object.assign(nextState, action.posts);
+      nextState = Object.assign({}, action.posts);
       return nextState;
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST:
       nextState[action.post.id] = action.post;
       return nextState;
 
-    case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.DELETE_POST:
+    case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST:
       delete nextState[action.postId];
       return nextState;
 
@@ -2082,10 +2112,10 @@ var UsersReducer = function UsersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  var nextState = Object.assign({}, state);
 
   switch (action.type) {
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USER:
+      var nextState = {};
       nextState[action.user.id] = action.user;
       return nextState;
 
@@ -2337,12 +2367,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "updatePost": () => (/* binding */ updatePost),
 /* harmony export */   "deletePost": () => (/* binding */ deletePost)
 /* harmony export */ });
-var fetchPosts = function fetchPosts(authorId) {
+var fetchPosts = function fetchPosts(profileId) {
   return $.ajax({
     method: 'GET',
-    url: "/api/users/".concat(authorId, "/posts"),
+    url: "/api/users/".concat(profileId, "/posts"),
     data: {
-      author_id: authorId
+      profile_id: profileId
     }
   });
 };
