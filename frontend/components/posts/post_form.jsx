@@ -39,6 +39,14 @@ class PostForm extends React.Component {
     })
   }
 
+  getPictureLogo() {
+    if (!this.state.photo) {
+      return <img className="post-picture-icon" src={window.pictureIcon}/>
+    } else {
+      return <img className="post-picture-icon" src={window.checkMark}/>
+    }
+  }
+
   render() {
     return (
       <form className="profile-post-form" onSubmit={this.handleSubmit.bind(this)}>
@@ -52,7 +60,7 @@ class PostForm extends React.Component {
           <div className='add-to-post-text'>Add to your post</div>
           <label className="post-picture-icon-label">
             <div className='post-picture-icon-container'>
-              <img className="post-picture-icon" src={window.pictureIcon}/>
+              {this.getPictureLogo()}
             </div>
             <input className="add-photo-to-post" type="file" onChange={this.handleChange('photo')}/>
           </label>

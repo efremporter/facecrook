@@ -859,6 +859,21 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "getPictureLogo",
+    value: function getPictureLogo() {
+      if (!this.state.photo) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "post-picture-icon",
+          src: window.pictureIcon
+        });
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "post-picture-icon",
+          src: window.checkMark
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -885,10 +900,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "post-picture-icon-label"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "post-picture-icon-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "post-picture-icon",
-        src: window.pictureIcon
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, this.getPictureLogo()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "add-photo-to-post",
         type: "file",
         onChange: this.handleChange('photo')
