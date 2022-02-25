@@ -32,7 +32,6 @@ class Profile extends React.Component {
           <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
           <ProfileHeader/>
-          {/* <PostFormContainer user={this.props.user}/> */}
         </div>
         <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <PostIndexContainer user={this.props.user} userId={this.props.userId}/>

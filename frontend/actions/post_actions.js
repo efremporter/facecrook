@@ -5,6 +5,7 @@ export const RECEIVE_POST = 'RECEIVE_POST'
 export const REMOVE_POST = 'REMOVE_POST'
 
 const receivePosts = posts => {
+  console.log(posts)
   return {
     type: RECEIVE_POSTS,
     posts

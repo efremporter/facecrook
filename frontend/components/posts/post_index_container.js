@@ -5,7 +5,7 @@ import PostIndex from "./post_index";
 
 const mSTP = state => {
   return {
-    posts: Object.values(state.entities.posts)
+    posts: Object.values(state.entities.posts).reverse()
   }
 }
 
@@ -13,7 +13,7 @@ const mDTP = dispatch => {
   return {
     fetchPosts: profileId => dispatch(fetchPosts(profileId)),
     fetchAuthor: authorId => fetchAuthor(authorId),
-    deletePost: postId => deletePost(postId)
+    deletePost: postId => dispatch(deletePost(postId))
   }
 }
 

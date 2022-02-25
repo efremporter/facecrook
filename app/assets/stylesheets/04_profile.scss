@@ -200,9 +200,9 @@
   cursor: pointer;
 }
 
-.post-form-closed-input {
+// .post-form-closed-input {
   
-}
+// }
 
 .post-form-file:hover {
   background-color: #E4E6E9;
@@ -223,7 +223,56 @@
   font-weight: bold;
   text-align: center;
   margin-top: 28px;
-  margin-top: 5%;
+}
+
+.post-delete-dots {
+  position: relative;
+  text-align: right;
+  color: #65676B;
+  font-size: 30px;
+  letter-spacing: -1px;
+  height: 0px;
+  bottom: 54px;
+  right: 15px;
+}
+
+.delete-post-button {
+  display: none;
+  letter-spacing: normal;
+  position: absolute;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  right: 0;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  border: 1px solid #65676B;
+  z-index: 1;
+  color: #050505;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.profile-delete-dots-span {
+  display: inline-block;
+  height: 5px;
+  padding-bottom: 40px;
+  padding: 0px 15px 40px 12px;
+  border-radius: 50%;
+}
+
+.profile-delete-dots-span:hover {
+  background-color: #F2F2F2;
+  position: relative;
+  cursor: pointer;
+}
+
+.delete-post-button:hover {
+  background-color: rgb(255, 82, 82);
+}
+
+.post-delete-dots:hover .delete-post-button {
+  display: block;
 }
 
 #post-form {

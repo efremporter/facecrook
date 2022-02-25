@@ -56,6 +56,7 @@ var RECEIVE_POST = 'RECEIVE_POST';
 var REMOVE_POST = 'REMOVE_POST';
 
 var receivePosts = function receivePosts(posts) {
+  console.log(posts);
   return {
     type: RECEIVE_POSTS,
     posts: posts
@@ -1118,6 +1119,7 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: post.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          deletePost: _this.props.deletePost,
           fetchAuthor: _this.props.fetchAuthor,
           user: _this.props.user,
           post: post
@@ -1155,7 +1157,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    posts: Object.values(state.entities.posts)
+    posts: Object.values(state.entities.posts).reverse()
   };
 };
 
@@ -1168,7 +1170,7 @@ var mDTP = function mDTP(dispatch) {
       return (0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAuthor)(authorId);
     },
     deletePost: function deletePost(postId) {
-      return (0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.deletePost)(postId);
+      return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.deletePost)(postId));
     }
   };
 };
@@ -1291,6 +1293,28 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       return "".concat(month, " ").concat(day, ", ").concat(year);
     }
   }, {
+    key: "getDelete",
+    value: function getDelete() {
+      if (this.state.author.id === this.props.post.authorId) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "post-delete-dots"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+          className: "profile-delete-dots-span"
+        }, "..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          onClick: this.deletePost.bind(this),
+          className: "delete-post-button"
+        }, "Delete"));
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "deletePost",
+    value: function deletePost() {
+      console.log('here');
+      this.props.deletePost(this.props.post.id);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1300,7 +1324,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
         src: this.props.user ? this.state.author.profilePictureUrl : null
       }), this.getAuthorName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-date-time"
-      }, this.getPostDate(this.props.post.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.getPostDate(this.props.post.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.getDelete(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-body"
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "post-attached-photo",
@@ -2294,7 +2318,6 @@ var PostsReducer = function PostsReducer() {
 
   switch (action.type) {
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POSTS:
-      console.log(action.posts);
       nextState = Object.assign({}, action.posts);
       return nextState;
 

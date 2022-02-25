@@ -48,6 +48,23 @@ class PostIndexItem extends React.Component {
     return `${month} ${day}, ${year}`
   }
 
+  getDelete() {
+    if (this.state.author.id === this.props.post.authorId)
+    {
+      return <div className="post-delete-dots">
+        <span className="profile-delete-dots-span">...</span>
+        <div onClick={this.deletePost.bind(this)} className="delete-post-button">Delete</div>
+      </div>
+    } else {
+      return null;
+    }
+  }
+
+  deletePost() {
+    console.log('here')
+    this.props.deletePost(this.props.post.id)
+  }
+
   render() {
     return (
       <div className="profile-post-container">
@@ -55,6 +72,7 @@ class PostIndexItem extends React.Component {
         {this.getAuthorName()}
         <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
         <br />
+        {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>
         <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
       </div>

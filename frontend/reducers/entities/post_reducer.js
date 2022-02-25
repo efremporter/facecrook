@@ -8,7 +8,6 @@ const PostsReducer = (state={}, action) => {
   switch(action.type) {
 
     case RECEIVE_POSTS:
-      console.log(action.posts)
       nextState = Object.assign({}, action.posts)
       return nextState
 

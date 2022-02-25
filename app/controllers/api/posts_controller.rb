@@ -40,8 +40,11 @@ class Api::PostsController < ApplicationController
     post = Post.find(params[:id])
     
     if post
-      post.photo.delete
-      # post.delete
+      if post.photo.attached?
+        post.photo.delete
+      end
+      post.delete
+      render json: ['Post deleted'], status: 200
     else
       puts 'Post not found, therefore not deleted'
     end
