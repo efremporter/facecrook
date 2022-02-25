@@ -549,7 +549,6 @@ var PostModal = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log('HERE');
       this.props.fetchUser(this.props.userId).then(function () {
         return _this2.setState({
           user: _this2.props.user
@@ -572,14 +571,12 @@ var PostModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
-
       if (this.props.modal === "post") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "modal-background",
           onClick: this.props.closeModal
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "modal-child",
+          className: "post-modal-child",
           id: "post-form",
           onClick: function onClick(e) {
             return e.stopPropagation();
@@ -856,7 +853,6 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('PROPS', this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "profile-post-form",
         onSubmit: this.handleSubmit.bind(this)
@@ -868,12 +864,12 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         className: "x-button",
         onClick: this.props.closeModal,
         src: "https://static.xx.fbcdn.net/rsrc.php/v3/yX/r/TdCEremeWv5.png"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.handleChange('body'),
         value: this.state.body,
-        autofocus: "autofocus",
         placeholder: "What's on your mind?",
-        className: "post-text-area"
+        className: "post-text-area",
+        autofocus: "true"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "add-to-post"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -951,10 +947,12 @@ var PostFormClosed = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "post-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        value: "",
         className: "post-form-file",
         type: "text",
         placeholder: "What's on your mind?",
-        onClick: this.props.openModal
+        onClick: this.props.openModal,
+        readonly: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
         className: "post-form-divider"
       })));

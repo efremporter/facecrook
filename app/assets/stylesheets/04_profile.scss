@@ -235,7 +235,6 @@
   border: none;
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
   background-color: #FFFFFF;
-  cursor: none;
   display: block;
   margin: auto;
   font-size: 23px;
@@ -367,4 +366,16 @@
   color: #606770;
   height: 11px;
   margin: 0px 1px 0px 1px;
+}
+
+.post-modal-child {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  height: 392px;
+  width: 432px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
 }

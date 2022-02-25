@@ -10,7 +10,7 @@ class PostFormClosed extends React.Component {
     return (
       <div>
         <form className="post-form">
-          <input className="post-form-file" type="text" placeholder="What's on your mind?" onClick={this.props.openModal}/>
+          <input value="" className="post-form-file" type="text" placeholder="What's on your mind?" onClick={this.props.openModal} readonly/>
           <hr className="post-form-divider"></hr>
         </form>
       </div>

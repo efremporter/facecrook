@@ -8,7 +8,6 @@ class PostModal extends React.Component {
   }
 
   componentDidMount() {
-    console.log('HERE')
     this.props.fetchUser(this.props.userId)
     .then( () => this.setState({user: this.props.user}))
   }
@@ -21,12 +20,11 @@ class PostModal extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     if (this.props.modal === "post") {
       return (
         <div>
           <div className="modal-background" onClick={this.props.closeModal}></div>
-          <div className="modal-child" id="post-form" onClick={e => e.stopPropagation()}>
+          <div className="post-modal-child" id="post-form" onClick={e => e.stopPropagation()}>
             <PostFormContainer user={this.props.user}/>
           </div>
         </div>
