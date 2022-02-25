@@ -619,7 +619,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   var userId = ownProps.match.params.userId;
-  console.log(ownProps);
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
@@ -868,8 +867,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleChange('body'),
         value: this.state.body,
         placeholder: "What's on your mind?",
-        className: "post-text-area",
-        autofocus: "true"
+        className: "post-text-area"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "add-to-post"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1068,7 +1066,8 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (prevProps.posts !== this.props.posts) {// this.props.fetchPosts(this.props.userId)
+      if (prevProps.posts.length !== this.props.posts.length) {
+        this.props.fetchPosts(this.props.userId);
       }
     }
   }, {
@@ -1424,7 +1423,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   var userId = ownProps.match.params.userId;
-  console.log(userId);
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
@@ -2256,6 +2254,7 @@ var PostsReducer = function PostsReducer() {
 
   switch (action.type) {
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POSTS:
+      console.log(action.posts);
       nextState = Object.assign({}, action.posts);
       return nextState;
 
