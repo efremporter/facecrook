@@ -1315,8 +1315,25 @@ var Profile = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-background"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_closed__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "my-profile-background"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_cover_photo__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        currentUser: this.props.currentUser,
+        user: this.props.user,
+        userId: this.props.userId,
+        updateUser: this.props.updateUser
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_picture__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        currentUser: this.props.currentUser,
+        user: this.props.user,
+        userId: this.props.userId,
+        updateUser: this.props.updateUser
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "profile-header-name"
+      }, this.props.user.firstName, " ", this.props.user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_header__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_closed__WEBPACK_IMPORTED_MODULE_6__["default"], {
         openModal: this.props.openModal
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        user: this.props.user,
+        userId: this.props.userId
       })));
     }
   }]);
