@@ -1,4 +1,5 @@
 import React from 'react'
+import FeedIndexItem from './feed_index_item';
 
 class FeedIndex extends React.Component {
   constructor(props) {
@@ -6,14 +7,19 @@ class FeedIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPosts();
-    // console.log('here')
+    this.props.fetchAllPosts()
   }
 
   render() {
-    // console.log('props', this.props)
+    if (!this.props.posts) return null;
     return (
-      <h1>Welcome to your feed!</h1>
+      <ul>
+        {this.props.posts.map( (post, idx) => {
+          if (post.authorId === post.profileId) {
+            return <li key={idx}><FeedIndexItem deletePost={this.props.deletePost} currentUser={this.props.currentUser} fetchAuthor={this.props.fetchAuthor} post={post} /></li>
+          }
+        })}
+      </ul>
     )
   }
 }

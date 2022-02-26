@@ -1,3 +1,10 @@
+export const fetchAllPosts = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/posts'
+  })
+}
+
 export const fetchPosts = profileId => {
   return $.ajax({
     method: 'GET',

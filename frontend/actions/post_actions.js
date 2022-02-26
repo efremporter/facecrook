@@ -25,6 +25,11 @@ const removePost = postId => {
   }
 }
 
+export const fetchAllPosts = () => dispatch => {
+  return PostUtils.fetchAllPosts()
+  .then( posts => {dispatch(receivePosts(posts))})
+}
+
 export const fetchPosts = profileId => dispatch => {
   return PostUtils.fetchPosts(profileId)
   .then( posts => dispatch(receivePosts(posts)))

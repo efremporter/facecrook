@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class PostIndexItem extends React.Component {
+class FeedIndexItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {author: {}}
@@ -10,15 +10,6 @@ class PostIndexItem extends React.Component {
   componentDidMount() {
     this.props.fetchAuthor(this.props.post.authorId)
     .then(author => {this.setState({author})})
-  }
-
-  getAuthorName() {
-    const author = this.state.author;
-    if (this.state.author.id === this.props.user.id) {
-      return <div className="name-profile-post">{author.firstName} {author.lastName}</div>
-    } else {
-      return <div className="name-profile-post"><Link to={`/users/${author.id}`} className="name-profile-post-link">{author.firstName} {author.lastName}</Link> <img className="post-right-arrow" src={window.rightArrow} /> {this.props.user.firstName} {this.props.user.lastName}</div>
-    }
   }
 
   translateMonthIntoWord(monthNumber) {
@@ -66,8 +57,8 @@ class PostIndexItem extends React.Component {
   render() {
     return (
       <div className="profile-post-container">
-        <img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/>
-        {this.getAuthorName()}
+        <img className="mini-profile-pic-post" src={this.state.author ? this.state.author.profilePictureUrl : null}/>
+        <div className="name-profile-post"><Link to={`/users/${this.state.author.id}`} className="name-profile-post-link">{this.state.author.firstName} {this.state.author.lastName}</Link></div>
         <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
         <br />
         {this.getDelete()}
@@ -78,4 +69,4 @@ class PostIndexItem extends React.Component {
   }
 }
 
-export default PostIndexItem
+export default FeedIndexItem

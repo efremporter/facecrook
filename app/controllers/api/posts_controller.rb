@@ -1,10 +1,11 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @all_posts = Post.all
-    # user = User.find_by_id(params[:author_id])
-    # print params[:profile_id]
-    @posts = Post.where(profile_id: params[:profile_id]);
+    if params[:profile_id]
+      @posts = Post.where(profile_id: params[:profile_id]);
+    else
+      @posts = Post.all
+    end
     render :index
   end
 

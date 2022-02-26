@@ -1,16 +1,20 @@
 import { connect } from "react-redux";
-import { fetchPosts } from "../../actions/post_actions";
+import { fetchAllPosts, deletePost } from "../../actions/post_actions";
+import { fetchAuthor } from "../../actions/user_actions";
 import FeedIndex from "./feed_index";
 
 const mSTP = state => {
   return {
-    allPosts: state.posts
+    posts: Object.values(state.entities.posts).reverse(),
+    currentUser: state.session.currentUser
   }
 }
 
 const mDTP = dispatch => {
   return {
-    fetchPosts: () => dispatch(fetchPosts(1))
+    fetchAllPosts: () => dispatch(fetchAllPosts()),
+    fetchAuthor: authorId => fetchAuthor(authorId),
+    deletePost: postId => dispatch(deletePost(postId))
   }
 }
 
