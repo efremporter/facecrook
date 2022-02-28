@@ -21,6 +21,7 @@ class PostIndexItem extends React.Component {
     }
   }
 
+
   translateMonthIntoWord(monthNumber) {
     let monthString;
 
@@ -59,6 +60,22 @@ class PostIndexItem extends React.Component {
     }
   }
 
+  getLink(str) {
+    if (str === 'date') {
+      if (this.props.post.authorId === this.props.post.profileId) {
+        return <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
+      } else {
+        return <Link to={`/users/${this.props.post.authorId}`} className="profile-date-time-other-link"><div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div></Link>
+      }
+    } else if (str ==='profile-pic') {
+      if (this.props.post.authorId === this.props.post.profileId) {
+        return  <img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/>
+      } else {
+        return <Link to={`/users/${this.props.post.authorId}`} className="mini-profile-pic-post-link"><img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/></Link>
+      }
+    }
+  }
+
   deletePost() {
     this.props.deletePost(this.props.post.id)
   }
@@ -66,9 +83,9 @@ class PostIndexItem extends React.Component {
   render() {
     return (
       <div className="profile-post-container">
-        <img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/>
+        {this.getLink('profile-pic')}
         {this.getAuthorName()}
-        <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
+        {this.getLink('date')}
         <br />
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>

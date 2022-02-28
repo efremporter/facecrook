@@ -57,9 +57,9 @@ class FeedIndexItem extends React.Component {
   render() {
     return (
       <div className="profile-post-container">
-        <img className="mini-profile-pic-post" src={this.state.author ? this.state.author.profilePictureUrl : null}/>
+        <Link to={`/users/${this.state.author.id}`}><img className="mini-profile-pic-post" src={this.state.author ? this.state.author.profilePictureUrl : null}/></Link>
         <div className="name-profile-post"><Link to={`/users/${this.state.author.id}`} className="name-profile-post-link">{this.state.author.firstName} {this.state.author.lastName}</Link></div>
-        <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
+        <Link to={`/users/${this.state.author.id}`}></Link><div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
         <br />
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>

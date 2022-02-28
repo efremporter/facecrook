@@ -577,15 +577,19 @@ var FeedIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        to: "/users/".concat(this.state.author.id)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "mini-profile-pic-post",
         src: this.state.author ? this.state.author.profilePictureUrl : null
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "name-profile-post"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
         to: "/users/".concat(this.state.author.id),
         className: "name-profile-post-link"
-      }, this.state.author.firstName, " ", this.state.author.lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.state.author.firstName, " ", this.state.author.lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        to: "/users/".concat(this.state.author.id)
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-date-time"
       }, this.getPostDate(this.props.post.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.getDelete(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-body"
@@ -1517,6 +1521,39 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "getLink",
+    value: function getLink(str) {
+      if (str === 'date') {
+        if (this.props.post.authorId === this.props.post.profileId) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "profile-date-time"
+          }, this.getPostDate(this.props.post.createdAt));
+        } else {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            to: "/users/".concat(this.props.post.authorId),
+            className: "profile-date-time-other-link"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "profile-date-time"
+          }, this.getPostDate(this.props.post.createdAt)));
+        }
+      } else if (str === 'profile-pic') {
+        if (this.props.post.authorId === this.props.post.profileId) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+            className: "mini-profile-pic-post",
+            src: this.props.user ? this.state.author.profilePictureUrl : null
+          });
+        } else {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            to: "/users/".concat(this.props.post.authorId),
+            className: "mini-profile-pic-post-link"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+            className: "mini-profile-pic-post",
+            src: this.props.user ? this.state.author.profilePictureUrl : null
+          }));
+        }
+      }
+    }
+  }, {
     key: "deletePost",
     value: function deletePost() {
       this.props.deletePost(this.props.post.id);
@@ -1526,12 +1563,7 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "mini-profile-pic-post",
-        src: this.props.user ? this.state.author.profilePictureUrl : null
-      }), this.getAuthorName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "profile-date-time"
-      }, this.getPostDate(this.props.post.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.getDelete(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.getLink('profile-pic'), this.getAuthorName(), this.getLink('date'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.getDelete(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "profile-post-body"
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "post-attached-photo",
