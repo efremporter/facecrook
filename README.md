@@ -29,10 +29,10 @@ Future directions for project:
   * Show the current user a curated feed of their friend's posts
   * Allow navigation to other profiles by clicking the name or profile picture on posts
 * Likes
- * Allow users to like posts
+  * Allow users to like posts
 * Comments
- * Allow users to comment on posts
+  * Allow users to comment on posts
 * Friends
- * Allow users to add friends
+  * Allow users to add friends
 * Search
- * Allow users to search for other users
+  * Allow users to search for other users
