@@ -297,7 +297,8 @@ var App = function App() {
     path: "/users/:userId",
     component: _modal_post_modal_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    path: "/",
+    exact: true,
+    path: "/feed",
     component: _modal_post_modal_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_utils_route_utils__WEBPACK_IMPORTED_MODULE_3__.ProtectedRoute, {
     path: "/users/:userId",
@@ -807,6 +808,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   var userId = ownProps.match.params.userId;
+  console.log('hey', userId);
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),

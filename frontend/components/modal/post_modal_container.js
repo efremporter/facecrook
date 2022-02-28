@@ -5,6 +5,7 @@ import PostModal from "./post_modal";
 
 const mSTP = (state, ownProps) => {
   const userId = ownProps.match.params.userId
+  console.log('hey', userId)
   return {
     user: state.entities.users[userId],
     userId: parseInt(userId),
