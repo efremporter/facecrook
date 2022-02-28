@@ -19,7 +19,7 @@ class PostFormClosed extends React.Component {
           {this.getDivider()}
         </form>
       </div>
-    )
+    ) 
   }
 }
 //value={this.state.body} onChange={this.handleChange('body').bind(this)}

@@ -16,6 +16,7 @@ const App = () => {
     <Route path="/" component={NavBarContainer} />
     <Route path="/" component={ModalContainer}/>
     <Route path="/users/:userId" component={PostModalContainer}/>
+    <Route path="/" component={PostModalContainer}/>
     {/* <ProtectedRoute path="/users/:userId" component={PostFormContainer} className="route-post-form-container" /> */}
     <Switch>
       <ProtectedRoute path="/users/:userId" component={ProfileContainer}/>

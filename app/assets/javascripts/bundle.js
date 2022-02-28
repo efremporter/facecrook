@@ -296,6 +296,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["default"], {
     path: "/users/:userId",
     component: _modal_post_modal_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    path: "/",
+    component: _modal_post_modal_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_utils_route_utils__WEBPACK_IMPORTED_MODULE_3__.ProtectedRoute, {
     path: "/users/:userId",
     component: _profile_profile_container__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -330,6 +333,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _feed_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./feed_index_item */ "./frontend/components/feed/feed_index_item.jsx");
+/* harmony import */ var _posts_post_form_closed__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts/post_form_closed */ "./frontend/components/posts/post_form_closed.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -351,6 +355,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -377,7 +382,10 @@ var FeedIndex = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       if (!this.props.posts) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.posts.map(function (post, idx) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_closed__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        modal: this.props.modal,
+        openModal: this.props.openModal
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.posts.map(function (post, idx) {
         if (post.authorId === post.profileId) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
             key: idx
@@ -388,7 +396,7 @@ var FeedIndex = /*#__PURE__*/function (_React$Component) {
             post: post
           }));
         }
-      }));
+      })));
     }
   }]);
 
@@ -413,7 +421,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
-/* harmony import */ var _feed_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./feed_index */ "./frontend/components/feed/feed_index.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _feed_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./feed_index */ "./frontend/components/feed/feed_index.jsx");
+
 
 
 
@@ -422,7 +432,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     posts: Object.values(state.entities.posts).reverse(),
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    modal: state.ui.modal
   };
 };
 
@@ -436,11 +447,14 @@ var mDTP = function mDTP(dispatch) {
     },
     deletePost: function deletePost(postId) {
       return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.deletePost)(postId));
+    },
+    openModal: function openModal() {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)('post'));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_feed_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_feed_index__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -987,6 +1001,10 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
       if (this.props.user) {
         this.setState({
           profileId: this.props.user.id
+        });
+      } else {
+        this.setState({
+          profileId: window.currentUser.id
         });
       }
     }

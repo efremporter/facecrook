@@ -10,6 +10,8 @@ class PostForm extends React.Component {
   componentDidMount() {
     if (this.props.user) {
       this.setState({profileId: this.props.user.id})
+    } else {
+      this.setState({profileId: window.currentUser.id})
     }
   }
 
