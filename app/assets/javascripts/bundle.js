@@ -13,6 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_COMMENTS": () => (/* binding */ RECEIVE_COMMENTS),
 /* harmony export */   "RECEIVE_COMMENT": () => (/* binding */ RECEIVE_COMMENT),
 /* harmony export */   "REMOVE_COMMENT": () => (/* binding */ REMOVE_COMMENT),
+/* harmony export */   "CLEAR_COMMENTS": () => (/* binding */ CLEAR_COMMENTS),
+/* harmony export */   "clearComments": () => (/* binding */ clearComments),
 /* harmony export */   "fetchComments": () => (/* binding */ fetchComments),
 /* harmony export */   "createComment": () => (/* binding */ createComment),
 /* harmony export */   "deleteComment": () => (/* binding */ deleteComment)
@@ -22,6 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 var RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 var REMOVE_COMMENT = 'REMOVE_COMMENT';
+var CLEAR_COMMENTS = 'CLEAR_COMMENTS';
 
 var receiveComments = function receiveComments(comments) {
   return {
@@ -40,10 +43,21 @@ var receiveComment = function receiveComment(comment) {
 var removeComment = function removeComment(commentId) {
   return {
     type: REMOVE_COMMENT,
-    comementId: comementId
+    commentId: commentId
   };
 };
 
+var removeComments = function removeComments() {
+  return {
+    type: CLEAR_COMMENTS
+  };
+};
+
+var clearComments = function clearComments() {
+  return function (dispatch) {
+    dispatch(removeComments());
+  };
+};
 var fetchComments = function fetchComments(postId) {
   return function (dispatch) {
     return _utils_comment_utils__WEBPACK_IMPORTED_MODULE_0__.fetchComments(postId).then(function (comments) {
@@ -110,6 +124,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_POSTS": () => (/* binding */ RECEIVE_POSTS),
 /* harmony export */   "RECEIVE_POST": () => (/* binding */ RECEIVE_POST),
 /* harmony export */   "REMOVE_POST": () => (/* binding */ REMOVE_POST),
+/* harmony export */   "CLEAR_POSTS": () => (/* binding */ CLEAR_POSTS),
+/* harmony export */   "clearPosts": () => (/* binding */ clearPosts),
 /* harmony export */   "fetchAllPosts": () => (/* binding */ fetchAllPosts),
 /* harmony export */   "fetchPosts": () => (/* binding */ fetchPosts),
 /* harmony export */   "fetchPost": () => (/* binding */ fetchPost),
@@ -122,6 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_POSTS = 'RECEIVE_POSTS';
 var RECEIVE_POST = 'RECEIVE_POST';
 var REMOVE_POST = 'REMOVE_POST';
+var CLEAR_POSTS = 'CLEAR_POSTS';
 
 var receivePosts = function receivePosts(posts) {
   return {
@@ -144,10 +161,21 @@ var removePost = function removePost(postId) {
   };
 };
 
+var removePosts = function removePosts() {
+  return {
+    type: CLEAR_POSTS
+  };
+};
+
+var clearPosts = function clearPosts() {
+  return function (dispatch) {
+    dispatch(removePosts());
+  };
+};
 var fetchAllPosts = function fetchAllPosts() {
   return function (dispatch) {
     return _utils_post_utils__WEBPACK_IMPORTED_MODULE_0__.fetchAllPosts().then(function (posts) {
-      dispatch(receivePosts(posts));
+      return dispatch(receivePosts(posts));
     });
   };
 };
@@ -442,7 +470,8 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       body: '',
       authorId: window.currentUser.id,
       postId: null,
-      photo: null
+      photo: null,
+      currentUser: null
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
@@ -451,6 +480,14 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
+      this.props.fetchCurrentUser(window.currentUser.id).then(function (user) {
+        return _this2.setState({
+          currentUser: user
+        });
+      });
+
       if (this.props.postId) {
         this.setState({
           postId: this.props.postId
@@ -460,16 +497,16 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleChange",
     value: function handleChange(key) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
         if (key === 'body') {
-          _this2.setState({
+          _this3.setState({
             body: e.currentTarget.value
           });
         } else if (key === 'photo') {
           if (e.currentTarget.files[0]) {
-            _this2.setState({
+            _this3.setState({
               photo: e.currentTarget.files[0]
             });
           }
@@ -479,11 +516,16 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var _this3 = this;
+      var _this4 = this;
 
-      console.log(this.state);
-      this.props.createComment(this.state).then(function () {
-        _this3.setState({
+      var comment = {
+        body: this.state.body,
+        authorId: this.state.authorId,
+        postId: this.state.postId,
+        photo: this.state.photo
+      };
+      this.props.createComment(comment).then(function () {
+        _this4.setState({
           body: "",
           photo: null
         });
@@ -507,17 +549,26 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "getProfilePicture",
+    value: function getProfilePicture() {
+      if (this.state.currentUser) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "mini-profile-pic-post",
+          id: "mini-pic-on-comment",
+          src: this.state.currentUser.profilePictureUrl
+        });
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _React$createElement;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit.bind(this)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "mini-profile-pic-post",
-        id: "mini-pic-on-comment",
-        src: this.props.author.profilePictureUrl
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", (_React$createElement = {
+      }, this.getProfilePicture(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", (_React$createElement = {
         type: "submit",
         value: this.state.body,
         onChange: this.handleChange('body'),
@@ -555,7 +606,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-/* harmony import */ var _comment_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comment_form */ "./frontend/components/comments/comment_form.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _comment_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_form */ "./frontend/components/comments/comment_form.js");
+
 
 
 
@@ -564,11 +617,14 @@ var mDTP = function mDTP(dispatch) {
   return {
     createComment: function createComment(comment) {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.createComment)(comment));
+    },
+    fetchCurrentUser: function fetchCurrentUser(userId) {
+      return (0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAuthor)(userId);
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mDTP)(_comment_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mDTP)(_comment_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -652,7 +708,9 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.getProfilePicture(), this.props.comment.body);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.getProfilePicture(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-background"
+      }, this.props.comment.body));
     }
   }]);
 
@@ -715,20 +773,30 @@ var CommentIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log('MOUNTED');
       this.props.fetchComments(this.props.postId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {// if (this.props.comments && this.props.comments.length < prevProps.comments.length) {
+      // this.props.fetchComments(this.props.postId)
+      // console.log('fire')
+      // }
     }
   }, {
     key: "render",
     value: function render() {
       var _this = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.comments.map(function (comment, idx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-          key: "idx"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          comment: comment,
-          fetchAuthor: _this.props.fetchAuthor
-        }));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.comments.map(function (comment) {
+        if (comment.postId === _this.props.postId) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+            key: comment.id
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            comment: comment,
+            fetchAuthor: _this.props.fetchAuthor
+          }));
+        }
       }));
     }
   }]);
@@ -773,6 +841,9 @@ var mDTP = function mDTP(dispatch) {
     },
     fetchAuthor: function fetchAuthor(authorId) {
       return (0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_3__.fetchAuthor)(authorId);
+    },
+    clearComments: function clearComments() {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.clearComments)());
     }
   };
 };
@@ -911,6 +982,9 @@ var mDTP = function mDTP(dispatch) {
     },
     openModal: function openModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)('post'));
+    },
+    clearPosts: function clearPosts() {
+      return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.clearPosts)());
     }
   };
 };
@@ -1202,11 +1276,13 @@ var PostModal = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      this.props.fetchUser(this.props.userId).then(function () {
-        return _this2.setState({
-          user: _this2.props.user
+      if (this.props.userId) {
+        this.props.fetchUser(this.props.userId).then(function () {
+          return _this2.setState({
+            user: _this2.props.user
+          });
         });
-      });
+      }
     }
   }, {
     key: "componentDidUpdate",
@@ -1224,6 +1300,8 @@ var PostModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.props);
+
       if (this.props.modal === "post") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "modal-background",
@@ -1235,7 +1313,7 @@ var PostModal = /*#__PURE__*/function (_React$Component) {
             return e.stopPropagation();
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_post_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          user: this.props.user
+          user: this.state.user
         })));
       }
 
@@ -1453,7 +1531,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       body: "",
-      authorId: window.currentUser.id,
+      authorId: null,
       profileId: null,
       photo: null
     };
@@ -1463,13 +1541,17 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   _createClass(PostForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log(this.props);
+
       if (this.props.user) {
         this.setState({
-          profileId: this.props.user.id
+          profileId: this.props.user.id,
+          authorId: this.props.currentUser.id
         });
       } else {
         this.setState({
-          profileId: window.currentUser.id
+          profileId: this.props.currentUser.id,
+          authorId: this.props.currentUser.id
         });
       }
     }
@@ -1489,6 +1571,7 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
     value: function handleChange(key) {
       var _this2 = this;
 
+      console.log(this.state);
       return function (e) {
         if (key === 'body') {
           _this2.setState({
@@ -1665,8 +1748,7 @@ var PostFormClosed = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return PostFormClosed;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component); //value={this.state.body} onChange={this.handleChange('body').bind(this)}
-
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PostFormClosed);
 
@@ -1694,7 +1776,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    currentUser: state.session.currentUser
   };
 };
 
@@ -1772,10 +1855,9 @@ var PostIndex = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (prevProps.posts.length !== this.props.posts.length) {
-        this.props.fetchPosts(this.props.userId);
-      }
+    value: function componentDidUpdate(prevProps) {// if (prevProps.posts.length !== this.props.posts.length) {
+      //   this.props.fetchPosts(this.props.userId)
+      // }
     }
   }, {
     key: "render",
@@ -2035,11 +2117,6 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "post-attached-photo",
         src: this.props.post.photoUrl
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        postId: this.props.post.id
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        author: this.state.author,
-        postId: this.props.post.id
       }));
     }
   }]);
@@ -2475,12 +2552,6 @@ var ProfilePicture = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      console.log('submit');
-      e.preventDefault(); // this.props.user.profilePicture = this.state.profilePicture
-    }
-  }, {
     key: "render",
     value: function render() {
       if (this.props.currentUser.id === this.props.userId) {
@@ -2502,7 +2573,6 @@ var ProfilePicture = /*#__PURE__*/function (_React$Component) {
           onChange: this.handleFile.bind(this)
         }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
       } else {
-        console.log(this.props);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "profile-pic-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
@@ -3007,6 +3077,9 @@ var CommentsReducer = function CommentsReducer() {
       delete nextState[action.comment.id];
       return nextState;
 
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_COMMENTS:
+      return {};
+
     default:
       return state;
   }
@@ -3076,6 +3149,9 @@ var PostsReducer = function PostsReducer() {
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST:
       delete nextState[action.postId];
       return nextState;
+
+    case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_POSTS:
+      return {};
 
     default:
       return state;
@@ -3358,7 +3434,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteComment": () => (/* binding */ deleteComment)
 /* harmony export */ });
 var fetchComments = function fetchComments(postId) {
-  console.log('asdlkfj');
   return $.ajax({
     method: 'GET',
     url: "/api/posts/".concat(postId, "/comments")

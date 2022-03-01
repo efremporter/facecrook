@@ -4,14 +4,15 @@ class PostForm extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {body: "", authorId: window.currentUser.id, profileId: null, photo: null}
+    this.state = {body: "", authorId: null, profileId: null, photo: null}
   }
 
   componentDidMount() {
+    console.log(this.props)
     if (this.props.user) {
-      this.setState({profileId: this.props.user.id})
+      this.setState({profileId: this.props.user.id, authorId: this.props.currentUser.id})
     } else {
-      this.setState({profileId: window.currentUser.id})
+      this.setState({profileId: this.props.currentUser.id, authorId: this.props.currentUser.id})
     }
   }
 
@@ -24,6 +25,7 @@ class PostForm extends React.Component {
   }
 
   handleChange(key) {
+    console.log(this.state)
     return e => {
       if (key === 'body') {
         this.setState({body: e.currentTarget.value})

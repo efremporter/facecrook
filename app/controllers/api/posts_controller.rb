@@ -2,8 +2,10 @@ class Api::PostsController < ApplicationController
 
   def index
     if params[:profile_id]
+      puts 'PROFILE'
       @posts = Post.where(profile_id: params[:profile_id]);
     else
+      puts 'ALL POSTS'
       @posts = Post.all
     end
     render :index

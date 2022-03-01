@@ -5,7 +5,8 @@ import PostForm from "./post_form"
 
 const mSTP = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    currentUser: state.session.currentUser
   }
 }
 

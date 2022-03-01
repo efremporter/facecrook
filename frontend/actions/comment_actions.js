@@ -3,6 +3,7 @@ import * as CommentAPIUtils from '../utils/comment_utils';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const CLEAR_COMMENTS = 'CLEAR_COMMENTS';
 
 const receiveComments = comments => {
   return {
@@ -21,8 +22,18 @@ const receiveComment = comment => {
 const removeComment = commentId => {
   return {
     type: REMOVE_COMMENT, 
-    comementId
+    commentId
   }
+}
+
+const removeComments = () => {
+  return {
+    type: CLEAR_COMMENTS
+  }
+}
+
+export const clearComments = () => dispatch => {
+  dispatch(removeComments())
 }
 
 export const fetchComments = postId => dispatch => {

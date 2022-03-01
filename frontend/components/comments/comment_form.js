@@ -3,11 +3,13 @@ import React from "react";
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {body: '', authorId: window.currentUser.id, postId: null, photo: null}
+    this.state = {body: '', authorId: window.currentUser.id, postId: null, photo: null, currentUser: null}
     this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
+    this.props.fetchCurrentUser(window.currentUser.id)
+    .then(user => this.setState({currentUser: user}))
     if (this.props.postId) {
       this.setState({postId: this.props.postId})
     }
@@ -26,8 +28,13 @@ class CommentForm extends React.Component {
   } 
 
   handleSubmit() {
-    console.log(this.state)
-    this.props.createComment(this.state)
+    const comment = {
+      body: this.state.body,
+      authorId: this.state.authorId,
+      postId: this.state.postId,
+      photo: this.state.photo
+    }
+    this.props.createComment(comment)
     .then( () => {this.setState({body: "", photo: null})})
     .catch( () => console.log('NOOOOOO'))
   }
@@ -40,10 +47,18 @@ class CommentForm extends React.Component {
     }
   }
 
+  getProfilePicture() {
+    if (this.state.currentUser) {
+      return <img className="mini-profile-pic-post" id="mini-pic-on-comment" src={this.state.currentUser.profilePictureUrl}/>
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <img className="mini-profile-pic-post" id="mini-pic-on-comment" src={this.props.author.profilePictureUrl}/>
+        {this.getProfilePicture()}
         <input type="submit" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
         <label>
           <div className="comment-camera-icon-container" onChange={this.handleChange('photo')}>

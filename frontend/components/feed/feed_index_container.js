@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchAllPosts, deletePost } from "../../actions/post_actions";
+import { fetchAllPosts, deletePost, clearPosts } from "../../actions/post_actions";
 import { fetchAuthor } from "../../actions/user_actions";
 import { openModal } from "../../actions/modal_actions";
 import FeedIndex from "./feed_index";
@@ -17,7 +17,8 @@ const mDTP = dispatch => {
     fetchAllPosts: () => dispatch(fetchAllPosts()),
     fetchAuthor: authorId => fetchAuthor(authorId),
     deletePost: postId => dispatch(deletePost(postId)),
-    openModal: () => dispatch(openModal('post'))
+    openModal: () => dispatch(openModal('post')),
+    clearPosts: () => dispatch(clearPosts())
   }
 }
 

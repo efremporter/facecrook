@@ -1,4 +1,4 @@
-import { RECEIVE_POST, RECEIVE_POSTS, REMOVE_POST } from "../../actions/post_actions";
+import { RECEIVE_POST, RECEIVE_POSTS, REMOVE_POST, CLEAR_POSTS } from "../../actions/post_actions";
 
 const PostsReducer = (state={}, action) => {
 
@@ -18,6 +18,9 @@ const PostsReducer = (state={}, action) => {
     case REMOVE_POST:
       delete nextState[action.postId]
       return nextState
+
+    case CLEAR_POSTS:
+      return {}
 
     default:
       return state

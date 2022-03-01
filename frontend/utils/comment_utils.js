@@ -1,5 +1,4 @@
 export const fetchComments = postId => {
-  console.log('asdlkfj')
   return $.ajax({
     method: 'GET',
     url: `/api/posts/${postId}/comments`

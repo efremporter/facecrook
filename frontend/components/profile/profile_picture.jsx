@@ -21,12 +21,6 @@ class ProfilePicture extends React.Component {
     this.setState({profilePicture: e.currentTarget.files[0]}, () => this.props.updateUser(this.state))
   }
 
-  handleSubmit(e) {
-    console.log('submit')
-    e.preventDefault()
-    // this.props.user.profilePicture = this.state.profilePicture
-  } 
-
   render() {
     if (this.props.currentUser.id === this.props.userId) {
       return (
@@ -44,7 +38,6 @@ class ProfilePicture extends React.Component {
         </div> 
       )
     } else {
-      console.log(this.props)
       return (
         <div>
           <div className="profile-pic-container">

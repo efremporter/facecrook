@@ -7,18 +7,28 @@ class CommentIndex extends React.Component {
   }
 
   componentDidMount() {
+    console.log('MOUNTED')
     this.props.fetchComments(this.props.postId)
+  }
+
+  componentDidUpdate(prevProps) {
+    // if (this.props.comments && this.props.comments.length < prevProps.comments.length) {
+      // this.props.fetchComments(this.props.postId)
+      // console.log('fire')
+    // }
   }
 
   render() {
     return (
       <ul>
-        {this.props.comments.map( (comment, idx) => {
-          return <li key="idx"><CommentIndexItem comment={comment} fetchAuthor={this.props.fetchAuthor}/></li>
+        {this.props.comments.map( comment => {
+          if (comment.postId === this.props.postId) {
+            return <li key={comment.id}><CommentIndexItem comment={comment} fetchAuthor={this.props.fetchAuthor}/></li>
+          }
         })}
       </ul>
     )
   }
 }
 
-export default CommentIndex;
+export default CommentIndex; 

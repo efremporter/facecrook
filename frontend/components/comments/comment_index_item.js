@@ -23,7 +23,9 @@ class CommentIndexItem extends React.Component {
     return (
       <div>
         {this.getProfilePicture()}
-        {this.props.comment.body}
+        <div className="comment-background">
+          {this.props.comment.body}
+        </div>
       </div>
     )
   }

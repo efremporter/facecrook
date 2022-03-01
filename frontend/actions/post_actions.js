@@ -3,6 +3,7 @@ import * as PostUtils from '../utils/post_utils'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const REMOVE_POST = 'REMOVE_POST'
+export const CLEAR_POSTS = 'CLEAR_POSTS'
 
 const receivePosts = posts => {
   return {
@@ -25,9 +26,19 @@ const removePost = postId => {
   }
 }
 
+const removePosts = () => {
+  return {
+    type: CLEAR_POSTS
+  }
+}
+
+export const clearPosts = () => dispatch => {
+  dispatch(removePosts())
+}
+
 export const fetchAllPosts = () => dispatch => {
   return PostUtils.fetchAllPosts()
-  .then( posts => {dispatch(receivePosts(posts))})
+  .then( posts => dispatch(receivePosts(posts)))
 }
 
 export const fetchPosts = profileId => dispatch => {
