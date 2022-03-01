@@ -47,7 +47,7 @@ class Api::PostsController < ApplicationController
       post.delete
       render json: ['Post deleted'], status: 200
     else
-      puts 'Post not found, therefore not deleted'
+      render json: ['Post not found'], status: 404
     end
   end
 

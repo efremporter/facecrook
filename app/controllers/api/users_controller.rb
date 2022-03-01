@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
     if @user
       render :_user
     else  
-      puts 'User not found'
+      render json: ['User not found'], status: 404
     end
   end
 
