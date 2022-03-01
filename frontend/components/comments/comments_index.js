@@ -1,4 +1,5 @@
 import React from "react";
+import CommentIndexItem from "./comment_index_item";
 
 class CommentIndex extends React.Component {
   constructor(props) {
@@ -6,14 +7,16 @@ class CommentIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchComments(this.props.postId)
+    this.props.fetchComments(this.props.postId)
   }
 
   render() {
     return (
-      <div>
-
-      </div>
+      <ul>
+        {this.props.comments.map( (comment, idx) => {
+          return <li key="idx"><CommentIndexItem comment={comment} fetchAuthor={this.props.fetchAuthor}/></li>
+        })}
+      </ul>
     )
   }
 }

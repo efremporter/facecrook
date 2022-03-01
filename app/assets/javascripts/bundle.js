@@ -403,6 +403,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -466,34 +468,68 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
             body: e.currentTarget.value
           });
         } else if (key === 'photo') {
-          _this2.setState({
-            photo: e.currentTarget.files[0]
-          });
+          if (e.currentTarget.files[0]) {
+            _this2.setState({
+              photo: e.currentTarget.files[0]
+            });
+          }
         }
       };
     }
   }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      var _this3 = this;
+
+      console.log(this.state);
+      this.props.createComment(this.state).then(function () {
+        _this3.setState({
+          body: "",
+          photo: null
+        });
+      })["catch"](function () {
+        return console.log('NOOOOOO');
+      });
+    }
+  }, {
+    key: "getPictureLogo",
+    value: function getPictureLogo() {
+      if (!this.state.photo) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "comment-camera-icon",
+          src: window.commentCameraIcon
+        });
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "post-picture-icon",
+          src: window.checkMark
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
+      var _React$createElement;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        className: ""
+        onSubmit: this.handleSubmit.bind(this)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "mini-profile-pic-post",
         id: "mini-pic-on-comment",
         src: this.props.author.profilePictureUrl
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", (_React$createElement = {
+        type: "submit",
         value: this.state.body,
         onChange: this.handleChange('body'),
-        className: "comment-form-file",
-        type: "text",
-        placeholder: "Write a comment..."
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "comment-camera-icon-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "comment-camera-icon",
-        src: window.commentCameraIcon
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-form-file"
+      }, _defineProperty(_React$createElement, "type", "text"), _defineProperty(_React$createElement, "placeholder", "Write a comment..."), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-camera-icon-container",
+        onChange: this.handleChange('photo')
+      }, this.getPictureLogo(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "add-photo-to-post",
+        type: "file",
+        onChange: this.handleChange('photo')
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-sub-text"
       }, "Press Enter to post."));
     }
@@ -506,10 +542,40 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/comments/comments_index.js":
-/*!********************************************************!*\
-  !*** ./frontend/components/comments/comments_index.js ***!
-  \********************************************************/
+/***/ "./frontend/components/comments/comment_form_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/comments/comment_form_container.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _comment_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comment_form */ "./frontend/components/comments/comment_form.js");
+
+
+
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    createComment: function createComment(comment) {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.createComment)(comment));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mDTP)(_comment_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/comments/comment_index_item.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/comments/comment_index_item.js ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -542,6 +608,99 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(CommentIndexItem, _React$Component);
+
+  var _super = _createSuper(CommentIndexItem);
+
+  function CommentIndexItem(props) {
+    var _this;
+
+    _classCallCheck(this, CommentIndexItem);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      author: null
+    };
+    return _this;
+  }
+
+  _createClass(CommentIndexItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.props.fetchAuthor(this.props.comment.authorId).then(function (author) {
+        _this2.setState({
+          author: author
+        });
+      });
+    }
+  }, {
+    key: "getProfilePicture",
+    value: function getProfilePicture() {
+      if (this.state.author) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "mini-profile-pic-post",
+          id: "mini-pic-on-comment",
+          src: this.state.author.profilePictureUrl
+        });
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.getProfilePicture(), this.props.comment.body);
+    }
+  }]);
+
+  return CommentIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CommentIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/comments/comments_index.js":
+/*!********************************************************!*\
+  !*** ./frontend/components/comments/comments_index.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _comment_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comment_index_item */ "./frontend/components/comments/comment_index_item.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
 var CommentIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(CommentIndex, _React$Component);
 
@@ -555,12 +714,22 @@ var CommentIndex = /*#__PURE__*/function (_React$Component) {
 
   _createClass(CommentIndex, [{
     key: "componentDidMount",
-    value: function componentDidMount() {// this.props.fetchComments(this.props.postId)
+    value: function componentDidMount() {
+      this.props.fetchComments(this.props.postId);
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
+      var _this = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.comments.map(function (comment, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "idx"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          comment: comment,
+          fetchAuthor: _this.props.fetchAuthor
+        }));
+      }));
     }
   }]);
 
@@ -585,6 +754,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _comments_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments_index */ "./frontend/components/comments/comments_index.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 
@@ -599,6 +770,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchComments: function fetchComments(postId) {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.fetchComments)(postId));
+    },
+    fetchAuthor: function fetchAuthor(authorId) {
+      return (0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_3__.fetchAuthor)(authorId);
     }
   };
 };
@@ -1321,9 +1495,11 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
             body: e.currentTarget.value
           });
         } else if (key === 'photo') {
-          _this2.setState({
-            photo: e.currentTarget.files[0]
-          });
+          if (e.currentTarget.files[0]) {
+            _this2.setState({
+              photo: e.currentTarget.files[0]
+            });
+          }
         }
       };
     }
@@ -1690,7 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/Link.js");
 /* harmony import */ var _comments_comments_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../comments/comments_index_container */ "./frontend/components/comments/comments_index_container.js");
-/* harmony import */ var _comments_comment_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../comments/comment_form */ "./frontend/components/comments/comment_form.js");
+/* harmony import */ var _comments_comment_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../comments/comment_form_container */ "./frontend/components/comments/comment_form_container.js");
 /* harmony import */ var _profile_profile_picture__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../profile/profile_picture */ "./frontend/components/profile/profile_picture.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -1859,8 +2035,11 @@ var PostIndexItem = /*#__PURE__*/function (_React$Component) {
       }, this.props.post.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "post-attached-photo",
         src: this.props.post.photoUrl
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_comment_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        author: this.state.author
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        postId: this.props.post.id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        author: this.state.author,
+        postId: this.props.post.id
       }));
     }
   }]);
@@ -3249,6 +3428,7 @@ var fetchPost = function fetchPost(postId) {
   });
 };
 var createPost = function createPost(post) {
+  console.log(post);
   var formData = new FormData();
   formData.append("post[body]", post.body);
   formData.append("post[author_id]", post.authorId);

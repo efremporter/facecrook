@@ -28,7 +28,9 @@ class PostForm extends React.Component {
       if (key === 'body') {
         this.setState({body: e.currentTarget.value})
       } else if (key === 'photo') {
-        this.setState({photo: e.currentTarget.files[0]})
+        if (e.currentTarget.files[0]) {
+          this.setState({photo: e.currentTarget.files[0]})
+        }
       }
     }
   }
