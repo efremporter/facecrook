@@ -1,8 +1,8 @@
 import * as CommentAPIUtils from '../utils/comment_utils';
 
-const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
-const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
-const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
 const receiveComments = comments => {
   return {

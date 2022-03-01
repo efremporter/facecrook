@@ -1,5 +1,6 @@
 export const fetchComments = postId => {
-  $.ajax({
+  console.log('asdlkfj')
+  return $.ajax({
     method: 'GET',
     url: `/api/posts/${postId}/comments`
   })
@@ -12,7 +13,7 @@ export const createComment = comment => {
   formData.append("comment[post_id]", comment.postId)
   if (comment.photo) formData.append("comment[photo]", post.photo)
 
-  $.ajax({
+  return $.ajax({
     method: 'POST',
     url: `/api/posts/${comment.postId}/comments`,
     data: formData,
@@ -22,7 +23,7 @@ export const createComment = comment => {
 }
 
 export const deleteComment = commentId => {
-  $.ajax({
+  return $.ajax({
     method: 'DELETE',
     url: `/api/comments/${commentId}`,
   })

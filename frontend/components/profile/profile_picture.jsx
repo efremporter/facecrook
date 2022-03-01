@@ -8,10 +8,12 @@ class ProfilePicture extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      id: this.props.user.id,
-      profilePictureUrl: this.props.user.profilePictureUrl
-    })
+    if (this.props.user) {
+      this.setState({
+        id: this.props.user.id,
+        profilePictureUrl: this.props.user.profilePictureUrl
+      })
+    }
   }
 
   handleFile(e) {
@@ -42,6 +44,7 @@ class ProfilePicture extends React.Component {
         </div> 
       )
     } else {
+      console.log(this.props)
       return (
         <div>
           <div className="profile-pic-container">
