@@ -1,0 +1,42 @@
+.comment-sub-text {
+  font-size: 12px;
+  position: relative;
+  bottom: 22px;
+  color: #050505;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  padding-left: 64px;
+}
+
+.comment-form-file {
+  height: 37px;
+  width: 396px;
+  border-radius: 25px;
+  border-color: transparent;
+  background-color: #F0F2F5;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;  padding-left: 10px;
+  position: relative;
+  bottom: 27px;
+}
+
+#mini-pic-on-comment {
+  margin-right: 6px;
+}
+.comment-camera-icon {
+  width: 17px;
+  margin-left: 9.5px;
+  margin-top: 11.8px;
+}
+
+.comment-camera-icon-container {
+  width: 36px;
+  height: 36px;
+  border-radius: 50px;
+  position: absolute;
+  margin-left: 440px;
+  margin-top: -66px;
+  cursor: pointer;
+}
+
+.comment-camera-icon-container:hover {
+  background-color: #E4E6E9;
+}

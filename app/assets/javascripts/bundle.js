@@ -442,6 +442,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       postId: null,
       photo: null
     };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -455,6 +456,23 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(key) {
+      var _this2 = this;
+
+      return function (e) {
+        if (key === 'body') {
+          _this2.setState({
+            body: e.currentTarget.value
+          });
+        } else if (key === 'photo') {
+          _this2.setState({
+            photo: e.currentTarget.files[0]
+          });
+        }
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       console.log(this.props);
@@ -462,13 +480,22 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "mini-profile-pic-post",
+        id: "mini-pic-on-comment",
         src: this.props.author.profilePictureUrl
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        value: "",
+        value: this.state.body,
+        onChange: this.handleChange('body'),
         className: "comment-form-file",
         type: "text",
         placeholder: "Write a comment..."
-      }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-camera-icon-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "comment-camera-icon",
+        src: window.commentCameraIcon
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-sub-text"
+      }, "Press Enter to post."));
     }
   }]);
 
