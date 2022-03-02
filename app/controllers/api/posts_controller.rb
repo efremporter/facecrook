@@ -14,7 +14,7 @@ class Api::PostsController < ApplicationController
     if @post
       render :show
     else  
-      puts "Post doesn't exist"
+      render json: ["Post doesn't exist"], status: 404
     end
   end
 
@@ -23,7 +23,7 @@ class Api::PostsController < ApplicationController
     if @post.save
       render :show
     else
-      puts 'Post not saved'
+      render json: ['Post not saved'], status: 400
     end
 
   end
@@ -33,7 +33,7 @@ class Api::PostsController < ApplicationController
     if @post
       render :show
     else
-      puts 'Post not found'
+      render json: ['Post not found'], status: 404
     end 
   end
 
