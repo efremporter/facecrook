@@ -89,7 +89,16 @@ class PostIndexItem extends React.Component {
   }
 
   deletePost() {
+    this.deleteComments()
     this.props.deletePost(this.props.post.id)
+  }
+
+  deleteComments() {
+    if (this.props.comments) {
+      this.props.comments.forEach( comment => {
+        this.props.deleteComment(comment.id)
+      })
+    } 
   }
 
   getOpenCommentsButton() {
@@ -116,7 +125,7 @@ class PostIndexItem extends React.Component {
 
   showComments() {
     if (this.state.showComments) {
-      return <CommentIndexContainer fetchComments={this.props.fetchComments} comments={this.props.comments} post={this.props.post}/>
+      return <CommentIndexContainer currentUser={this.props.currentUser} fetchComments={this.props.fetchComments} comments={this.props.comments} post={this.props.post}/>
     } else {
       return null;
     }

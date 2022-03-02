@@ -6,19 +6,18 @@ class Api::CommentsController < ApplicationController
   end
 
   def create
-    puts params
     @comment = Comment.new(comment_params)
     
     if @comment.save
       render :show
     else 
-      render json: ['Could not create comment'], status: 404
+      render json: ['Could not create comment'], status: 400
     end
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    
+
     if comment
       if comment.photo.attached?
         comment.photo.delete

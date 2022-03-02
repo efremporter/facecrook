@@ -36,7 +36,7 @@ class CommentForm extends React.Component {
     }
     this.props.createComment(comment)
     .then( () => {this.setState({body: "", photo: null})})
-    .catch( () => console.log('NOOOOOO'))
+    // .catch( () => console.log('need body'))
   }
 
   getPictureLogo() {
@@ -59,7 +59,7 @@ class CommentForm extends React.Component {
     return (
       <form id="comment-form" onSubmit={this.handleSubmit.bind(this)}>
         {this.getProfilePicture()}
-        <input id="comment-textarea" type="submit" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
+        <input id="comment-body" type="submit" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
         <label>
           <div className="comment-camera-icon-container">
             {this.getPictureLogo()}

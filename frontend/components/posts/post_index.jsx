@@ -24,7 +24,7 @@ class PostIndex extends React.Component {
     return (
       <ul>
         {this.props.posts.map( (post) => {
-          return <li key={post.id}><PostIndexItem clearComments={this.props.clearComments} comments={this.props.comments} fetchComments={this.props.fetchComments} currentUser={this.props.currentUser} deletePost={this.props.deletePost} fetchAuthor={this.props.fetchAuthor} user={this.props.user} post={post}/></li>
+          return <li key={post.id}><PostIndexItem deleteComment={this.props.deleteComment} clearComments={this.props.clearComments} comments={this.props.comments} fetchComments={this.props.fetchComments} currentUser={this.props.currentUser} deletePost={this.props.deletePost} fetchAuthor={this.props.fetchAuthor} user={this.props.user} post={post}/></li>
         })}
       </ul>
     )

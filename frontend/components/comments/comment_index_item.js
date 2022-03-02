@@ -48,6 +48,18 @@ class CommentIndexItem extends React.Component {
     }
   }
 
+  getDelete() {
+    if (this.props.currentUser.id === this.props.post.authorId || this.props.currentUser.id === this.props.post.profileId || this.props.currentUser.id === this.props.comment.authorId)
+    {
+      return <div className="post-delete-dots" id="comment-delete-dots">
+        <span className="profile-delete-dots-span" id="comment-delete-dots-span">...</span>
+        <div onClick={this.deleteComment.bind(this)} className="delete-post-button" id="delete-comment-button"><img className="delete-post-icon" id="comment-delete-icon" src={window.trashCan} /></div>
+      </div>
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="comment-container">
@@ -55,9 +67,9 @@ class CommentIndexItem extends React.Component {
         <div className="comment-background">
           {this.getAuthorName()}
           <div className="comment-body">{this.props.comment.body}</div>
+          {this.getDelete()}
           {this.getAttachedPhoto()}
         </div>
-        {/* <button className="comment-delete-button" onClick={this.deleteComment.bind(this)}>Delete</button> */}
       </div>
     )
   }

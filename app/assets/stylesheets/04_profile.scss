@@ -262,13 +262,13 @@
   height: 5px;
   padding-bottom: 40px;
   padding: 0px 15px 40px 12px;
-  border-radius: 25%;
+  border-radius: 50%;
 }
 
 .profile-delete-dots-span:hover {
   background-color: #F2F2F2;
   position: relative;
-  cursor: pointer;
+  cursor: default;
 }
 
 .delete-post-button:hover {

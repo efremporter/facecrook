@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { clearComments, fetchComments } from "../../actions/comment_actions";
+import { clearComments, deleteComment, fetchComments } from "../../actions/comment_actions";
 import { deletePost, fetchPosts } from "../../actions/post_actions";
 import { fetchAuthor } from "../../actions/user_actions";
 import PostIndex from "./post_index";
@@ -18,7 +18,8 @@ const mDTP = dispatch => {
     fetchAuthor: authorId => fetchAuthor(authorId),
     deletePost: postId => dispatch(deletePost(postId)),
     fetchComments: postId => dispatch(fetchComments(postId)),
-    clearComments: () => dispatch(clearComments())
+    clearComments: () => dispatch(clearComments()),
+    deleteComment: commentId => dispatch(deleteComment(commentId))
   }
 }
 

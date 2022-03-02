@@ -76,10 +76,15 @@
 }
 
 .comment-body {
-  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;  padding-left: 10px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;  
   color: #050505;
   font-size: 15px;
   padding: 0px 0px 10px 12px;
+  width: 389px;
+}
+
+.comment-body-text {
+  // width: 50px;
 }
 
 .comment-delete-button {
@@ -114,4 +119,29 @@
 
 .open-comments-button:hover {
   text-decoration: underline;
+}
+
+#comment-delete-dots {
+  display: none;
+  font-size: 20px;
+  top: 20%;
+  right: -31px;
+  position: absolute;
+}
+
+#comment-delete-dots-span {
+  padding: 0px 10px 24px 7px;
+}
+
+.comment-container:hover #comment-delete-dots {
+  display: block
+}
+
+#comment-delete-icon {
+  height: 15px;
+  width: 15px;
+}
+
+#delete-comment-button {
+  right: 4px;
 }
