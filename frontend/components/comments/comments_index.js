@@ -7,7 +7,6 @@ class CommentIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log('MOUNTED')
     this.props.fetchComments(this.props.postId)
   }
 
@@ -16,6 +15,10 @@ class CommentIndex extends React.Component {
       // this.props.fetchComments(this.props.postId)
       // console.log('fire')
     // }
+  }
+
+  componentWillUnmount() {
+    this.props.clearComments()
   }
 
   render() {
