@@ -7,16 +7,21 @@ import ProfilePicture from '../profile/profile_picture'
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {author: {}}
+    this.state = {author: {}, showComments: false}
   }
 
   componentDidMount() {
     this.props.fetchAuthor(this.props.post.authorId)
     .then(author => {this.setState({author})})
+    this.props.fetchComments(this.props.post.id)
   }
 
   componentDidUpdate() {
 
+  }
+
+  componentWillUnmount() {
+    this.props.clearComments();
   }
 
   getAuthorName() {
@@ -87,6 +92,36 @@ class PostIndexItem extends React.Component {
     this.props.deletePost(this.props.post.id)
   }
 
+  getOpenCommentsButton() {
+    let numberOfComments = 0;
+    this.props.comments.forEach( comment => {
+      if (comment.postId === this.props.post.id) numberOfComments += 1;
+    })
+    if (numberOfComments === 1) {
+      return <span onClick={this.toggleComments.bind(this)} className="open-comments-button">1 Comment</span>
+    } else if (numberOfComments > 1) {
+      return <span onClick={this.toggleComments.bind(this)} className="open-comments-button">{numberOfComments} Comments</span>
+    } else {
+      return null;
+    }
+  }
+
+  toggleComments() {
+    if (this.state.showComments) {
+      this.setState({showComments: false})
+    } else {
+      this.setState({showComments: true})
+    }
+  }
+
+  showComments() {
+    if (this.state.showComments) {
+      return <CommentIndexContainer fetchComments={this.props.fetchComments} comments={this.props.comments} post={this.props.post}/>
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="profile-post-container">
@@ -97,7 +132,8 @@ class PostIndexItem extends React.Component {
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>
         <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
-        <CommentIndexContainer post={this.props.post}/>
+        {this.getOpenCommentsButton()}
+        {this.showComments()}
         <CommentFormContainer currentUser={this.props.currentUser} postId={this.props.post.id}/>
       </div>
     )
