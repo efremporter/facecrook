@@ -26,7 +26,7 @@ class CommentIndex extends React.Component {
       <ul>
         {this.props.comments.map( comment => {
           if (comment.postId === this.props.postId) {
-            return <li key={comment.id}><CommentIndexItem comment={comment} fetchAuthor={this.props.fetchAuthor}/></li>
+            return <li key={comment.id}><CommentIndexItem comment={comment} fetchAuthor={this.props.fetchAuthor} deleteComment={this.props.deleteComment}/></li>
           }
         })}
       </ul>

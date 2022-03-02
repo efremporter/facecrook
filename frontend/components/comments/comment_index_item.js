@@ -19,6 +19,10 @@ class CommentIndexItem extends React.Component {
     }
   }
 
+  deleteComment() {
+    this.props.deleteComment(this.props.comment.id)
+  }
+
   render() {
     return (
       <div>
@@ -26,6 +30,7 @@ class CommentIndexItem extends React.Component {
         <div className="comment-background">
           {this.props.comment.body}
         </div>
+        <button onClick={this.deleteComment.bind(this)}>Delete</button>
       </div>
     )
   }
