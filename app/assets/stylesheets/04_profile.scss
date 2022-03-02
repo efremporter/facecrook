@@ -176,12 +176,16 @@
 
 .post-form {
   text-align: center;
-  margin-top: 30px;
   height: 125px;
   background-color: white;
   width: 500px;
-  margin-left: 32.4%;
+  margin: auto;
+  margin-top: 30px;
   border-radius: 8px;
+}
+
+.post-form-closed-container {
+  width: 100%;
 }
 
 .post-form-file {
@@ -381,12 +385,17 @@
 
 .profile-post-container {
   margin-bottom: 15px;
-  margin-top: 37px;
   min-height: 78px;
   background-color: white;
   width: 500px;
-  margin-left: 32.4%;
+  // margin-left: 32.4%;
+  margin: auto;
+  margin-top: 37px;
   border-radius: 8px;
+}
+
+.post-index-container {
+  width: 100%;
 }
 
 .post-attached-photo {

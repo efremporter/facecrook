@@ -11,18 +11,12 @@ class PostIndex extends React.Component {
     this.props.fetchPosts(this.props.userId)
   }
 
-  componentDidUpdate(prevProps) {
-    // if (prevProps.posts.length !== this.props.posts.length) {
-    //   this.props.fetchPosts(this.props.userId)
-    // }
-  }
-
   render() {
     if (!this.props.posts.length) {
       return null;
     }
     return (
-      <ul>
+      <ul className="post-index-container">
         {this.props.posts.map( (post) => {
           return <li key={post.id}><PostIndexItem deleteComment={this.props.deleteComment} clearComments={this.props.clearComments} comments={this.props.comments} fetchComments={this.props.fetchComments} currentUser={this.props.currentUser} deletePost={this.props.deletePost} fetchAuthor={this.props.fetchAuthor} user={this.props.user} post={post}/></li>
         })}

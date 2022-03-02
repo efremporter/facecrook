@@ -13,7 +13,7 @@ class PostFormClosed extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='post-form-closed-container'>
         <form className="post-form">
           <div className="post-form-closed-input"><input value="" className="post-form-file" type="text" placeholder="What's on your mind?" onClick={this.props.openModal} readOnly/></div>
           {this.getDivider()}
