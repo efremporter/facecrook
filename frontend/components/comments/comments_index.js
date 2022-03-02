@@ -10,12 +10,17 @@ class CommentIndex extends React.Component {
     this.props.fetchComments(this.props.post.id)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.comments.length !== prevProps.comments.length) {
+      this.props.fetchComments(this.props.post.id)
+    }
+  }
+
   componentWillUnmount() {
     this.props.clearComments()
   }
 
   render() {
-    console.log(this.props)
     return (
       <ul>
         {this.props.comments.map( comment => {

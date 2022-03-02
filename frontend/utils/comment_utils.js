@@ -10,7 +10,7 @@ export const createComment = comment => {
   formData.append("comment[body]", comment.body)
   formData.append("comment[author_id]", comment.authorId)
   formData.append("comment[post_id]", comment.postId)
-  if (comment.photo) formData.append("comment[photo]", post.photo)
+  if (comment.photo) formData.append("comment[photo]", comment.photo)
 
   return $.ajax({
     method: 'POST',

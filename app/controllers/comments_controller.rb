@@ -2,8 +2,6 @@ class Api::CommentsController < ApplicationController
 
   def index
     @comments = Comment.where(post_id: params[:post_id]);
-    puts @comments.length
-    # debugger
     render :index
   end
 
@@ -11,7 +9,7 @@ class Api::CommentsController < ApplicationController
     puts params
     @comment = Comment.new(comment_params)
     
-    if @comment.save 
+    if @comment.save
       render :show
     else 
       render json: ['Could not create comment'], status: 404

@@ -42,14 +42,21 @@ class CommentIndexItem extends React.Component {
     }
   }
 
+  getAttachedPhoto() {
+    if (this.props.comment.photoUrl) {
+      return <img className="comment-attached-photo" src={this.props.comment.photoUrl} />
+    }
+  }
+
   render() {
     return (
       <div className="comment-container">
         {this.getProfilePicture()}
-          <div className="comment-background">
-            {this.getAuthorName()}
-            <div className="comment-body">{this.props.comment.body}</div>
-          </div>
+        <div className="comment-background">
+          {this.getAuthorName()}
+          <div className="comment-body">{this.props.comment.body}</div>
+          {this.getAttachedPhoto()}
+        </div>
         {/* <button className="comment-delete-button" onClick={this.deleteComment.bind(this)}>Delete</button> */}
       </div>
     )

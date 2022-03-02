@@ -82,5 +82,5 @@ class PostForm extends React.Component {
     )
   }
 }
-//value={this.state.body} onChange={this.handleChange('body').bind(this)}
+
 export default PostForm;

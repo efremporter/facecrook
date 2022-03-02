@@ -78,11 +78,17 @@
 }
 
 .comment-delete-button {
-  position: absolute;
+  position: relative;
+  z-index: 100;
   // display: none;
 }
 
 .comment-container {
   position: relative;
   margin-bottom: -40px;
+}
+
+.comment-attached-photo {
+  width: 100%;
+  padding-bottom: 20px;
 }
