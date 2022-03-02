@@ -8,13 +8,13 @@ class Api::CommentsController < ApplicationController
   end
 
   def create
-    puts 
+    puts params
     @comment = Comment.new(comment_params)
     
     if @comment.save 
       render :show
     else 
-      render json: ['Could not create comment'], status: 401
+      render json: ['Could not create comment'], status: 404
     end
   end
 

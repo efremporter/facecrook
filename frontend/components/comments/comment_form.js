@@ -57,9 +57,9 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form id="comment-form" onSubmit={this.handleSubmit.bind(this)}>
         {this.getProfilePicture()}
-        <input type="submit" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
+        <input id="comment-textarea" type="submit" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
         <label>
           <div className="comment-camera-icon-container" onChange={this.handleChange('photo')}>
             {this.getPictureLogo()}

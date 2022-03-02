@@ -17,6 +17,8 @@
   position: relative;
   bottom: 22.9px;
   outline: none;
+  resize: none;
+  text-overflow: clip;
 }
 
 #mini-pic-on-comment {

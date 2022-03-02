@@ -10,13 +10,6 @@ class CommentIndex extends React.Component {
     this.props.fetchComments(this.props.postId)
   }
 
-  componentDidUpdate(prevProps) {
-    // if (this.props.comments && this.props.comments.length < prevProps.comments.length) {
-      // this.props.fetchComments(this.props.postId)
-      // console.log('fire')
-    // }
-  }
-
   componentWillUnmount() {
     this.props.clearComments()
   }
