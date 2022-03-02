@@ -36,7 +36,6 @@ class PostForm extends React.Component {
   }
 
   handleSubmit() {
-    console.log(this.state.authorId)
     this.props.createPost(this.state)
     .then(() => {
       this.props.closeModal();

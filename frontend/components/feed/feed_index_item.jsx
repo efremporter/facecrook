@@ -13,6 +13,15 @@ class FeedIndexItem extends React.Component {
       this.setState({author})})
   }
 
+  componentDidUpdate() {
+    if (this.state.author) {
+      if (this.state.author.id !== this.props.post.authorId) {
+        this.props.fetchAuthor(this.props.post.authorId)
+        .then( author => this.setState({author: author}))
+      }
+    }
+  }
+
   translateMonthIntoWord(monthNumber) {
     let monthString;
 

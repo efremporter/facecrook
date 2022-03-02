@@ -15,6 +15,10 @@ class PostIndexItem extends React.Component {
     .then(author => {this.setState({author})})
   }
 
+  componentDidUpdate() {
+
+  }
+
   getAuthorName() {
     const author = this.state.author;
     if (this.state.author.id === this.props.user.id) {
