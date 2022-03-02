@@ -53,7 +53,7 @@ class FeedIndexItem extends React.Component {
     {
       return <div className="post-delete-dots">
         <span className="profile-delete-dots-span">...</span>
-        <div onClick={this.deletePost.bind(this)} className="delete-post-button">Delete</div>
+        <div onClick={this.deletePost.bind(this)} className="delete-post-button"><img className="delete-post-icon" src={window.trashCan} /></div>
       </div>
     } else {
       return null;

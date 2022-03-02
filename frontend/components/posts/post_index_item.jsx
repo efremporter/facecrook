@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CommentIndexContainer from "../comments/comments_index_container";
 import CommentFormContainer from "../comments/comment_form_container";
-import ProfilePicture from '../profile/profile_picture'
 
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {author: {}, showComments: false}
+    this.state = {author: null, showComments: false}
   }
 
   componentDidMount() {
@@ -16,20 +15,23 @@ class PostIndexItem extends React.Component {
     this.props.fetchComments(this.props.post.id)
   }
 
-  componentDidUpdate() {
-
-  }
-
   componentWillUnmount() {
     this.props.clearComments();
   }
 
   getAuthorName() {
     const author = this.state.author;
-    if (this.state.author.id === this.props.user.id) {
+    if (!this.props.user) {
+      return <div className="name-profile-post"><Link to={`/users/${author.id}`} className="name-profile-post-link">{author.firstName} {author.lastName}</Link></div>
+    }
+    if (author.id === this.props.user.id) {
       return <div className="name-profile-post">{author.firstName} {author.lastName}</div>
     } else {
-      return <div className="name-profile-post"><Link to={`/users/${author.id}`} className="name-profile-post-link">{author.firstName} {author.lastName}</Link> <img className="post-right-arrow" src={window.rightArrow} /> {this.props.user.firstName} {this.props.user.lastName}</div>
+      return <div className="name-profile-post">
+        <Link to={`/users/${author.id}`} className="name-profile-post-link">
+          {author.firstName} {author.lastName}
+        </Link> <img className="post-right-arrow" src={window.rightArrow} /> {this.props.user.firstName} {this.props.user.lastName}
+        </div>
     }
   }
 
@@ -81,9 +83,9 @@ class PostIndexItem extends React.Component {
       }
     } else if (str ==='profile-pic') {
       if (this.props.post.authorId === this.props.post.profileId) {
-        return  <img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/>
+        return  <img className="mini-profile-pic-post" src={this.state.author.profilePictureUrl}/>
       } else {
-        return <Link to={`/users/${this.props.post.authorId}`} className="mini-profile-pic-post-link"><img className="mini-profile-pic-post" src={this.props.user ? this.state.author.profilePictureUrl : null}/></Link>
+        return <Link to={`/users/${this.props.post.authorId}`} className="mini-profile-pic-post-link"><img className="mini-profile-pic-post" src={this.state.author.profilePictureUrl}/></Link>
       }
     }
   }
@@ -103,13 +105,17 @@ class PostIndexItem extends React.Component {
 
   getOpenCommentsButton() {
     let numberOfComments = 0;
-    this.props.comments.forEach( comment => {
-      if (comment.postId === this.props.post.id) numberOfComments += 1;
-    })
-    if (numberOfComments === 1) {
-      return <span onClick={this.toggleComments.bind(this)} className="open-comments-button">1 Comment</span>
-    } else if (numberOfComments > 1) {
-      return <span onClick={this.toggleComments.bind(this)} className="open-comments-button">{numberOfComments} Comments</span>
+    if (this.props.comments) {
+      this.props.comments.forEach( comment => {
+        if (comment.postId === this.props.post.id) numberOfComments += 1;
+      })
+      if (numberOfComments === 1) {
+        return <span onClick={this.toggleComments.bind(this)} className="open-comments-button">1 Comment</span>
+      } else if (numberOfComments > 1) {
+        return <span onClick={this.toggleComments.bind(this)} className="open-comments-button">{numberOfComments} Comments</span>
+      } else {
+        return null;
+      }
     } else {
       return null;
     }
@@ -132,6 +138,7 @@ class PostIndexItem extends React.Component {
   }
 
   render() {
+    if (!this.state.author) return null;
     return (
       <div className="profile-post-container">
         {this.getLink('profile-pic')}

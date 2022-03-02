@@ -26,9 +26,9 @@ class FeedIndex extends React.Component {
       <div>
         <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <ul>
-          {this.props.posts.map( (post, idx) => {
+          {this.props.posts.map( (post) => {
             if (post.authorId === post.profileId) {
-              return <li key={idx}><FeedIndexItem deletePost={this.props.deletePost} currentUser={this.props.currentUser} fetchAuthor={this.props.fetchAuthor} post={post} /></li>
+              return <li key={post.id}><PostIndexItem deleteComment={this.props.deleteComment} clearComments={this.props.clearComments} comments={this.props.comments} fetchComments={this.props.fetchComments} deletePost={this.props.deletePost} currentUser={this.props.currentUser} fetchAuthor={this.props.fetchAuthor} post={post} /></li>
             }
           })}
         </ul>
