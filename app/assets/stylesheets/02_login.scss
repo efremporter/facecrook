@@ -1,0 +1,128 @@
+.login-form-div {
+    margin-left: 15.9%;
+}
+
+.splash-logo {
+  color: #1877F2;
+  font-size: 58px;
+  font-family: 'Mulish', sans-serif;
+  letter-spacing: -2.1px;
+  font-weight: bold;
+  margin-top: 200px;
+}
+
+.welcome-message {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  line-height: 28px;
+  width: 500px;
+  font-weight: normal;
+  color: #1C1E21;
+  // display: inline-block;
+  text-rendering: optimizeLegibility;
+  margin-top: 15px;
+}
+
+.login-form {
+  width: 400px;
+  height: 350px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, .3);
+  box-sizing: border-box;
+  margin: 40px 0 0 0;
+}
+
+#first-login-input {
+  margin-top: 16px;
+}
+
+.login-input {
+  width: 357px;
+  height: 46px;
+  margin-bottom: 13px;
+  border-radius: 6px;
+  font-size: 17px;
+  padding-left: 14px;
+  border: 1px solid #dddfe2;
+}
+
+.login-button {
+  width: 370px;
+  height: 46px;
+  background-color: #1877F2;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+}
+
+.login-button:hover {
+  background-color: #1670e6;
+  text-shadow: none;
+}
+
+.demo-user-login:hover {
+  background-color: #1670e6;
+}
+
+.create-user-redirect:hover {
+  background-color: #3eac28;
+}
+
+.login-divider {
+  color: #dddfe2;
+  margin-top: -1px;
+}
+
+.create-user-redirect, .sign-up-button, .sign-up-demo  {
+  width: 195px;
+  height: 46px;
+  margin-top: 22.5px;
+  background-color: #42B72A;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+}
+
+.demo-user-login {
+  margin-top: 13px;
+  width: 370px;
+  height: 46px;
+  background-color: #1877F2;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  text-shadow: none;
+}
+
+.login-form-container {
+  margin-left: 47%;
+  margin-top: -238px;
+}
+
+.login-form-errors {
+  color: red;
+}
+
+.create-user-redirect {
+  margin-top: 5%;
+}
