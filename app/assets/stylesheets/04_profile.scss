@@ -185,6 +185,7 @@
 }
 
 .post-form-closed-container {
+  margin-top: -15px;
   width: 100%;
 }
 
@@ -384,13 +385,12 @@
 }
 
 .profile-post-container {
-  margin-bottom: 15px;
   min-height: 78px;
   background-color: white;
   width: 500px;
-  // margin-left: 32.4%;
   margin: auto;
-  margin-top: 37px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   border-radius: 8px;
 }
 
