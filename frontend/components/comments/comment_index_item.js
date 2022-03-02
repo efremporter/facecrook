@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {author: null}
+    this.getAuthorName = this.getAuthorName.bind(this)
+    this.getLinkToProfile = this.getLinkToProfile.bind(this)
   }
 
   componentDidMount() {
@@ -23,14 +26,31 @@ class CommentIndexItem extends React.Component {
     this.props.deleteComment(this.props.comment.id)
   }
 
+  getAuthorName() {
+    return this.getLinkToProfile()
+  }
+
+  getLinkToProfile() {
+    if (this.state.author) {
+      if (this.state.author.id !== this.props.post.authorId) {
+        return <Link to={`/users/${this.state.author.id}`} className="comment-author-name-link"><div className="comment-author-name">{this.state.author.firstName} {this.state.author.lastName}</div></Link>
+      } else {
+        return <div className="comment-author-name">{this.state.author.firstName} {this.state.author.lastName}</div>
+      }
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className="comment-container">
         {this.getProfilePicture()}
-        <div className="comment-background">
-          {this.props.comment.body}
-        </div>
-        <button onClick={this.deleteComment.bind(this)}>Delete</button>
+          <div className="comment-background">
+            {this.getAuthorName()}
+            <div className="comment-body">{this.props.comment.body}</div>
+          </div>
+        {/* <button className="comment-delete-button" onClick={this.deleteComment.bind(this)}>Delete</button> */}
       </div>
     )
   }

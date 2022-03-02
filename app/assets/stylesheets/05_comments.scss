@@ -47,6 +47,42 @@
 }
 
 .comment-background {
-  max-width: 404px;
+  width: 408px;
   background-color: #F0F2F5;
+  position: relative;
+  left: 60px;
+  bottom: 49px;
+  // bottom: 10px;
+  // left: 100px;
+  border-radius: 19px;
+}
+
+.comment-author-name {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;  padding-left: 10px;
+  color: #050505;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 0px 5px 12px;
+}
+
+.comment-author-name-link {
+  text-decoration: none;
+  color: #050505;
+}
+
+.comment-body {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;  padding-left: 10px;
+  color: #050505;
+  font-size: 15px;
+  padding: 0px 0px 10px 12px;
+}
+
+.comment-delete-button {
+  position: absolute;
+  // display: none;
+}
+
+.comment-container {
+  position: relative;
+  margin-bottom: -40px;
 }

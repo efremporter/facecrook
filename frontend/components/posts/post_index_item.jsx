@@ -97,7 +97,7 @@ class PostIndexItem extends React.Component {
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>
         <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
-        <CommentIndexContainer postId={this.props.post.id}/>
+        <CommentIndexContainer post={this.props.post}/>
         <CommentFormContainer currentUser={this.props.currentUser} postId={this.props.post.id}/>
       </div>
     )

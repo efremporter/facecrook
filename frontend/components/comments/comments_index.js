@@ -7,7 +7,7 @@ class CommentIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchComments(this.props.postId)
+    this.props.fetchComments(this.props.post.id)
   }
 
   componentWillUnmount() {
@@ -15,11 +15,12 @@ class CommentIndex extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <ul>
         {this.props.comments.map( comment => {
-          if (comment.postId === this.props.postId) {
-            return <li key={comment.id}><CommentIndexItem comment={comment} fetchAuthor={this.props.fetchAuthor} deleteComment={this.props.deleteComment}/></li>
+          if (comment.postId === this.props.post.id) {
+            return <li key={comment.id}><CommentIndexItem post={this.props.post} comment={comment} fetchAuthor={this.props.fetchAuthor} deleteComment={this.props.deleteComment}/></li>
           }
         })}
       </ul>
