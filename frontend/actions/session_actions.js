@@ -7,7 +7,6 @@ export const REMOVE_SESSION_ERRORS = 'REMOVE_SESSION_ERRORS';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 
 const receiveCurrentUser = user => {
-  console.log(user)
   return {
     type: RECEIVE_CURRENT_USER,
     user

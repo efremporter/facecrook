@@ -3,12 +3,12 @@ import React from "react";
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {body: '', authorId: window.currentUser.id, postId: null, photo: null, currentUser: null}
+    this.state = {body: '', authorId: this.props.currentUser.id, postId: null, photo: null, currentUser: this.props.currentUser}
     this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
-    this.props.fetchCurrentUser(window.currentUser.id)
+    this.props.fetchCurrentUser(this.props.currentUser.id)
     .then(user => this.setState({currentUser: user}))
     if (this.props.postId) {
       this.setState({postId: this.props.postId})
