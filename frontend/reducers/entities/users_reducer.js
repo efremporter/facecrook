@@ -1,4 +1,4 @@
-import { RECEIVE_USER } from "../../actions/user_actions";
+import { RECEIVE_USER, REMOVE_USERS } from "../../actions/user_actions";
 
 const UsersReducer = (state={}, action) => {
 
@@ -10,6 +10,9 @@ const UsersReducer = (state={}, action) => {
       let nextState = {}
       nextState[action.user.id] = action.user
       return nextState
+
+    case REMOVE_USERS:
+      return {}
       
     default:
       return state

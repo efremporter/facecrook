@@ -17,7 +17,6 @@ const App = () => {
     <Route path="/" component={ModalContainer}/>
     <Route path="/users/:userId" component={PostModalContainer}/>
     <Route exact path="/feed" component={PostModalContainer}/>
-    <ProtectedRoute path="/users/:userId" component={PostFormContainer} className="route-post-form-container" />
     <Switch>
       <ProtectedRoute path="/users/:userId" component={ProfileContainer}/>
       <AuthRoute path="/signup" component={SignUpContainer} />

@@ -9,7 +9,8 @@ class FeedIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.fetchAuthor(this.props.post.authorId)
-    .then(author => {this.setState({author})})
+    .then(author => {
+      this.setState({author})})
   }
 
   translateMonthIntoWord(monthNumber) {

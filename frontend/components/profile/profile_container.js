@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
-import { fetchUser, updateUser } from "../../actions/user_actions";
+import { clearPosts } from "../../actions/post_actions";
+import { clearUsers, fetchUser, updateUser } from "../../actions/user_actions";
 import Profile from "./profile";
 
 const mSTP = (state, ownProps) => {
@@ -17,7 +18,9 @@ const mDTP = dispatch => {
   return {
     fetchUser: userId => dispatch(fetchUser(userId)),
     openModal: () => dispatch(openModal('post')),
-    updateUser: user => dispatch(updateUser(user))
+    updateUser: user => dispatch(updateUser(user)),
+    clearUsers: () => dispatch(clearUsers()),
+    clearPosts: () => dispatch(clearPosts())
   }
 }
 

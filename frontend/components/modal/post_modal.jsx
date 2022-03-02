@@ -22,7 +22,6 @@ class PostModal extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     if (this.props.modal === "post") {
       return (
         <div>

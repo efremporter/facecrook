@@ -21,6 +21,11 @@ class Profile extends React.Component {
     this.props.fetchUser(this.props.userId)
   }
 
+  componentWillUnmount() {
+    this.props.clearPosts()
+    this.props.clearUsers()
+  }
+
   render() {
 
     if (!this.props.user) {

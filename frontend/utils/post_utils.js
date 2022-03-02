@@ -22,7 +22,6 @@ export const fetchPost = postId => {
 }
 
 export const createPost = post => {
-  console.log(post)
   let formData = new FormData();
   formData.append("post[body]", post.body)
   formData.append("post[author_id]", post.authorId)

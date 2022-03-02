@@ -8,7 +8,6 @@ class PostForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     if (this.props.user) {
       this.setState({profileId: this.props.user.id, authorId: this.props.currentUser.id})
     } else {
@@ -25,7 +24,6 @@ class PostForm extends React.Component {
   }
 
   handleChange(key) {
-    console.log(this.state)
     return e => {
       if (key === 'body') {
         this.setState({body: e.currentTarget.value})
@@ -38,6 +36,7 @@ class PostForm extends React.Component {
   }
 
   handleSubmit() {
+    console.log(this.state.authorId)
     this.props.createPost(this.state)
     .then(() => {
       this.props.closeModal();

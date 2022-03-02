@@ -1,5 +1,6 @@
 import React from 'react'
 import FeedIndexItem from './feed_index_item';
+import PostIndexItem from '../posts/post_index_item';
 import PostFormClosed from '../posts/post_form_closed';
 
 class FeedIndex extends React.Component {
@@ -9,6 +10,14 @@ class FeedIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllPosts()
+  }
+
+  componentDidUpdate() {
+    
+  }
+
+  componentWillUnmount() {
+    this.props.clearPosts()
   }
 
   render() {
