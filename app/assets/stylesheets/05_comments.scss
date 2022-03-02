@@ -63,11 +63,16 @@
   font-size: 13px;
   font-weight: bold;
   padding: 10px 0px 5px 12px;
+  display: inline-block;
 }
 
 .comment-author-name-link {
   text-decoration: none;
   color: #050505;
+}
+
+.comment-author-name:hover{
+  text-decoration: underline;
 }
 
 .comment-body {
