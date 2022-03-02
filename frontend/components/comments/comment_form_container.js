@@ -12,4 +12,4 @@ const mDTP = dispatch => {
 }
 
 
-export default connect(null, mDTP)(CommentForm)
+export default connect(null, mDTP)(CommentForm) 
