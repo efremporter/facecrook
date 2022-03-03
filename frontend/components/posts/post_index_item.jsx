@@ -76,12 +76,18 @@ class PostIndexItem extends React.Component {
 
   getLink(str) {
     if (str === 'date') {
+      if (!this.props.user) {
+        return <Link to={`/users/${this.props.post.authorId}`} className="profile-date-time-other-link"><span className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</span></Link>
+      }
       if (this.props.post.authorId === this.props.post.profileId) {
-        return <div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div>
+        return <span className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</span>
       } else {
-        return <Link to={`/users/${this.props.post.authorId}`} className="profile-date-time-other-link"><div className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</div></Link>
+        return <Link to={`/users/${this.props.post.authorId}`} className="profile-date-time-other-link"><span className="profile-date-time">{this.getPostDate(this.props.post.createdAt)}</span></Link>
       }
     } else if (str ==='profile-pic') {
+      if (!this.props.user) {
+        return <Link to={`/users/${this.props.post.authorId}`} className="mini-profile-pic-post-link"><img className="mini-profile-pic-post" src={this.state.author.profilePictureUrl}/></Link>
+      }
       if (this.props.post.authorId === this.props.post.profileId) {
         return  <img className="mini-profile-pic-post" src={this.state.author.profilePictureUrl}/>
       } else {
