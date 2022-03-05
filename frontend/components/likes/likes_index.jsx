@@ -12,7 +12,7 @@ class LikesIndex extends React.Component {
   componentDidMount() {
     let likedPost = false;
     this.props.likes.forEach( like => {
-      if (like.likerId === this.props.currentUser.id) {
+      if (like.likerId === this.props.currentUser.id && like.postId === this.props.postId) {
         likedPost = true;
       }
     })
@@ -60,6 +60,7 @@ class LikesIndex extends React.Component {
       addOrRemoveLike = this.addLike
     }
 
+    console.log(this.state.likedPost)
     return (
       <div>
         {/* <div onClick={addOrRemoveLike}>{this.countLikes()} likes</div> */}
