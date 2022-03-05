@@ -113,7 +113,10 @@
   font-size: 15px;
   font-weight: lighter;
   position: relative;
-  left: 395px;
+  // left: 395px;
+  float: right;
+  right: 38px;
+  margin-bottom: 13px;
   cursor: pointer;
 }
 

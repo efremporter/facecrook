@@ -11,7 +11,8 @@ const mSTP = state => {
     posts: Object.values(state.entities.posts).reverse(),
     currentUser: state.session.currentUser,
     modal: state.ui.modal,
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments),
+    likes: Object.values(state.entities.likes)
   }
 }
 

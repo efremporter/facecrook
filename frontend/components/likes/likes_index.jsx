@@ -63,7 +63,7 @@ class LikesIndex extends React.Component {
     return (
       <div>
         {/* <div onClick={addOrRemoveLike}>{this.countLikes()} likes</div> */}
-        <div className="like-button-container">
+        <div onClick={addOrRemoveLike} className="like-button-container">
           <img src={this.getLikeButton()} className="like-button"/>
           <span className="like-word">Like</span>
         </div>

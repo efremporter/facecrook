@@ -118,7 +118,7 @@ class PostIndexItem extends React.Component {
     } 
   }
 
-  getOpenCommentsButton() {
+  getCommentCount() {
     let numberOfComments = 0;
     if (this.props.comments) {
       this.props.comments.forEach( comment => {
@@ -152,6 +152,39 @@ class PostIndexItem extends React.Component {
     }
   }
 
+  showCommentsForm() {
+    if (this.state.showComments) {
+      return <CommentFormContainer currentUserId={this.props.currentUser.id} currentUser={this.state.currentUser} postId={this.props.post.id}/>
+    } else {
+      return null;
+    }
+  }
+
+  getDivider() {
+    if (this.state.showComments) {
+      return <hr className="post-divider-2"/>
+    } else {
+      return <hr className="post-divider-2" id="hide"/>
+    }
+  }
+
+  getLikeCount() {
+    let count = 0;
+    if (this.props.likes) {
+      this.props.likes.forEach( like => {
+        if (like.postId === this.props.post.id) count += 1
+      })
+    }
+    if (count > 0) {
+    return (
+      <div className="post-like-count-container">
+        <img className="post-like-logo" src={window.likeLogo} />
+        <span className="post-like-count" >{count}</span>
+      </div>
+    )
+    }
+  }
+
   render() {
     if (!this.state.author) return null;
     return (
@@ -162,16 +195,17 @@ class PostIndexItem extends React.Component {
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>
         <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
-        {this.getOpenCommentsButton()}
+        {this.getLikeCount()}
+        {this.getCommentCount()}
         <hr className="post-divider-1"/>
         <LikesIndexContainer currentUser={this.props.currentUser} postId={this.props.post.id}/>
-        <div className="comment-button-container">
+        <div onClick={this.toggleComments.bind(this)} className="comment-button-container">
           <img src={window.commentLogo} className="comment-button"/>
           <span className="comment-word">Comment</span>
         </div>
-        <hr className="post-divider-2"/>
+        {this.getDivider()}
         {this.showComments()}
-        <CommentFormContainer currentUserId={this.props.currentUser.id} currentUser={this.state.currentUser} postId={this.props.post.id}/>
+        {this.showCommentsForm()}
       </div>
     )
   }
