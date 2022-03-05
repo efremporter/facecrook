@@ -1,4 +1,28 @@
-.post-divider {
-  opacity: 30%;
-  width: 465px;
+.like-button-container {
+  width: 140px;
+  height: 34px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0px 0px 3px 74px;
+  float: left;
+}
+
+.like-button-container:hover {
+  background-color: #F1F2F2;
+}
+
+.like-button {
+  height: 20px;
+  position: relative;
+  left: 40px;
+  top: 7px;
+}
+
+.like-word {
+  color: #65676B;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  position: relative;
+  left: 47px;
+  top: 3px;
 }

@@ -145,3 +145,28 @@
 #delete-comment-button {
   right: 4px;
 }
+
+.comment-button-container {
+  width: 140px;
+  height: 34px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin: 0px 74px 3px 0px;
+}
+
+.comment-button {
+  height: 20px;
+  position: relative;
+  left: 27px;
+  top: 8px;
+}
+
+.comment-word {
+  color: #65676B;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  position: relative;
+  left: 33px;
+  top: 2px;
+}

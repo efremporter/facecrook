@@ -163,10 +163,13 @@ class PostIndexItem extends React.Component {
         <div className="profile-post-body">{this.props.post.body}</div>
         <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
         {this.getOpenCommentsButton()}
-        <hr className="post-divider"/>
-        {/* <div>Like Comment</div> */}
+        <hr className="post-divider-1"/>
         <LikesIndexContainer currentUser={this.props.currentUser} postId={this.props.post.id}/>
-        <hr className="post-divider"/>
+        <div className="comment-button-container">
+          <img src={window.commentLogo} className="comment-button"/>
+          <span className="comment-word">Comment</span>
+        </div>
+        <hr className="post-divider-2"/>
         {this.showComments()}
         <CommentFormContainer currentUserId={this.props.currentUser.id} currentUser={this.state.currentUser} postId={this.props.post.id}/>
       </div>
