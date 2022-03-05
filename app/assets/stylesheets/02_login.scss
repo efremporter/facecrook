@@ -9,6 +9,8 @@
   letter-spacing: -2.1px;
   font-weight: bold;
   margin-top: 200px;
+  position: relative;
+  z-index: -1;
 }
 
 .welcome-message {
@@ -21,6 +23,8 @@
   // display: inline-block;
   text-rendering: optimizeLegibility;
   margin-top: 15px;
+  position: relative;
+  z-index: -1;
 }
 
 .login-form {
