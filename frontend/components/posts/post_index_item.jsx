@@ -170,18 +170,30 @@ class PostIndexItem extends React.Component {
 
   getLikeCount() {
     let count = 0;
+    let myLike = null;
     if (this.props.likes) {
       this.props.likes.forEach( like => {
-        if (like.postId === this.props.post.id) count += 1
+        if (like.postId === this.props.post.id) {
+          count += 1;
+          if (like.likerId === this.props.currentUser.id) myLike = true;
+        }
       })
     }
+    
     if (count > 0) {
-    return (
-      <div className="post-like-count-container">
-        <img className="post-like-logo" src={window.likeLogo} />
-        <span className="post-like-count" >{count}</span>
-      </div>
-    )
+      if (count === 1 && myLike) {
+        count = `${this.props.currentUser.firstName} ${this.props.currentUser.lastName}`
+      } else if (count === 2 && myLike) {
+        count = `You and ${1} other`
+      } else if (count > 2 && myLike) {
+        count = `You and ${count - 1} others`
+      }
+      return (
+        <div className="post-like-count-container">
+          <img className="post-like-logo" src={window.likeLogo} />
+          <span className="post-like-count">{count}</span>
+        </div>
+      )
     }
   }
 

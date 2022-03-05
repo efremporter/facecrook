@@ -8,7 +8,6 @@ class PostIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.likes)
     this.props.fetchPosts(this.props.userId)
   }
 
@@ -24,7 +23,22 @@ class PostIndex extends React.Component {
     return (
       <ul className="post-index-container">
         {this.props.posts.map( (post) => {
-          return <li key={post.id}><PostIndexItem fetchUser={this.props.fetchUser} fetchLikes={this.props.fetchLikes} clearLikes={this.props.clearLikes} deleteComment={this.props.deleteComment} clearComments={this.props.clearComments} comments={this.props.comments} likes={this.props.likes} fetchComments={this.props.fetchComments} currentUser={this.props.currentUser} deletePost={this.props.deletePost} fetchAuthor={this.props.fetchAuthor} user={this.props.user} post={post}/></li>
+          return <li key={post.id}>
+            <PostIndexItem 
+              fetchUser={this.props.fetchUser} 
+              fetchLikes={this.props.fetchLikes} 
+              clearLikes={this.props.clearLikes} 
+              deleteComment={this.props.deleteComment} 
+              clearComments={this.props.clearComments} 
+              comments={this.props.comments} 
+              likes={this.props.likes} 
+              fetchComments={this.props.fetchComments} 
+              currentUser={this.props.currentUser} 
+              deletePost={this.props.deletePost} 
+              fetchAuthor={this.props.fetchAuthor} 
+              user={this.props.user} post={post}
+            />
+          </li>
         })}
       </ul>
     )
