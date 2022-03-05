@@ -17,7 +17,7 @@ export const createLike = like => {
     method: 'POST',
     url: `/api/posts/${like.postId}/likes`,
     data: {
-      like: {liker_id: like.likerId}
+      like: {liker_id: like.likerId, post_id: like.postId}
     }
   })
 }

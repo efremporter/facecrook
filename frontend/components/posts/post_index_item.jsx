@@ -2,21 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CommentIndexContainer from "../comments/comments_index_container";
 import CommentFormContainer from "../comments/comment_form_container";
+import LikesIndexContainer from "../likes/likes_index_container";
 
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {author: null, showComments: false}
+    this.state = {author: null, showComments: false, currentUser: null}
   }
 
   componentDidMount() {
     this.props.fetchAuthor(this.props.post.authorId)
     .then(author => {this.setState({author})})
+    this.props.fetchAuthor(this.props.currentUser.id)
+    .then( currentUser => this.setState({currentUser}))
     this.props.fetchComments(this.props.post.id)
+    this.props.fetchLikes(this.props.post.id)
   }
 
-  componentWillUnmount() {
-    this.props.clearComments();
+  componentDidUpdate(prevProps) {
+    if (this.state.author && this.props.user) {
+      if (this.props.user.id === this.state.author.id && prevProps.user.profilePictureUrl !== this.props.user.profilePictureUrl) {
+        this.props.fetchAuthor(this.props.post.authorId)
+        .then(author => {this.setState({author})})
+      }
+    }
   }
 
   getAuthorName() {
@@ -150,13 +159,16 @@ class PostIndexItem extends React.Component {
         {this.getLink('profile-pic')}
         {this.getAuthorName()}
         {this.getLink('date')}
-        <br />
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>
         <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
         {this.getOpenCommentsButton()}
+        <hr className="post-divider"/>
+        {/* <div>Like Comment</div> */}
+        <LikesIndexContainer currentUser={this.props.currentUser} postId={this.props.post.id}/>
+        <hr className="post-divider"/>
         {this.showComments()}
-        <CommentFormContainer currentUser={this.props.currentUser} postId={this.props.post.id}/>
+        <CommentFormContainer currentUserId={this.props.currentUser.id} currentUser={this.state.currentUser} postId={this.props.post.id}/>
       </div>
     )
   }

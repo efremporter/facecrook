@@ -3,6 +3,7 @@ import * as LikeAPIUtil from '../utils/like_utils';
 export const RECEIVE_LIKE = 'RECEIVE_LIKE';
 export const RECEIVE_LIKES = 'RECEIVE_LIKES';
 export const REMOVE_LIKE = 'REMOVE_LIKE';
+export const CLEAR_LIKES = 'CLEAR_LIKES';
 
 const receiveLikes = likes => {
   return {
@@ -23,6 +24,10 @@ const deleteLike = id => {
     type: REMOVE_LIKE,
     id
   }
+}
+
+export const clearLikes = () => dispatch => {
+  dispatch({type: CLEAR_LIKES})
 }
 
 export const fetchPostLikes = postId => dispatch => {

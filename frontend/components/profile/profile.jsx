@@ -15,8 +15,19 @@ class Profile extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.userId !== prevProps.userId)
-    this.props.fetchUser(this.props.userId)
+    if (this.props.userId !== prevProps.userId) {
+      this.props.clearUsers()
+      this.props.fetchUser(this.props.userId)
+    }
+    
+    // console.log(this.props.user.profilePictureUrl)
+    if (prevProps.user && this.props.user) {
+      if (prevProps.user.profilePictureUrl !== this.props.user.profilePictureUrl) {
+        debugger
+        this.props.clearUsers()
+        this.props.fetchUser(this.props.userId)
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -33,11 +44,11 @@ class Profile extends React.Component {
       <div>
         <div className="my-profile-background">
           <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
-          <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
+          <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser} fetchUser={this.props.fetchUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
         </div>
         <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
-        <PostIndexContainer user={this.props.user} userId={this.props.userId}/>
+        <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
       </div>
     )
   }

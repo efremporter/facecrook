@@ -18,7 +18,11 @@ class ProfilePicture extends React.Component {
 
   handleFile(e) {
     e.preventDefault()
-    this.setState({profilePicture: e.currentTarget.files[0]}, () => this.props.updateUser(this.state))
+    this.setState({profilePicture: e.currentTarget.files[0]}, () => {
+      this.props.updateUser(this.state)
+      // .then(() => this.props.fetchUser(this.props.user.id))
+      // .then(() => console.log('HERERERHERE'))
+    })
   }
 
   render() {

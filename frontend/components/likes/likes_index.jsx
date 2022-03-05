@@ -3,6 +3,59 @@ import React from "react";
 class LikesIndex extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {likedPost: null}
+    this.countLikes = this.countLikes.bind(this)
+    this.addLike = this.addLike.bind(this)
+    this.removeLike = this.removeLike.bind(this)
+  }
+
+  componentDidMount() {
+    let likedPost = false;
+    this.props.likes.forEach( like => {
+      if (like.likerId === this.props.currentUser.id) {
+        likedPost = true;
+      }
+    })
+    this.setState({likedPost})
+  }
+
+  addLike() {
+    this.props.createLike({likerId: this.props.currentUser.id, postId: this.props.postId})
+      .then( () => this.setState({likedPost: true}))
+  }
+
+  removeLike() {
+    let id = null;
+    this.props.likes.forEach( like => {
+      if (like.postId === this.props.postId && like.likerId === this.props.currentUser.id) id = like.id
+    })
+    this.props.removeLike(id)
+    .then( () => this.setState({likedPost: false}))
+  }
+
+  countLikes() {
+    let count = 0;
+    this.props.likes.forEach( like => {
+      if (like.postId === this.props.postId) count += 1
+    })
+    return count;
+  }
+
+  render() {
+    if (this.state === null) return null;
+
+    let addOrRemoveLike;
+    if (this.state.likedPost === true) {
+      addOrRemoveLike = this.removeLike
+    } else if (this.state.likedPost === false) {
+      addOrRemoveLike = this.addLike
+    }
+
+    return (
+      <div>
+        <div onClick={addOrRemoveLike}>{this.countLikes()} likes</div>
+      </div>
+    )
   }
 }
 

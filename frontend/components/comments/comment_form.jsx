@@ -3,15 +3,24 @@ import React from "react";
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {body: '', authorId: this.props.currentUser.id, postId: null, photo: null, currentUser: this.props.currentUser}
+    this.state = {body: '', postId: null, photo: null, currentUser: this.props.currentUser}
     this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
-    this.props.fetchCurrentUser(this.props.currentUser.id)
-    .then(user => this.setState({currentUser: user}))
+    this.props.fetchCurrentUser(this.props.currentUserId)
+    .then( currentUser => this.setState({currentUser}))
     if (this.props.postId) {
       this.setState({postId: this.props.postId})
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser && prevProps.currentUser) {
+      if (prevProps.currentUser.profilePictureUrl !== this.props.currentUser.profilePictureUrl) {
+        this.props.fetchCurrentUser()
+        .then( currentUser => this.setState({currentUser}))
+      }
     }
   }
 
@@ -30,7 +39,7 @@ class CommentForm extends React.Component {
   handleSubmit() {
     const comment = {
       body: this.state.body,
-      authorId: this.state.authorId,
+      authorId: this.props.currentUser.id,
       postId: this.state.postId,
       photo: this.state.photo
     }
@@ -51,7 +60,7 @@ class CommentForm extends React.Component {
     if (this.state.currentUser) {
       return <img className="mini-profile-pic-post" id="mini-pic-on-comment" src={this.state.currentUser.profilePictureUrl}/>
     } else {
-      return null;
+      return null
     }
   }
 
@@ -59,7 +68,7 @@ class CommentForm extends React.Component {
     return (
       <form id="comment-form" onSubmit={this.handleSubmit.bind(this)}>
         {this.getProfilePicture()}
-        <input id="comment-body" type="submit" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
+        <input id="comment-body" value={this.state.body} onChange={this.handleChange('body')} className="comment-form-file" type="text" placeholder="Write a comment..." />
         <label>
           <div className="comment-camera-icon-container">
             {this.getPictureLogo()}

@@ -3,6 +3,7 @@ import { fetchAllPosts, deletePost, clearPosts } from "../../actions/post_action
 import { clearComments, deleteComment, fetchComments } from "../../actions/comment_actions";
 import { fetchAuthor } from "../../actions/user_actions";
 import { openModal } from "../../actions/modal_actions";
+import { clearLikes, fetchPostLikes } from "../../actions/like_actions";
 import FeedIndex from "./feed_index";
 
 const mSTP = state => {
@@ -23,7 +24,9 @@ const mDTP = dispatch => {
     clearPosts: () => dispatch(clearPosts()),
     fetchComments: postId => dispatch(fetchComments(postId)),
     clearComments: () => dispatch(clearComments()),
-    deleteComment: commentId => dispatch(deleteComment(commentId))
+    deleteComment: commentId => dispatch(deleteComment(commentId)),
+    clearLikes: () => dispatch(clearLikes()),
+    fetchLikes: postId => dispatch(fetchPostLikes(postId))
   }
 }
 

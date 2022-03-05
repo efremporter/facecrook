@@ -18,6 +18,7 @@ class FeedIndex extends React.Component {
 
   componentWillUnmount() {
     this.props.clearPosts()
+    this.props.clearComments()
   }
 
   render() {
@@ -28,7 +29,7 @@ class FeedIndex extends React.Component {
         <ul>
           {this.props.posts.map( (post) => {
             if (post.authorId === post.profileId) {
-              return <li key={post.id}><PostIndexItem deleteComment={this.props.deleteComment} clearComments={this.props.clearComments} comments={this.props.comments} fetchComments={this.props.fetchComments} deletePost={this.props.deletePost} currentUser={this.props.currentUser} fetchAuthor={this.props.fetchAuthor} post={post} /></li>
+              return <li key={post.id}><PostIndexItem fetchLikes={this.props.fetchLikes} deleteComment={this.props.deleteComment} comments={this.props.comments} fetchComments={this.props.fetchComments} deletePost={this.props.deletePost} currentUser={this.props.currentUser} fetchAuthor={this.props.fetchAuthor} post={post} /></li>
             }
           })}
         </ul>

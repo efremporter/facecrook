@@ -26,10 +26,9 @@ const removeComment = commentId => {
   }
 }
 
-const removeComments = postId => {
+const removeComments = () => {
   return {
-    type: CLEAR_COMMENTS,
-    postId
+    type: CLEAR_COMMENTS
   }
 }
 
