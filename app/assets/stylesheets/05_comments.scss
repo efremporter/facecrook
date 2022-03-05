@@ -152,7 +152,12 @@
   border-radius: 4px;
   cursor: pointer;
   float: right;
-  margin: 0px 74px 3px 0px;
+  margin: 0px 90px 3px 0px;
+  // background-color: #F1F2F2;
+}
+
+.comment-button-container:hover {
+  background-color: #F1F2F2;
 }
 
 .comment-button {
