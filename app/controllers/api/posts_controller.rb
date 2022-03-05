@@ -41,9 +41,26 @@ class Api::PostsController < ApplicationController
     post = Post.find(params[:id])
     
     if post
+      comments = Comment.where(post_id: params[:id])
+      likes = Like.where(post_id: params[:id])
+
+      if comments
+        comments.each do |comment|
+          if comment.photo.attached?
+            comment.photo.delete
+          end
+          comment.delete
+        end
+      end
+      
+      if likes
+        likes.each { |like| like.delete}
+      end
+
       if post.photo.attached?
         post.photo.delete
       end
+
       post.delete
       render json: ['Post deleted'], status: 200
     else
