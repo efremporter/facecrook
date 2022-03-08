@@ -5,9 +5,12 @@ import PostModal from "./post_modal";
 
 const mSTP = (state, ownProps) => {
   const userId = ownProps.match.params.userId
+  if (userId) {
+    userId = parseInt(userId)
+  }
   return {
     user: state.entities.users[userId],
-    userId: parseInt(userId),
+    userId: userId,
     modal: state.ui.modal
   };
 };
