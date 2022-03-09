@@ -9,7 +9,7 @@ class PostModal extends React.Component {
 
   componentDidMount() {
     if (this.props.userId) {
-      
+
       this.props.fetchUser(this.props.userId)
       .then( () => this.setState({user: this.props.user}))
     }

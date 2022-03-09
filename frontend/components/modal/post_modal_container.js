@@ -4,7 +4,7 @@ import { fetchUser } from "../../actions/user_actions";
 import PostModal from "./post_modal";
 
 const mSTP = (state, ownProps) => {
-  const userId = ownProps.match.params.userId
+  let userId = ownProps.match.params.userId
   if (userId) {
     userId = parseInt(userId)
   }

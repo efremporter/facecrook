@@ -3,6 +3,7 @@ import PostIndexContainer from "../posts/post_index_container";
 import ProfilePicture from "./profile_picture";
 import ProfileCoverPhoto from "./profile_cover_photo"
 import PostFormClosed from '../posts/post_form_closed';
+import FriendRequestsContainer from '../friends/friend_requests_container';
 
 class Profile extends React.Component {
 
@@ -46,6 +47,7 @@ class Profile extends React.Component {
           <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser} fetchUser={this.props.fetchUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
+          <FriendRequestsContainer userId={this.props.userId} />
         </div>
         <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
