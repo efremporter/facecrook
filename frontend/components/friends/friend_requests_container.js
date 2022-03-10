@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { createFriend, deleteFriend, getFriends } from "../../actions/friend_actions";
+import { createFriend, deleteFriend, getFriends, updateFriend } from "../../actions/friend_actions";
 import FriendRequests from "./friend_requests";
 
 const mSTP = state => {
@@ -13,7 +13,8 @@ const mDTP = dispatch => {
   return {
     getFriends: userId => dispatch(getFriends(userId)),
     createFriend: friend => dispatch(createFriend(friend)),
-    deleteFriend: id => dispatch(deleteFriend(id)),
+    updateFriend: friend => dispatch(updateFriend(friend)),
+    deleteFriend: id => dispatch(deleteFriend(id))
   }
 }
 

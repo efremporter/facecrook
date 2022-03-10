@@ -5,8 +5,15 @@ export const getFriends = user_id => {
   })
 }
 
+export const updateFriend = friend => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/friends/${friend.id}`,
+    data: {friend: {user_id: friend.userId, friend_id: friend.friendId, status: friend.status}}
+  })
+}
+
 export const createFriend = friend => {
-  console.log(friend)
   return $.ajax({
     method: 'POST',
     url: `/api/friends`,

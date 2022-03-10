@@ -30,8 +30,18 @@ class Api::FriendsController < ApplicationController
     end
   end
 
-  def destroy 
+  def update 
+    @friend = Friend.find(params[:id])
 
+    if @friend
+      @friend.update(friend_params)
+      render :show
+    else
+      render json: ["Could not complete request"], status: 400
+    end
+  end 
+
+  def destroy 
     friend = Friend.find(params[:id])
     
     if friend

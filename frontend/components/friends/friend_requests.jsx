@@ -47,11 +47,22 @@ class FriendRequests extends React.Component {
     })
   }
 
+  confirmFriendRequest() {
+    let updatedFriend;
+    this.props.friends.forEach( friend => {
+      if (friend.userId === this.props.currentUserId || friend.friendId === this.props.currentUserId) {
+        updatedFriend = friend
+      }
+    })
+    updatedFriend.status = 'true';
+    this.props.updateFriend(updatedFriend)
+  }
+
   getFriendStatus() {
     if (this.state.status === 'true') {
       return (
         <label>
-          <div className='add-remove-friends-button' id="remove-friends-button">
+          <div onClick={this.removeFriend.bind(this)} className='add-remove-friends-button' id="remove-friends-button">
             <img className="add-friend-icon" src={window.friendsIcon}/>
             <div className='add-friend-icon-text' id="remove-friend-icon-text">Friends</div>
           </div>
@@ -79,8 +90,8 @@ class FriendRequests extends React.Component {
       return (
         <div className='friend-request-strip-container'>
           <div className='sent-you-a-friend-request'>{this.props.name} sent you a friend request</div>
-          <button className='confirm-friend-request-button'>Confirm Request</button>
-          <button className='delete-friend-request-button'>Delete Request</button>
+          <button onClick={this.confirmFriendRequest.bind(this)} className='confirm-friend-request-button'>Confirm Request</button>
+          <button onClick={this.removeFriend.bind(this)} className='delete-friend-request-button'>Delete Request</button>
         </div>
       )
     }
