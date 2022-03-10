@@ -1,8 +1,7 @@
-export const getFriendStatus = (userId, friendId) => {
+export const getFriends = user_id => {
   return $.ajax({
     method: 'GET',
-    url: `/api/users/${userId}/friends`,
-    data: {friend: {user_id: userId, friend_id: friendId}}
+    url: `/api/users/${user_id}/friends`,
   })
 }
 
@@ -10,7 +9,7 @@ export const createFriend = friend => {
   return $.ajax({
     method: 'POST',
     url: `/api/friends`,
-    data: friend
+    data: {friend: {user_id: friend.userId, friend_id: friend.friendId, status: friend.status}}
   })
 }
 

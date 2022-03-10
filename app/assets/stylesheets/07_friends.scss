@@ -1,0 +1,44 @@
+.add-remove-friends-button {
+  width: 120px;
+  height: 35px;
+  background-color: #1B74E4;
+  border-radius: 6px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.add-remove-friends-button:hover {
+  background-color: #176ace;
+}
+
+.add-friend-icon {
+  height: 16px;
+  width: 16px;
+  padding-top: 9px;
+  padding-left: 10px;
+  display: absolute;
+}
+
+.add-friend-icon-text {
+  font-weight: bold;
+  color: white;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  position: relative;
+  text-align: center;
+  margin-left: 24px;
+  bottom: 18px;
+}
+
+#remove-friends-button {
+  width: 100px;
+  background-color: #E4E6EB;
+}
+
+#remove-friends-button:hover {
+  background-color: #d4d6da;
+}
+
+#remove-friend-icon-text {
+  color: black;
+}

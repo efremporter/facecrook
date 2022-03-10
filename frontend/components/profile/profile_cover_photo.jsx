@@ -12,7 +12,7 @@ class ProfileCoverPhoto extends React.Component {
       coverPhotoUrl: this.props.user.coverPhotoUrl
     })
   }
-
+  
   handleFile(e) {
     e.preventDefault()
     this.setState({profileCoverPhoto: e.currentTarget.files[0]}, () => this.props.updateUser(this.state))

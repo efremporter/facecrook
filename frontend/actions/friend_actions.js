@@ -5,28 +5,28 @@ export const REMOVE_FRIEND = 'REMOVE_FRIEND';
 
 const receiveFriends = friends => {
   return {
-    method: RECEIVE_FRIENDS,
+    type: RECEIVE_FRIENDS,
     friends
   }
 }
 
 const receiveFriend = friend => {
   return {
-    method: RECEIVE_FRIEND,
+    type: RECEIVE_FRIEND,
     friend
   }
 }
 
 const removeFriend = id => {
   return {
-    method: REMOVE_FRIEND,
+    type: REMOVE_FRIEND,
     id
   }
 }
 
-export const getFriendStatus = (userId, friendId) => {
-  return FriendAPIUtil.getFriendStatus(userId, friendId)
-  // .then( friends => dispatch(receiveFriends(friends)))
+export const getFriends = (id) => dispatch => {
+  return FriendAPIUtil.getFriends(id)
+  .then( friends => dispatch(receiveFriends(friends)))
 }
 
 export const createFriend = friend => dispatch => {

@@ -1,16 +1,20 @@
 import { connect } from "react-redux";
-import { getFriendStatus } from "../../actions/friend_actions";
+import { createFriend, deleteFriend, getFriends } from "../../actions/friend_actions";
 import FriendRequests from "./friend_requests";
+
 
 const mSTP = state => {
   return {
-    friendId: state.session.currentUser.id,
+    currentUserId: state.session.currentUser.id,
+    friends: Object.values(state.entities.friends)
   }
 }
 
 const mDTP = dispatch => {
   return {
-    getFriendStatus: (userId, friendId) => getFriendStatus(userId, friendId)
+    getFriends: id => dispatch(getFriends(id)),
+    createFriend: friend => dispatch(createFriend(friend)),
+    deleteFriend: id => dispatch(deleteFriend(id))
   }
 }
 

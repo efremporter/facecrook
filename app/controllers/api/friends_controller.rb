@@ -1,23 +1,18 @@
 class Api::FriendsController < ApplicationController
 
   def index
-    if (params[:user_id] && params[:friend_id])
-      @friend = Friend.find_by(user_id: params[:user_id], friend_id: params[:friend_id])
-    else
-      @friends = Friend.where(user_id: params[:user_id])
-    end
+    puts params
+    @friends = Friend.where(user_id: params[:user_id]) + Friend.where(friend_id: params[:friend_id])
 
     if @friends
       render :index
-    elsif @friend
-      render :show
     else
       render json: ['No friends found', status: 404]
     end
   end
 
   def show
-    @friend = Friend.find_by(params[:user_id], params[:friend_id])
+    @friend = Friend.find(params[:id])
 
     if @friend
       render :show
@@ -27,7 +22,7 @@ class Api::FriendsController < ApplicationController
   end
 
   def create
-    @friend = Friend.new(params)
+    @friend = Friend.new(friend_params)
 
     if @friend.save
       render :show

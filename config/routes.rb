@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :destroy, :show, :update] do 
       resources :posts, only: [:index]
       resources :likes, only: [:index]
+      resources :friends, only: [:index]
     end
     resource :session, only: [:create, :destroy]
     resources :posts, only: [:index, :show, :create, :destroy, :update] do
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:destroy]
     resources :likes, only: [:destroy, :show]
+    resources :friends, only: [:create, :destroy, :show]
   end
 end
