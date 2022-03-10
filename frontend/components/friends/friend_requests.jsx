@@ -12,7 +12,7 @@ class FriendRequests extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
+    if (prevProps.friends.length !== this.props.friends.length) {
       this.props.getFriends(this.props.userId)
       .then( () => this.setFriendStatus())
     }
@@ -56,6 +56,7 @@ class FriendRequests extends React.Component {
     })
     updatedFriend.status = 'true';
     this.props.updateFriend(updatedFriend)
+    .then( () => this.setState({status: 'true'}))
   }
 
   getFriendStatus() {
