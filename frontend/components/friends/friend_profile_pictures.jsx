@@ -29,11 +29,21 @@ class FriendProfilePictures extends React.Component {
     }
   }
 
+  getFriendCount() {
+    let friend = ''
+    if (this.state.friends.length === 1) {
+      friend = 'friend'
+    } else {
+      friend = 'friends'
+    }
+    return <div className="profile-friend-count">{this.state.friends.length} {friend}</div>
+  }
+
   render() {
     if (this.state.friends.length < 1) return null
     return (
       <div>
-        <div className="profile-friend-count">{this.state.friends.length} friends</div>
+        {this.getFriendCount()}
         <ul className="friend-profile-picture-ul">
           {this.state.friends.map( (friend, idx) => {
             if (idx <= 7) {
