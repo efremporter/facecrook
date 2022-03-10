@@ -105,3 +105,43 @@
   margin: auto;
   text-align: right;
 }
+
+.unfriend-button {
+  display: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  margin: auto;
+  width: 100px;
+  height: 35px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  position: absolute;
+  text-align: center;
+  margin-top: -7.7px;
+}
+
+.unfriend-logo {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  margin-top: 7px;
+  right: 3px;
+}
+
+.unfriend-button-text {
+  position: relative;
+  bottom: 4px;
+  left: 4px;
+}
+
+#remove-friends-button:hover .unfriend-button {
+  display: block;
+}
+
+.unfriend-button:hover {
+  background-color: #f0f0f0;
+}

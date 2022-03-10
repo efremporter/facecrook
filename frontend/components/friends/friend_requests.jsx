@@ -61,21 +61,27 @@ class FriendRequests extends React.Component {
   getFriendStatus() {
     if (this.state.status === 'true') {
       return (
-        <label>
-          <div onClick={this.removeFriend.bind(this)} className='add-remove-friends-button' id="remove-friends-button">
-            <img className="add-friend-icon" src={window.friendsIcon}/>
-            <div className='add-friend-icon-text' id="remove-friend-icon-text">Friends</div>
-          </div>
-        </label>
+        <div>
+          <label>
+            <div className='add-remove-friends-button' id="remove-friends-button">
+              <img className="add-friend-icon" src={window.friendsIcon}/>
+              <div className='add-friend-icon-text' id="remove-friend-icon-text">Friends</div>
+              <div onClick={this.removeFriend.bind(this)} className="unfriend-button">
+                <img className="unfriend-logo" src={window.unfriendIcon}/> 
+                <span className='unfriend-button-text'>Unfriend</span>
+              </div>
+            </div>
+          </label>
+        </div>
       )
     } else if (this.state.status === 'false') {
       return (
-        <label>
-          <div onClick={this.createFriend.bind(this)} className='add-remove-friends-button'>
-            <img className="add-friend-icon" src={window.addFriendIcon} />
-            <div className='add-friend-icon-text'>Add Friend</div>
-          </div>
-        </label>
+          <label>
+            <div onClick={this.createFriend.bind(this)} className='add-remove-friends-button'>
+              <img className="add-friend-icon" src={window.addFriendIcon} />
+              <div className='add-friend-icon-text'>Add Friend</div>
+            </div>
+          </label>
       )
     } else if (this.state.status === 'pending' && this.state.friendId === this.props.currentUserId) {
       return (
