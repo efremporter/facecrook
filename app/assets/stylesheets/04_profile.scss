@@ -53,16 +53,16 @@
   height: 36px;
   background-color: #FFFFFF;
   display: flex;
-  position: relative;
+  position: absolute;
   z-index: 2;
+  margin-top: 18.9px;
+  right: 4.5%;
   cursor: pointer;
 }
 
 #cover-already-exists {
   width: 100px;
-  position: absolute;
-  right: 4.2%;
-  // margin-left: 808px;
+  margin-left: 808px;
 }
 
 .cover-camera-icon-container:hover {
