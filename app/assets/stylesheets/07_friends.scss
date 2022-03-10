@@ -42,3 +42,66 @@
 #remove-friend-icon-text {
   color: black;
 }
+
+.confirm-friend-request-button {
+  width: 145px;
+  height: 40px;
+  background-color: #1B74E4;
+  border-radius: 6px;
+  margin: auto;
+  cursor: pointer;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  margin-top: 12px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.confirm-friend-request-button:hover {
+  background-color: #176ace;
+}
+
+.delete-friend-request-button {
+  width: 145px;
+  height: 40px;
+  background-color: #E4E6EB;
+  border-radius: 6px;
+  margin: auto;
+  cursor: pointer;
+  color: black;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  margin-right: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.delete-friend-request-button:hover {
+  background-color: #d4d6da;
+}
+
+.sent-you-a-friend-request {
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: left;
+  position: absolute;
+  margin-top: 24px;
+  margin-left: 16px;
+}
+
+.friend-request-strip-container {
+  border-radius: 9px;
+  width: 61.5%;
+  min-width: 330px;
+  height: 65px;
+  background-color: #F7F8FA;
+  margin: auto;
+  text-align: right;
+}

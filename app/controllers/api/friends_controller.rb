@@ -1,8 +1,7 @@
 class Api::FriendsController < ApplicationController
 
   def index
-    puts params
-    @friends = Friend.where(user_id: params[:user_id]) + Friend.where(friend_id: params[:friend_id])
+    @friends = Friend.where(user_id: params[:user_id]) + Friend.where(friend_id: params[:user_id])
 
     if @friends
       render :index

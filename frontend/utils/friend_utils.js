@@ -6,6 +6,7 @@ export const getFriends = user_id => {
 }
 
 export const createFriend = friend => {
+  console.log(friend)
   return $.ajax({
     method: 'POST',
     url: `/api/friends`,

@@ -3,7 +3,7 @@ import React from 'react';
 class FriendRequests extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {userId: this.props.userId, friendId: this.props.currentUserId, status: null}
+    this.state = {userId: null, friendId: null, status: null}
   }
 
   componentDidMount() {
@@ -20,24 +20,28 @@ class FriendRequests extends React.Component {
 
   setFriendStatus() {
     let status = 'false'
+    let userId;
+    let friendId;
     if (this.props.friends.length > 0) {
       this.props.friends.forEach( friend => {
-        if (this.props.currentUserId === friend.friendId) {
+        if (this.props.currentUserId === friend.friendId || this.props.currentUserId === friend.userId) {
           if (friend.status) status = friend.status
+          friendId = friend.friendId
+          userId = friend.userId
         } 
       })
     }
-    this.setState({status})
+    this.setState({userId, friendId, status})
   }
 
   createFriend() {
-    let friend = {userId: this.state.userId, friendId: this.state.friendId, status: 'pending'}
+    let friend = {userId: this.props.userId, friendId: this.props.currentUserId, status: 'pending'}
     this.props.createFriend(friend)
   }
 
   removeFriend() {
     this.props.friends.forEach( friend => {
-      if (friend.userId === this.props.userId) {
+      if (friend.userId === this.props.currentUserId || friend.friendId === this.props.currentUserId) {
         this.props.deleteFriend(friend.id)
       }
     })
@@ -56,13 +60,13 @@ class FriendRequests extends React.Component {
     } else if (this.state.status === 'false') {
       return (
         <label>
-          <div className='add-remove-friends-button'>
+          <div onClick={this.createFriend.bind(this)} className='add-remove-friends-button'>
             <img className="add-friend-icon" src={window.addFriendIcon} />
-            <div onClick={this.createFriend.bind(this)} className='add-friend-icon-text'>Add Friend</div>
+            <div className='add-friend-icon-text'>Add Friend</div>
           </div>
         </label>
       )
-    } else if (this.state.status === 'pending') {
+    } else if (this.state.status === 'pending' && this.state.friendId === this.props.currentUserId) {
       return (
         <label>
           <div onClick={this.removeFriend.bind(this)} className='add-remove-friends-button' id="remove-friends-button">
@@ -71,12 +75,19 @@ class FriendRequests extends React.Component {
           </div>
         </label>
       )
+    } else if (this.state.status === 'pending' && this.state.userId === this.props.currentUserId) {
+      return (
+        <div className='friend-request-strip-container'>
+          <div className='sent-you-a-friend-request'>{this.props.name} sent you a friend request</div>
+          <button className='confirm-friend-request-button'>Confirm Request</button>
+          <button className='delete-friend-request-button'>Delete Request</button>
+        </div>
+      )
     }
   }
 
   render() {
     if (this.props.userId === this.props.currentUserId) return null;
-    console.log(this.state)
     if (this.state.status === null) return null;
     return (
       <div>

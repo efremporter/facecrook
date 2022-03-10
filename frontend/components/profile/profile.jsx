@@ -21,7 +21,6 @@ class Profile extends React.Component {
       this.props.fetchUser(this.props.userId)
     }
     
-    // console.log(this.props.user.profilePictureUrl)
     if (prevProps.user && this.props.user) {
       if (prevProps.user.profilePictureUrl !== this.props.user.profilePictureUrl) {
         debugger
@@ -47,7 +46,7 @@ class Profile extends React.Component {
           <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser} fetchUser={this.props.fetchUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
-          <FriendRequestsContainer userId={this.props.userId}/>
+          <FriendRequestsContainer name={this.props.user.firstName + " " + this.props.user.lastName} userId={this.props.userId}/>
         </div>
         {/* <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/> */}
