@@ -12,10 +12,6 @@ class FriendRequests extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // if (prevProps.friends.length !== this.props.friends.length) {
-    //   this.props.getFriends(this.props.userId)
-    //   .then( () => this.setFriendStatus())
-    // }
     if (prevProps !== this.props) {
       this.props.getFriends(this.props.userId)
       .then( () => this.setFriendStatus())

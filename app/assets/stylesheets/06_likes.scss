@@ -51,3 +51,12 @@
   position: relative;
   bottom: 5px;
 }
+
+.post-like-count-link {
+  text-decoration: none;
+  color: #65676B;
+}
+
+.post-like-count-link:hover {
+  text-decoration: underline;
+}

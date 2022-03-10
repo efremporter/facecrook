@@ -182,11 +182,12 @@ class PostIndexItem extends React.Component {
     
     if (count > 0) {
       if (count === 1 && myLike) {
-        count = `${this.props.currentUser.firstName} ${this.props.currentUser.lastName}`
+        count = <Link className='post-like-count-link' to={`/users/${this.props.currentUser.id}`}>{this.props.currentUser.firstName} {this.props.currentUser.lastName}</Link>
       } else if (count === 2 && myLike) {
-        count = `You and ${1} other`
+        count = <span><Link className='post-like-count-link' to={`/users/${this.props.currentUser.id}`}>You</Link> and {count - 1} others</span>
       } else if (count > 2 && myLike) {
-        count = `You and ${count - 1} others`
+        count = <Link className='post-like-count-link' to={`/users/${this.props.currentUser.id}`}>You and {count - 1} others</Link>
+        // count = `You and ${count - 1} others`
       }
       return (
         <div className="post-like-count-container">
@@ -206,7 +207,7 @@ class PostIndexItem extends React.Component {
         {this.getLink('date')}
         {this.getDelete()}
         <div className="profile-post-body">{this.props.post.body}</div>
-        <img className="post-attached-photo" src={this.props.post.photoUrl}></img>
+        {this.props.post.photoUrl ? <img className="post-attached-photo" src={this.props.post.photoUrl}></img> : null}
         {this.getLikeCount()}
         {this.getCommentCount()}
         <hr className="post-divider-1"/>
