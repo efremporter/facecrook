@@ -145,3 +145,20 @@
 .unfriend-button:hover {
   background-color: #f0f0f0;
 }
+
+
+.friend-profile-picture {
+  width: 32px;
+  height: 32px;
+  border: 2px solid white; 
+  border-radius: 50px;
+}
+
+.friend-profile-picture-li {
+  display: inline-block;
+  margin-left: -7.5px;
+}
+
+.friend-profile-picture-ul {
+  text-align: center;
+}

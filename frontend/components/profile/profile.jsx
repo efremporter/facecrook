@@ -48,9 +48,9 @@ class Profile extends React.Component {
           <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser} fetchUser={this.props.fetchUser}/>
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
+          <FriendProfilePicturesContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>
           <FriendRequestsContainer name={this.props.user.firstName + " " + this.props.user.lastName} userId={this.props.userId}/>
         </div>
-        <FriendProfilePicturesContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>
         {/* <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/> */}
       </div>

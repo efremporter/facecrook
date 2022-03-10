@@ -7,17 +7,19 @@ class FriendProfilePictures extends React.Component {
   }
 
   componentDidMount() {
-
     if (this.props.friends) {
       this.props.friends.forEach( friend => {
-        if (friend.friendId !== this.props.currentUserId && friend.userId === this.props.currentUserId) {
-          this.props.fetchUser(friend.friendId, user => {
+        if (friend.friendId !== this.props.profileId && friend.userId === this.props.profileId && friend.status === 'true') {
+          this.props.fetchUser(friend.friendId)
+          .then( user => {
             let friends =  this.state.friends
             friends.push(user)
+            console.log(friends)
             this.setState({friends})
           })
-        } else if (friend.friendId === this.props.currentUserId && friend.userId !== this.props.currentUserId) {
-          this.props.fetchUser(friend.userId, user => {
+        } else if (friend.friendId === this.props.profileId && friend.userId !== this.props.profileId && friend.status === 'true') {
+          this.props.fetchUser(friend.userId)
+          .then( user => {
             let friends = this.state.friends
             friends.push(user)
             this.setState({friends})
@@ -28,13 +30,12 @@ class FriendProfilePictures extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     if (this.state.friends.length < 1) return null
     return (
-      <ul>
+      <ul className="friend-profile-picture-ul">
         {this.state.friends.map( (friend, idx) => {
-          if (idx < 7) {
-            return <li><img src={friend.profilePictureUrl}/></li>
+          if (idx <= 7) {
+            return <li className="friend-profile-picture-li"><img className="friend-profile-picture" src={friend.profilePictureUrl}/></li>
           }
         })}
       </ul>

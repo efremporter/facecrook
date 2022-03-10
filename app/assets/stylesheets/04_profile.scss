@@ -55,14 +55,14 @@
   display: flex;
   position: relative;
   z-index: 2;
-  margin-top: 18.9px;
-  margin-left: 740px;
   cursor: pointer;
 }
 
 #cover-already-exists {
   width: 100px;
-  margin-left: 808px;
+  position: absolute;
+  right: 4.2%;
+  // margin-left: 808px;
 }
 
 .cover-camera-icon-container:hover {
