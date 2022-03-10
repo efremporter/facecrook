@@ -103,7 +103,10 @@
   height: 65px;
   background-color: #F7F8FA;
   margin: auto;
+  margin-top: -50px;
   text-align: right;
+  position: relative;
+  z-index: 1;
 }
 
 .unfriend-button {
@@ -161,4 +164,17 @@
 
 .friend-profile-picture-ul {
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-friend-count {
+  text-align: center;
+  font-size: 17px;
+  color: #65676B;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.friend-status-container {
+  display: block;
 }

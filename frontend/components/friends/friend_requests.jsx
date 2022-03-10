@@ -108,7 +108,7 @@ class FriendRequests extends React.Component {
     if (this.props.userId === this.props.currentUserId) return null;
     if (this.state.status === null) return null;
     return (
-      <div>
+      <div className='friend-status-container'>
         {this.getFriendStatus()}
       </div>
     )

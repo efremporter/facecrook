@@ -51,8 +51,8 @@ class Profile extends React.Component {
           <FriendProfilePicturesContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>
           <FriendRequestsContainer name={this.props.user.firstName + " " + this.props.user.lastName} userId={this.props.userId}/>
         </div>
-        {/* <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
-        <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/> */}
+        <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
+        <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
       </div>
     )
   }
