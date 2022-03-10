@@ -1,4 +1,4 @@
-import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from "../../actions/friend_actions";
+import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND, CLEAR_FRIENDS } from "../../actions/friend_actions";
 
 const FriendsReducer = (state={}, action) => {
 
@@ -17,6 +17,9 @@ const FriendsReducer = (state={}, action) => {
     case REMOVE_FRIEND:
       delete nextState[action.id]
       return nextState;
+
+    case CLEAR_FRIENDS:
+      return {}
 
     default:
       return state

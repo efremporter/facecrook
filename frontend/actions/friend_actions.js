@@ -2,6 +2,7 @@ import * as FriendAPIUtil from '../utils/friend_utils';
 export const RECEIVE_FRIENDS = 'RECEIVE_FRIENDS';
 export const RECEIVE_FRIEND = 'RECEIVE_FRIEND';
 export const REMOVE_FRIEND = 'REMOVE_FRIEND';
+export const CLEAR_FRIENDS = 'CLEAR_FRIENDS';
 
 const receiveFriends = friends => {
   return {
@@ -24,7 +25,17 @@ const removeFriend = id => {
   }
 }
 
-export const getFriends = (id) => dispatch => {
+const removeFriends = () => {
+  return {
+    type: CLEAR_FRIENDS
+  }
+}
+
+export const clearFriends = () => dispatch => {
+  dispatch(removeFriends())
+}
+
+export const getFriends = id => dispatch => {
   return FriendAPIUtil.getFriends(id)
   .then( friends => dispatch(receiveFriends(friends)))
 }

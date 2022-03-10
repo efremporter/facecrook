@@ -4,6 +4,7 @@ import ProfilePicture from "./profile_picture";
 import ProfileCoverPhoto from "./profile_cover_photo"
 import PostFormClosed from '../posts/post_form_closed';
 import FriendRequestsContainer from '../friends/friend_requests_container';
+import FriendProfilePicturesContainer from "../friends/friend_profile_pictures_container";
 
 class Profile extends React.Component {
 
@@ -12,18 +13,20 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchFriends(this.props.userId)
     this.props.fetchUser(this.props.userId)
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.userId !== prevProps.userId) {
+      this.props.clearFriends()
       this.props.clearUsers()
+      this.props.fetchFriends(this.props.userId)
       this.props.fetchUser(this.props.userId)
     }
     
     if (prevProps.user && this.props.user) {
       if (prevProps.user.profilePictureUrl !== this.props.user.profilePictureUrl) {
-        debugger
         this.props.clearUsers()
         this.props.fetchUser(this.props.userId)
       }
@@ -36,7 +39,6 @@ class Profile extends React.Component {
   }
 
   render() {
-
     if (!this.props.user) {
       return null;
     }
@@ -48,6 +50,7 @@ class Profile extends React.Component {
           <div className="profile-header-name">{this.props.user.firstName} {this.props.user.lastName}</div>
           <FriendRequestsContainer name={this.props.user.firstName + " " + this.props.user.lastName} userId={this.props.userId}/>
         </div>
+        <FriendProfilePicturesContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>
         {/* <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/> */}
       </div>
