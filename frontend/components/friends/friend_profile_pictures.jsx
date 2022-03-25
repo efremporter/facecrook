@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class FriendProfilePictures extends React.Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class FriendProfilePictures extends React.Component {
             this.setState({friends})
           })
         } else if (friend.friendId === this.props.profileId && friend.userId !== this.props.profileId && friend.status === 'true') {
-          console.log('hERE')
           this.props.fetchUser(friend.userId)
           .then( user => {
             let friends = this.state.friends
@@ -47,7 +47,7 @@ class FriendProfilePictures extends React.Component {
         <ul className="friend-profile-picture-ul">
           {this.state.friends.map( (friend, idx) => {
             if (idx <= 7) {
-              return <li className="friend-profile-picture-li"><img className="friend-profile-picture" src={friend.profilePictureUrl}/></li>
+              return <Link to={`/users/${friend.id}`}><li className="friend-profile-picture-li"><img className="friend-profile-picture" src={friend.profilePictureUrl}/></li></Link>
             }
           })}
         </ul>
