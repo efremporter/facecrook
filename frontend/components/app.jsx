@@ -13,7 +13,7 @@ import FeedIndexContainer from "./feed/feed_index_container";
 
 const App = () => {
   return <div>
-    <Route path="/" component={NavBarContainer} />
+    <ProtectedRoute path="/" component={NavBarContainer} />
     <Route path="/" component={ModalContainer}/>
     <Route path="/users/:userId" component={PostModalContainer}/>
     <Route exact path="/feed" component={PostModalContainer}/>

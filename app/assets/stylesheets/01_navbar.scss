@@ -96,3 +96,33 @@
 .logout-button:hover {
   background-color: #d5d6d8;
 }
+
+.nav-bar-photo-div {
+  position: absolute;
+  right: 10%;
+  top: 8px;
+  width: 120px;
+  height: 40px;
+  border-radius: 25px;
+}
+.nav-bar-photo-div:hover {
+  background-color: #F2F2F2;
+}
+
+.nav-bar-photo {
+  position: relative;
+  width: 25px;
+  border-radius: 50%;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.nav-bar-first-name {
+  position: relative;
+  font-size: 15px;
+  bottom: 7px;
+  left: 7px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: black;
+}
