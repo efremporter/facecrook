@@ -17,8 +17,10 @@ class FeedIndex extends React.Component {
   }
 
   componentWillUnmount() {
+    this.props.clearUsers()
     this.props.clearPosts()
     this.props.clearComments()
+    this.props.clearLikes()
   }
 
   render() {
