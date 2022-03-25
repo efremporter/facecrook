@@ -46,7 +46,7 @@
 
 .nav-bar-home-button-li {
   display: none;
-  margin-left: 33.1%;
+  margin-left: 35%;
 }
 
 .nav-bar-home-button:hover {
@@ -86,11 +86,14 @@
   background-color: transparent;
   border-radius: 8px;
   width: 50px;
+  font-weight: bold;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
 }
 
 .logout-button-li {
   position: absolute; 
   right: 2%;
+  top: 3px;
 }
 
 .logout-button:hover {
@@ -125,4 +128,11 @@
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: black;
+}
+
+.nav-bar-center-div {
+  position: absolute;
+  margin: auto;
+  left: 17%;
+  width: 65.9%;
 }
