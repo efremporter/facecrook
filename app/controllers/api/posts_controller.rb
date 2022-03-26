@@ -3,6 +3,13 @@ class Api::PostsController < ApplicationController
   def index
     if params[:profile_id]
       @posts = Post.where(profile_id: params[:profile_id]);
+    elsif params[:friend_id]
+      users = Friend.where(user_id: params[:friend_id]) 
+      @posts = []
+      users.each do |user|
+        @posts += Post.where(author_id: user.user_id)
+        @posts += Post.where(author_id: user.friend_id)
+      end
     else
       @posts = Post.all
     end
@@ -69,6 +76,6 @@ class Api::PostsController < ApplicationController
   end
 
   def post_params 
-    params.require(:post).permit(:profile_id, :author_id, :body, :photo)
+    params.require(:post).permit(:profile_id, :author_id, :friend_id, :body, :photo)
   end
 end

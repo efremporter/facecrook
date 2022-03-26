@@ -9,7 +9,7 @@ class FeedIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllPosts()
+    this.props.fetchAllPosts(this.props.currentUser.id)
   }
 
   componentDidUpdate() {

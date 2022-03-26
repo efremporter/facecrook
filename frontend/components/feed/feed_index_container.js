@@ -17,7 +17,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
   return {
-    fetchAllPosts: () => dispatch(fetchAllPosts()),
+    fetchAllPosts: id => dispatch(fetchAllPosts(id)),
     fetchAuthor: authorId => fetchAuthor(authorId),
     deletePost: postId => dispatch(deletePost(postId)),
     openModal: () => dispatch(openModal('post')),

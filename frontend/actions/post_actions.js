@@ -36,8 +36,8 @@ export const clearPosts = () => dispatch => {
   dispatch(removePosts())
 }
 
-export const fetchAllPosts = () => dispatch => {
-  return PostUtils.fetchAllPosts()
+export const fetchAllPosts = id => dispatch => {
+  return PostUtils.fetchAllPosts(id)
   .then( posts => dispatch(receivePosts(posts)))
 }
 

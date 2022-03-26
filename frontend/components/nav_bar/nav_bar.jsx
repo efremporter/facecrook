@@ -32,8 +32,8 @@ class NavBar extends React.Component {
   }
 
   logout() {
-    this.setState({currentUser: null})
     this.props.logout();
+    this.setState({currentUser: null})
   }
 
   render() {

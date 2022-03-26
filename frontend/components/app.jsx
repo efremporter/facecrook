@@ -14,9 +14,9 @@ import FeedIndexContainer from "./feed/feed_index_container";
 const App = () => {
   return <div>
     <ProtectedRoute path="/" component={NavBarContainer} />
-    <Route path="/" component={ModalContainer}/>
-    <Route path="/users/:userId" component={PostModalContainer}/>
-    <Route exact path="/feed" component={PostModalContainer}/>
+    <ProtectedRoute path="/" component={ModalContainer}/>
+    <ProtectedRoute path="/users/:userId" component={PostModalContainer}/>
+    <ProtectedRoute exact path="/feed" component={PostModalContainer}/>
     <Switch>
       <ProtectedRoute path="/users/:userId" component={ProfileContainer}/>
       <AuthRoute path="/signup" component={SignUpContainer} />
