@@ -177,7 +177,7 @@
 
 .post-form {
   text-align: center;
-  height: 125px;
+  // height: 80px;
   background-color: white;
   width: 500px;
   margin: auto;
@@ -197,7 +197,7 @@
 
 .post-form-file {
   height: 40px;
-  width: 422px;
+  width: 405px;
   border-radius: 25px;
   border-color: transparent;
   background-color: #F0F2F5;
@@ -210,18 +210,19 @@
   cursor: pointer;
 }
 
-// .post-form-closed-input {
-  
-// }
+.post-form-closed-input {
+  position: absolute;
+  right: 0;
+}
 
 .post-form-file:hover {
   background-color: #E4E6E9;
 }
 
 .post-form-divider {
-  width: 422px;
-  opacity: 30%;
-  margin-top: 12px;
+  width: 470px;
+  opacity: 0%;
+  margin-top: 10px;
   position: relative;
   z-index: 0;
 }
@@ -532,4 +533,21 @@
 
 .feed-index-container {
   margin-top: 30px;
+}
+
+.post-form-closed-profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+}
+
+.post-form-closed-div {
+  width: 470px;
+  height: 60px;
+  position: relative;
+  margin: auto;
+  // background-color: red;
 }

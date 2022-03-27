@@ -47,7 +47,7 @@ class FriendProfilePictures extends React.Component {
         <ul className="friend-profile-picture-ul">
           {this.state.friends.map( (friend, idx) => {
             if (idx <= 7) {
-              return <Link to={`/users/${friend.id}`}><li className="friend-profile-picture-li"><img className="friend-profile-picture" src={friend.profilePictureUrl}/></li></Link>
+              return <Link key={idx} to={`/users/${friend.id}`}><li className="friend-profile-picture-li"><img className="friend-profile-picture" src={friend.profilePictureUrl}/></li></Link>
             }
           })}
         </ul>

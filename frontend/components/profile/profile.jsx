@@ -2,10 +2,10 @@ import React from "react";
 import PostIndexContainer from "../posts/post_index_container";
 import ProfilePicture from "./profile_picture";
 import ProfileCoverPhoto from "./profile_cover_photo"
-import PostFormClosed from '../posts/post_form_closed';
 import FriendRequestsContainer from '../friends/friend_requests_container';
 import FriendProfilePicturesContainer from "../friends/friend_profile_pictures_container";
 import FriendsIndexContainer from "../friends/friends_index_container";
+import PostFormClosedContainer from "../posts/post_form_closed_container";
 
 class Profile extends React.Component {
 
@@ -54,7 +54,7 @@ class Profile extends React.Component {
         </div>
         <div className='profile-body-container'>
           <div className="profile-body-right-side">
-            <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
+            <PostFormClosedContainer currentUser={this.props.currentUser} modal={this.props.modal} openModal={this.props.openModal}/>
             <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
           </div>
           <FriendsIndexContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>

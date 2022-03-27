@@ -52,7 +52,7 @@ class FriendsIndex extends React.Component {
         <ul className='mini-friend-index-image-ul'>
           {this.state.friends.map( (friend, idx) => {
             if (idx <= 8) {
-            return <li className='mini-friend-index-image-li'>
+            return <li key={idx} className='mini-friend-index-image-li'>
               <Link to={`/users/${friend.id}`}><img className='mini-friend-index-image' src={friend.profilePictureUrl}/></Link>
               <div className='mini-friend-index-name'>{friend.firstName} {friend.lastName}</div>
             </li>

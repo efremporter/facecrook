@@ -1,8 +1,7 @@
 import React from 'react'
 import FeedIndexItem from './feed_index_item';
 import PostIndexItem from '../posts/post_index_item';
-import PostFormClosed from '../posts/post_form_closed';
-
+import PostFormClosedContainer from '../posts/post_form_closed_container';
 class FeedIndex extends React.Component {
   constructor(props) {
     super(props)
@@ -27,7 +26,7 @@ class FeedIndex extends React.Component {
     if (!this.props.posts) return null;
     return (
       <div className='feed-index-container'>
-        <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
+        <PostFormClosedContainer currentUser={this.props.currentUser} modal={this.props.modal} openModal={this.props.openModal}/>
         <ul>
           {this.props.posts.map( (post) => {
             if (post.authorId === post.profileId) {
