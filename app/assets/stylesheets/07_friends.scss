@@ -179,3 +179,94 @@
 .friend-status-container {
   display: block;
 }
+
+.mini-friend-index-div {
+  background-color: white;
+  width: 360px;
+  height: 540px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.mini-friend-index-image {
+  width: 102px;
+  height: 102px;
+  display: inline;
+  border-radius: 8px;
+  -webkit-filter: brightness(100%);
+}
+
+.mini-friend-index-image:hover {
+  -webkit-filter: brightness(90%);
+  cursor: pointer;
+}
+
+.mini-friend-index-image-ul {
+  width: 360px;
+  margin: 0;
+  padding: 0;
+}
+
+.mini-friend-index-image-li {
+  display: inline-block;
+  width: 102px;
+  height: 102px;
+  margin-left: 13.3px;
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+
+.mini-friend-index-name {
+  font-size: 13px;
+  font-weight: bold;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  position: absolute;
+  max-width: 102px;
+  color: black;
+  margin-top: 5px;
+}
+
+.mini-friend-index-name:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mini-friend-index-title {
+  font-weight: bold;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.mini-friend-index-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link-to-full-friends-index {  
+  position: relative;
+  float: right;
+  font-size: 17px;
+  color: #216FDB;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+}
+
+.link-to-full-friends-index:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.mini-friend-index-header {
+  width: 333px;
+  margin-left: 13.3px;
+  padding-top: 20px;
+}
+
+.mini-friend-index-count {
+  color: #65676B;
+  font-size: 17px;
+  margin-top: 7px;
+  margin-left: 13.3px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+}

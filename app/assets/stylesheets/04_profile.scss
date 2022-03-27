@@ -181,12 +181,16 @@
   background-color: white;
   width: 500px;
   margin: auto;
-  margin-top: 30px;
   border-radius: 8px;
 }
 
 .post-form-closed-container {
-  margin-top: -15px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.post-form-closed-container-profile {
+  margin-top: -30px;
   margin-bottom: 10px;
   width: 100%;
 }
@@ -511,4 +515,21 @@
 
 #hide {
   opacity: 0;
+}
+
+.profile-body-container {
+  width: 875px;
+  margin: auto;
+  margin-top: 15px;
+  position: relative;
+}
+
+.profile-body-right-side {
+  position: relative;
+  float: right;
+  top: 0;
+}
+
+.feed-index-container {
+  margin-top: 30px;
 }

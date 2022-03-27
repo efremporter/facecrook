@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Link from 'react-router-dom/Link';
 
-class FriendProfilePictures extends React.Component {
+class FriendsIndex extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {friends: []}
@@ -36,18 +37,25 @@ class FriendProfilePictures extends React.Component {
     } else {
       friend = 'friends'
     }
-    return <div className="profile-friend-count">{this.state.friends.length} {friend}</div>
+    return <div className="mini-friend-index-count">{this.state.friends.length} {friend}</div>
   }
 
   render() {
-    if (this.state.friends.length < 1) return null
+    if (!this.state.friends) return null;
     return (
-      <div>
+      <div className='mini-friend-index-div'>
+        <div className='mini-friend-index-header'>
+          <span className='mini-friend-index-title'>Friends</span>
+          <span className='link-to-full-friends-index'>See all friends</span>
+        </div>
         {this.getFriendCount()}
-        <ul className="friend-profile-picture-ul">
+        <ul className='mini-friend-index-image-ul'>
           {this.state.friends.map( (friend, idx) => {
-            if (idx <= 7) {
-              return <Link to={`/users/${friend.id}`}><li className="friend-profile-picture-li"><img className="friend-profile-picture" src={friend.profilePictureUrl}/></li></Link>
+            if (idx <= 8) {
+            return <li className='mini-friend-index-image-li'>
+              <Link to={`/users/${friend.id}`}><img className='mini-friend-index-image' src={friend.profilePictureUrl}/></Link>
+              <div className='mini-friend-index-name'>{friend.firstName} {friend.lastName}</div>
+            </li>
             }
           })}
         </ul>
@@ -56,4 +64,4 @@ class FriendProfilePictures extends React.Component {
   }
 }
 
-export default FriendProfilePictures
+export default FriendsIndex

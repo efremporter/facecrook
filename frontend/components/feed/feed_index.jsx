@@ -26,7 +26,7 @@ class FeedIndex extends React.Component {
   render() {
     if (!this.props.posts) return null;
     return (
-      <div>
+      <div className='feed-index-container'>
         <PostFormClosed modal={this.props.modal} openModal={this.props.openModal}/>
         <ul>
           {this.props.posts.map( (post) => {
