@@ -6,6 +6,7 @@ import FriendRequestsContainer from '../friends/friend_requests_container';
 import FriendProfilePicturesContainer from "../friends/friend_profile_pictures_container";
 import FriendsIndexContainer from "../friends/friends_index_container";
 import PostFormClosedContainer from "../posts/post_form_closed_container";
+import PhotosIndexContainer from "./photos_index_container";
 
 class Profile extends React.Component {
 
@@ -57,6 +58,7 @@ class Profile extends React.Component {
             <PostFormClosedContainer currentUser={this.props.currentUser} modal={this.props.modal} openModal={this.props.openModal}/>
             <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
           </div>
+          <PhotosIndexContainer />
           <FriendsIndexContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>
         </div>
       </div>
