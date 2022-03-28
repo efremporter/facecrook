@@ -93,8 +93,27 @@ class Profile extends React.Component {
     }
   }
 
+  changeTabHighlights() {
+    let posts = <Link className="profile-tabs-link" to={`/users/${this.props.userId}`}><span className="profile-tabs-span">Posts</span></Link>
+    let friends = <Link className="profile-tabs-link" to={`/users/${this.props.userId}/friends`}><span className="profile-tabs-span">Friends</span></Link>
+    let photos = <Link className="profile-tabs-link" to={`/users/${this.props.userId}/photos`}><span className="profile-tabs-span">Photos</span></Link>
+    if (this.props.location.pathname === `/users/${this.props.userId}`) {
+      posts = <span className="profile-tabs-span" id="profile-tabs-span-highlighted">Posts</span>
+    } else if (this.props.location.pathname === `/users/${this.props.userId}/friends`) {
+      friends = <span className="profile-tabs-span" id="profile-tabs-span-highlighted">Friends</span>
+    } else if (this.props.location.pathname === `/users/${this.props.userId}/photos`) {
+      photos = <span className="profile-tabs-span" id="profile-tabs-span-highlighted">Photos</span>
+    }
+    return (
+      <div className="profile-tabs-div">
+        {posts}
+        {friends}
+        {photos}
+      </div>
+    )
+  }
+
   render() {
-    console.log(this.props.location.pathname)
     if (!this.props.user) {
       return null;
     }
@@ -107,11 +126,7 @@ class Profile extends React.Component {
           <FriendProfilePicturesContainer currentUserId={this.props.currentUser.id} profileId={this.props.userId}/>
           <FriendRequestsContainer name={this.props.user.firstName + " " + this.props.user.lastName} userId={this.props.userId}/>
           <hr className="profile-header-body-divider"></hr>
-            <div className="profile-tabs-div">
-              <Link className="profile-tabs-link" to={`/users/${this.props.userId}`}><span className="profile-tabs-span" id="profile-tabs-span-posts">Posts</span></Link>
-              <Link className="profile-tabs-link" to={`/users/${this.props.userId}/friends`}><span className="profile-tabs-span">Friends</span></Link>
-              <Link className="profile-tabs-link" to={`/users/${this.props.userId}/photos`}><span className="profile-tabs-span">Photos</span></Link>
-            </div>
+          {this.changeTabHighlights()}
         </div>
         {this.getTab()}
       </div>

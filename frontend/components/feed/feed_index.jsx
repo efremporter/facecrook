@@ -26,6 +26,7 @@ class FeedIndex extends React.Component {
     if (!this.props.posts) return null;
     return (
       <div className='feed-index-container'>
+        <div className='feed-index-top-gap'></div>
         <PostFormClosedContainer currentUser={this.props.currentUser} modal={this.props.modal} openModal={this.props.openModal}/>
         <ul>
           {this.props.posts.map( (post) => {

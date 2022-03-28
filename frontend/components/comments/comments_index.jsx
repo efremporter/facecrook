@@ -6,10 +6,6 @@ class CommentIndex extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    // this.props.fetchComments(this.props.post.id)
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.comments.length !== prevProps.comments.length) {
       this.props.fetchComments(this.props.post.id)

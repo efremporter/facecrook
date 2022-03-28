@@ -188,6 +188,7 @@
 
 .post-form {
   text-align: center;
+  margin: auto;
   background-color: white;
   width: 500px;
   height: 72px;
@@ -403,10 +404,9 @@
   min-height: 78px;
   background-color: white;
   width: 500px;
-  // margin: auto;
+  margin: auto;
   position: relative;
   right: 0;
-  // left: 375px;
   margin-bottom: 15px;
   margin-top: 15px;
   border-radius: 8px;
@@ -552,7 +552,11 @@
 }
 
 .feed-index-container {
+  position: relative;
   margin-top: 30px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-form-closed-profile-picture {
@@ -694,4 +698,12 @@
 .post-index-item-li {
   width: 500px;
   position: relative;
+}
+
+.feed-index-top-gap {
+  height: 15px;
+}
+
+#profile-tabs-span-highlighted {
+  color: #1876F2;
 }
