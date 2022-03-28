@@ -190,7 +190,7 @@
   text-align: center;
   background-color: white;
   width: 500px;
-  margin: auto;
+  height: 72px;
   border-radius: 8px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
 }
@@ -198,6 +198,8 @@
 .post-form-closed-container {
   margin-bottom: 10px;
   width: 100%;
+  position: relative;
+  right: 0;
 }
 
 .post-form-closed-container-profile {
@@ -318,11 +320,6 @@
   cursor: pointer;
 }
 
-.route-post-form-container {
-  // display: none;
-  background-color: orange;
-}
-
 .post-text-area {
   border: none;
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
@@ -406,7 +403,10 @@
   min-height: 78px;
   background-color: white;
   width: 500px;
-  margin: auto;
+  // margin: auto;
+  position: relative;
+  right: 0;
+  // left: 375px;
   margin-bottom: 15px;
   margin-top: 15px;
   border-radius: 8px;
@@ -414,6 +414,8 @@
 }
 
 .post-index-container {
+  height: auto;
+  position: relative;
   width: 100%;
 }
 
@@ -532,16 +534,21 @@
 
 .profile-body-container {
   width: 875px;
+  height: auto;
   margin: auto;
   margin-top: 15px;
   position: relative;
-  z-index: -1;
+  z-index: 0;
+  align-items: right;
 }
 
 .profile-body-right-side {
+  display: inline-block;
   position: relative;
-  float: right;
+  width: 500px;
+  left: 15px;
   top: 0;
+  vertical-align: top;
 }
 
 .feed-index-container {
@@ -562,7 +569,6 @@
   height: 60px;
   position: relative;
   margin: auto;
-  // background-color: red;
 }
 
 .profile-top-level {
@@ -669,9 +675,23 @@
 }
 
 .profile-body-left-side {
-  position: sticky;
-  position: --webkit-sticky;
-  position: -webkit-sticky;
-  top: 0;
   width: 360px;
+  display: inline-block;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 70px;
+}
+
+#mini-photo-index-div {
+  background-color: white;
+  width: 360px;
+  min-height: 60px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.post-index-item-li {
+  width: 500px;
+  position: relative;
 }

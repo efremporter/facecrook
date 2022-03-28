@@ -56,14 +56,14 @@ class Profile extends React.Component {
 
   getPostsTab() {
     return (
-      <div>
-        <div className="profile-body-right-side">
-          <PostFormClosedContainer currentUser={this.props.currentUser} modal={this.props.modal} openModal={this.props.openModal}/>
-          <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
-        </div>
+      <div className='profile-body-container'>
         <div className="profile-body-left-side">
           <PhotosIndexMiniContainer userId={this.props.userId}/>
           <FriendsIndexMiniContainer userId={this.props.userId} profileId={this.props.userId}/>
+        </div>
+        <div className="profile-body-right-side">
+          <PostFormClosedContainer currentUser={this.props.currentUser} modal={this.props.modal} openModal={this.props.openModal}/>
+          <PostIndexContainer fetchUser={this.props.fetchUser} user={this.props.user} userId={this.props.userId}/>
         </div>
       </div>
     )
@@ -113,9 +113,7 @@ class Profile extends React.Component {
               <Link className="profile-tabs-link" to={`/users/${this.props.userId}/photos`}><span className="profile-tabs-span">Photos</span></Link>
             </div>
         </div>
-        <div className='profile-body-container'>
-          {this.getTab()}
-        </div>
+        {this.getTab()}
       </div>
     )
   }

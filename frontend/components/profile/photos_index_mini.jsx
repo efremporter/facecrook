@@ -42,7 +42,7 @@ class PhotosIndexMini extends React.Component {
 
   render() {
     return (
-      <div className='mini-friend-index-div'>
+      <div id="mini-photo-index-div">
         <div className='mini-friend-index-header' id="mini-photo-index-header">
           <span className='mini-friend-index-title'>Photos</span>
           <Link to={`/users/${this.props.userId}/photos`}><span className='link-to-full-friends-index'>See all photos</span></Link>

@@ -41,20 +41,22 @@ class PhotosIndex extends React.Component {
 
   render() {
     return (
-      <div className='mini-friend-index-div' id="photo-index-div">
-        <div className='mini-friend-index-header' id="photo-index-header">
-          <div className='mini-friend-index-title' id="photo-index-title">Photos</div>
+      <div className='profile-body-container'>
+        <div className='mini-friend-index-div' id="photo-index-div">
+          <div className='mini-friend-index-header' id="photo-index-header">
+            <div className='mini-friend-index-title' id="photo-index-title">Photos</div>
+          </div>
+            <ul className='mini-friend-index-image-ul' id="photo-index-image-ul">
+              {this.state.postsWithPhotos.map( (post, idx) => {
+                if (idx <= 8) {
+                  return <li key={idx} className='mini-friend-index-image-li' id="photo-index-image-li">
+                      <img className='mini-friend-index-image' id="photo-index-image" src={post.photoUrl}/>
+                    </li>
+                }
+              })}
+            </ul>
+            {this.getDivider()}
         </div>
-          <ul className='mini-friend-index-image-ul' id="photo-index-image-ul">
-            {this.state.postsWithPhotos.map( (post, idx) => {
-              if (idx <= 8) {
-                return <li key={idx} className='mini-friend-index-image-li' id="photo-index-image-li">
-                    <img className='mini-friend-index-image' id="photo-index-image" src={post.photoUrl}/>
-                  </li>
-              }
-            })}
-          </ul>
-          {this.getDivider()}
       </div>
     )
   }

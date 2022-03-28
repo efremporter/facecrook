@@ -45,19 +45,21 @@ class FriendsIndex extends React.Component {
   render() {
     if (!this.state.friends) return null;
     return (
-      <div className='mini-friend-index-div' id="friend-index-div">
-        <div className='mini-friend-index-header'>
-          <div className='mini-friend-index-title' id="friend-index-title">Friends</div>
+      <div className='profile-body-container'>
+        <div className='mini-friend-index-div' id="friend-index-div">
+          <div className='mini-friend-index-header'>
+            <div className='mini-friend-index-title' id="friend-index-title">Friends</div>
+          </div>
+          {this.getFriendCount()}
+          <ul className='mini-friend-index-image-ul' id="friend-index-image-ul">
+            {this.state.friends.map( (friend, idx) => {
+              return <li key={idx} className='mini-friend-index-image-li' id="friend-index-image-li">
+                <Link to={`/users/${friend.id}`}><img className='mini-friend-index-image' id="friend-index-image" src={friend.profilePictureUrl}/></Link>
+                <div className='mini-friend-index-name'>{friend.firstName} {friend.lastName}</div>
+              </li>
+            })}
+          </ul>
         </div>
-        {this.getFriendCount()}
-        <ul className='mini-friend-index-image-ul' id="friend-index-image-ul">
-          {this.state.friends.map( (friend, idx) => {
-            return <li key={idx} className='mini-friend-index-image-li' id="friend-index-image-li">
-              <Link to={`/users/${friend.id}`}><img className='mini-friend-index-image' id="friend-index-image" src={friend.profilePictureUrl}/></Link>
-              <div className='mini-friend-index-name'>{friend.firstName} {friend.lastName}</div>
-            </li>
-          })}
-        </ul>
       </div>
     )
   }
