@@ -103,16 +103,9 @@
   cursor: pointer;
 }
 
-
-// .submit-profile-pic {
-//   display: block;
-//   margin: auto;
-//   margin-top: 10px;
-// }
-
 .my-profile-background {
   background-color: white;
-  height: 585px;
+  height: 555px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -120,7 +113,7 @@
 }
 
 .profile-cover-placeholder {
-  height: 68.4%;
+  height: 350px;
   width: 65.9%;
   background-color: #F0F2F5;
   margin: auto;
@@ -154,7 +147,7 @@
   font-size: 32px;
   color: #050505;
   text-align: center;
-  margin-top: 5px;
+  margin-top: -10px;
   margin-bottom: 10px;
 }
 
@@ -574,21 +567,45 @@
   margin-bottom: 11px;
 }
 
-#mini-photo-index-image-ul {
-  margin: 0;
-  padding: 0;
-}
-
-.mini-photo-index-container {
-  position: relative;
-  background-color: red;
-  margin: auto;
-  width: 340px;
-  justify-content: center;
-  align-items: center;
-  // text-align: center;
-}
-
 .mini-photo-index-divider {
   opacity: 0;
 }
+
+.profile-header-body-divider {
+  width: 871px;
+  opacity: 30%;
+  margin-bottom: 3px;
+  padding-bottom: 0;
+}
+
+.profile-tabs-span {
+  display: inline-block;
+  height: 35px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  padding-top: 17px;
+  width: 85px;
+  // margin-left: 10px;
+  border-radius: 7px;
+}
+
+.profile-tabs-span:hover {
+  background-color: #F1F2F2;
+  cursor: pointer;
+}
+
+.profile-tabs-div {
+  margin-top: 83px;
+  color: #65676B;
+  font-size: 16px;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+  width: 871px;
+  height: 52px;
+  margin: auto;
+  text-align: center;
+}
+
+// #profile-tabs-span-posts {
+//   margin-left: -5px;
+// }

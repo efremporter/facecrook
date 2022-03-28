@@ -46,7 +46,7 @@ class PhotosIndex extends React.Component {
           <span className='mini-friend-index-title'>Photos</span>
           <span className='link-to-full-friends-index'>See all photos</span>
         </div>
-          <ul className='mini-friend-index-image-ul' id="mini-photo-index-image-ul">
+          <ul className='mini-friend-index-image-ul'>
             {this.state.postsWithPhotos.map( (post, idx) => {
               if (idx <= 8) {
                 return <li key={idx} className='mini-friend-index-image-li' id="mini-photo-index-image-li">

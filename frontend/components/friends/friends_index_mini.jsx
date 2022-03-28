@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'react-router-dom/Link';
 
-class FriendsIndex extends React.Component {
+class FriendsIndexMini extends React.Component {
 
   constructor(props) {
     super(props)
@@ -39,23 +39,26 @@ class FriendsIndex extends React.Component {
     } else {
       friend = 'friends'
     }
-    return <div className="mini-friend-index-count" id="friend-index-count">{this.state.friends.length} {friend}</div>
+    return <div className="mini-friend-index-count">{this.state.friends.length} {friend}</div>
   }
 
   render() {
     if (!this.state.friends) return null;
     return (
-      <div className='mini-friend-index-div' id="friend-index-div">
+      <div className='mini-friend-index-div'>
         <div className='mini-friend-index-header'>
-          <div className='mini-friend-index-title' id="friend-index-title">Friends</div>
+          <span className='mini-friend-index-title'>Friends</span>
+          <span className='link-to-full-friends-index'>See all friends</span>
         </div>
         {this.getFriendCount()}
-        <ul className='mini-friend-index-image-ul' id="friend-index-image-ul">
+        <ul className='mini-friend-index-image-ul'>
           {this.state.friends.map( (friend, idx) => {
-            return <li key={idx} className='mini-friend-index-image-li' id="friend-index-image-li">
-              <Link to={`/users/${friend.id}`}><img className='mini-friend-index-image' id="friend-index-image" src={friend.profilePictureUrl}/></Link>
-              <div className='mini-friend-index-name'>{friend.firstName} {friend.lastName}</div>
-            </li>
+            if (idx <= 8) {
+              return <li key={idx} className='mini-friend-index-image-li'>
+                <Link to={`/users/${friend.id}`}><img className='mini-friend-index-image' src={friend.profilePictureUrl}/></Link>
+                <div className='mini-friend-index-name'>{friend.firstName} {friend.lastName}</div>
+              </li>
+            }
           })}
         </ul>
       </div>
@@ -63,4 +66,4 @@ class FriendsIndex extends React.Component {
   }
 }
 
-export default FriendsIndex
+export default FriendsIndexMini
