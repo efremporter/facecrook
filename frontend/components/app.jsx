@@ -8,8 +8,9 @@ import FeedIndex from "./feed/feed_index";
 import ProfileContainer from "./profile/profile_container";
 import ModalContainer from "./modal/modal_container";
 import PostModalContainer from "./modal/post_modal_container"
-import PostFormContainer from "./posts/post_form_container";
 import FeedIndexContainer from "./feed/feed_index_container";
+import PhotosIndexContainer from "./profile/photos_index_container";
+import FriendsIndexContainer from "./friends/friends_index_container";
 
 const App = () => {
   return <div>
@@ -18,7 +19,7 @@ const App = () => {
     <ProtectedRoute path="/users/:userId" component={PostModalContainer}/>
     <ProtectedRoute exact path="/feed" component={PostModalContainer}/>
     <Switch>
-      <ProtectedRoute exact path="/users/:userId" component={ProfileContainer}/>
+      <ProtectedRoute path="/users/:userId" component={ProfileContainer}/>
       <AuthRoute path="/signup" component={SignUpContainer} />
       <AuthRoute exact path="/" component={LoginContainer} />
       <ProtectedRoute exact path="/feed" component={FeedIndexContainer} />

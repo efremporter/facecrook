@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 
 class FriendsIndexMini extends React.Component {
 
@@ -48,7 +48,7 @@ class FriendsIndexMini extends React.Component {
       <div className='mini-friend-index-div'>
         <div className='mini-friend-index-header'>
           <span className='mini-friend-index-title'>Friends</span>
-          <span className='link-to-full-friends-index'>See all friends</span>
+          <Link to={`/users/${this.props.userId}/friends`}><span className='link-to-full-friends-index'>See all friends</span></Link>
         </div>
         {this.getFriendCount()}
         <ul className='mini-friend-index-image-ul'>

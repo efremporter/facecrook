@@ -58,7 +58,6 @@
   margin-top: 12px;
   margin-right: 10px;
   position: relative;
-  z-index: 1;
 }
 
 .confirm-friend-request-button:hover {
@@ -79,7 +78,6 @@
   font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
   margin-right: 16px;
   position: relative;
-  z-index: 1;
 }
 
 .delete-friend-request-button:hover {
@@ -106,7 +104,6 @@
   margin-top: -50px;
   text-align: right;
   position: relative;
-  z-index: 1;
 }
 
 .unfriend-button {
@@ -137,7 +134,6 @@
 
 .unfriend-button-text {
   position: relative;
-  z-index: 3;
   bottom: 4px;
   left: 4px;
 }
@@ -179,6 +175,8 @@
 
 .friend-status-container {
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .mini-friend-index-div {
@@ -279,6 +277,8 @@
 
 #friend-index-title {
   margin-left: 8px;
+  text-decoration: none;
+  cursor: text
 }
 
 #friend-index-div {

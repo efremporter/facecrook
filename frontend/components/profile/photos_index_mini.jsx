@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-class PhotosIndex extends React.Component {
+class PhotosIndexMini extends React.Component {
   constructor(props) {
     super(props)
     this.state = {postsWithPhotos: []}
@@ -41,15 +42,16 @@ class PhotosIndex extends React.Component {
 
   render() {
     return (
-      <div className='mini-friend-index-div' id="photo-index-div">
-        <div className='mini-friend-index-header' id="photo-index-header">
-          <div className='mini-friend-index-title' id="photo-index-title">Photos</div>
+      <div className='mini-friend-index-div'>
+        <div className='mini-friend-index-header' id="mini-photo-index-header">
+          <span className='mini-friend-index-title'>Photos</span>
+          <Link to={`/users/${this.props.userId}/photos`}><span className='link-to-full-friends-index'>See all photos</span></Link>
         </div>
-          <ul className='mini-friend-index-image-ul' id="photo-index-image-ul">
+          <ul className='mini-friend-index-image-ul'>
             {this.state.postsWithPhotos.map( (post, idx) => {
               if (idx <= 8) {
-                return <li key={idx} className='mini-friend-index-image-li' id="photo-index-image-li">
-                    <img className='mini-friend-index-image' id="photo-index-image" src={post.photoUrl}/>
+                return <li key={idx} className='mini-friend-index-image-li' id="mini-photo-index-image-li">
+                    <Link to={`/users/${this.props.userId}/photos`}><img className='mini-friend-index-image' id="mini-photo-index-image" src={post.photoUrl}/></Link>
                   </li>
               }
             })}
@@ -60,4 +62,4 @@ class PhotosIndex extends React.Component {
   }
 }
 
-export default PhotosIndex
+export default PhotosIndexMini
