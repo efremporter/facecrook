@@ -44,7 +44,7 @@ class Profile extends React.Component {
       return null;
     }
     return (
-      <div>
+      <div className="profile-top-level">
         <div className="my-profile-background">
           <ProfileCoverPhoto currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser}/>
           <ProfilePicture currentUser={this.props.currentUser} user={this.props.user} userId={this.props.userId} updateUser={this.props.updateUser} fetchUser={this.props.fetchUser}/>

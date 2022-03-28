@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PostFormClosed extends React.Component {
 
@@ -18,7 +19,7 @@ class PostFormClosed extends React.Component {
       <div className='post-form-closed-container'>
         <form className="post-form">
           <div className='post-form-closed-div'>
-            <img className='post-form-closed-profile-picture' src={this.state.user.profilePictureUrl}/>
+            <Link to={`/users/${this.state.user.id}`}><img className='post-form-closed-profile-picture' src={this.state.user.profilePictureUrl}/></Link>
             <div className="post-form-closed-input"><input value="" className="post-form-file" type="text" placeholder="What's on your mind?" onClick={this.props.openModal} readOnly/></div>
           </div>
           <hr className="post-form-divider"></hr>

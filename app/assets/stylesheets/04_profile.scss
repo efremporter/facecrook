@@ -471,7 +471,7 @@
 }
 
 .modal-background {
-  z-index: 1;
+  z-index: 10;
 }
 
 .post-modal-child {
@@ -523,6 +523,7 @@
   margin: auto;
   margin-top: 15px;
   position: relative;
+  z-index: -1;
 }
 
 .profile-body-right-side {
@@ -550,4 +551,9 @@
   position: relative;
   margin: auto;
   // background-color: red;
+}
+
+.profile-top-level {
+  position: relative;
+  z-index: 0;
 }
