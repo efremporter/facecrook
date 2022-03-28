@@ -3,7 +3,7 @@ import PhotosIndex from "./photos_index";
 
 const mSTP = state => {
   return {
-    posts: Object.values(state.entities.posts).reverse
+    posts: Object.values(state.entities.posts).reverse()
   }
 }
 

@@ -32,7 +32,9 @@ class FriendsIndex extends React.Component {
 
   getFriendCount() {
     let friend = ''
-    if (this.state.friends.length === 1) {
+    if (this.state.friends.length === 0) {
+      return null;
+    } else if (this.state.friends.length === 1) {
       friend = 'friend'
     } else {
       friend = 'friends'
