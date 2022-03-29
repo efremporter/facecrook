@@ -15,11 +15,12 @@ class Profile extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {posts: true, friends: false, photos: false}
+    this.state = {posts: true, friends: false, photos: false, friends: null}
   }
 
   componentDidMount() {
     this.props.fetchFriends(this.props.userId)
+    .then( () => this.setState({friends: this.props.friends}))
     this.props.fetchUser(this.props.userId)
   }
 
@@ -37,11 +38,17 @@ class Profile extends React.Component {
         this.props.fetchUser(this.props.userId)
       }
     }
+
+    if (this.props.friends.length !== prevProps.friends.length) {
+      this.props.fetchFriends(this.props.userId)
+      .then( () => this.setState({friends: this.props.friends}))
+    }
   }
 
   componentWillUnmount() {
     this.props.clearPosts()
     this.props.clearUsers()
+    this.props.clearFriends()
   }
 
   getTab() {
@@ -78,11 +85,29 @@ class Profile extends React.Component {
   }
 
   getBackground() {
-    if (this.props.userId === this.props.currentUser.id) {
+    const hasFriends = this.hasFriends();
+    console.log(hasFriends)
+    if (hasFriends === false && this.props.userId === this.props.currentUser.id) {
+      return "me-no-friends-profile-background"
+    } else if (hasFriends === false){
+      return "other-no-friends-profile-background"
+    } else if (this.props.userId === this.props.currentUser.id) {
       return "my-profile-background"
     } else {
       return "other-profile-background"
     }
+  }
+
+  hasFriends() {
+    let hasFriends = false;
+    if (this.state.friends.length > 0) {
+      this.state.friends.forEach( friend => {
+        if (friend.status === 'true') {
+          hasFriends = true;
+        }
+      });
+    }
+    return hasFriends;
   }
 
   getProfileHeader() {
@@ -114,9 +139,10 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (!this.props.user) {
+    if (!this.props.user || !this.state.friends) {
       return null;
     }
+    console.log(this.props.friends)
     return (
       <div className="profile-top-level">
         <div className={this.getBackground()}>

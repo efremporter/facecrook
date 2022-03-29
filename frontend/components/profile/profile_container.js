@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) => {
     user: state.entities.users[userId],
     userId: parseInt(userId),
     currentUser: state.session.currentUser,
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    friends: Object.values(state.entities.friends)
   }
 }
 

@@ -18,7 +18,7 @@ class SuggestedFriends extends React.Component {
     let suggestedFriends = [];
     if (this.props.users) {
       let counter = 0;
-      while(suggestedFriends.length < 9 || counter >= 100) {
+      while(suggestedFriends.length < 12 || counter >= 100) {
         let i = Math.floor(Math.random() * this.props.users.length);
         let suggestedFriend = this.props.users[i]
         if (suggestedFriend.id !== this.props.currentUserId) {
@@ -44,8 +44,8 @@ class SuggestedFriends extends React.Component {
         </div>
         <ul className='mini-friend-index-image-ul' id="feed-friend-suggestion-ul">
           {this.state.suggestedFriends.map( (suggestedFriend, idx) => {
-            if (idx <= 8) {
-              return <li key={idx} className='mini-friend-index-image-li'>
+            if (idx <= 11) {
+              return <li key={idx} className='mini-friend-index-image-li' id="feed-friend-suggestion-li">
                 <Link to={`/users/${suggestedFriend.id}`}><img className='mini-friend-index-image' src={suggestedFriend.profilePictureUrl}/></Link>
                 <div className='mini-friend-index-name'>{suggestedFriend.firstName} {suggestedFriend.lastName}</div>
               </li>
