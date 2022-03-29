@@ -17,30 +17,32 @@ class SuggestedFriends extends React.Component {
   getSuggestedFriends() {
     let suggestedFriends = [];
     if (this.props.users) {
-      while(suggestedFriends.length < 9) {
+      let counter = 0;
+      while(suggestedFriends.length < 9 || counter >= 100) {
         let i = Math.floor(Math.random() * this.props.users.length);
         let suggestedFriend = this.props.users[i]
         if (suggestedFriend.id !== this.props.currentUserId) {
-          if (!suggestedFriends.includes(suggestedFriend)) {
-            
-            suggestedFriends.push(suggestedFriend)
+          if (!this.props.friendsByFriendId[suggestedFriend.id] && !this.props.friendsByUserId[suggestedFriend.id]) {
+            if (!suggestedFriends.includes(suggestedFriend)) {
+              suggestedFriends.push(suggestedFriend)
+            }
           }
         }
         i++;
+        counter++;
       }
       this.setState({suggestedFriends})
     }
   }
 
   render() {
-    console.log(this.state.suggestedFriends)
     if (!this.state.suggestedFriends) return null;
     return (
-      <div className='mini-friend-index-div'>
+      <div className='mini-friend-index-div' id="feed-friend-suggestion-div">
         <div className='mini-friend-index-header'>
-          <span className='mini-friend-index-title'>Friend Suggestions</span>
+          <span className='mini-friend-index-title' id="feed-friend-suggestion-title">Friend Suggestions</span>
         </div>
-        <ul className='mini-friend-index-image-ul'>
+        <ul className='mini-friend-index-image-ul' id="feed-friend-suggestion-ul">
           {this.state.suggestedFriends.map( (suggestedFriend, idx) => {
             if (idx <= 8) {
               return <li key={idx} className='mini-friend-index-image-li'>

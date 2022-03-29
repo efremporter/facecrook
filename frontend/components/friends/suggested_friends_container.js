@@ -11,8 +11,10 @@ const mSTP = state => {
     friendsByFriendId[friend.friendId] = friend;
     friendsByUserId[friend.userId] = friend;
   })
+
   return {
     users: Object.values(state.entities.users),
+    friends,
     friendsByFriendId,
     friendsByUserId,
     currentUserId: state.session.currentUser.id
@@ -22,7 +24,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
-    getFriends: () => dispatch(getFriends())
+    getFriends: id => dispatch(getFriends(id))
   }
 }
 
