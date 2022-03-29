@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      @user.profile_picture.attach(io: File.open("/Users/efrem/Desktop/FaceCrook/app/assets/images/default-male-pic.jpg"), filename: "Default")
+      @user.profile_picture.attach(io: File.open("/app/assets/images/default-male-pic.jpg"), filename: "Default")
       render :_user
     else
       render json: ['User not created'], status: 401
