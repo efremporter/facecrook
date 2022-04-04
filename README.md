@@ -1,5 +1,7 @@
 # README
 
+Full Stack clone of Facebook.com
+
 Live link: https://efremfacecrook.herokuapp.com/
 
 Technologies used: PostGreSQL, Ruby on Rails, Javascript, React & Redux, AWS S3
