@@ -4,6 +4,7 @@ Full Stack clone of Facebook.com
 
 Live link: https://efremfacecrook.herokuapp.com/ 
 <br />
+<br />
 Personal walkthrough video link: https://www.linkedin.com/posts/efrem-porter-550b0b224_project-opentowork-softwareengineer-activity-6916572952155078656-9X8y?utm_source=linkedin_share&utm_medium=member_desktop_web
 
 Technologies used: PostGreSQL, Ruby on Rails, Javascript, React & Redux, Amazon Web Services S3 (AWS), HTML, CSS
