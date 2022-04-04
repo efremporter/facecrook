@@ -4,7 +4,7 @@ Full Stack clone of Facebook.com
 
 Live link: https://efremfacecrook.herokuapp.com/
 
-Technologies used: PostGreSQL, Ruby on Rails, Javascript, React & Redux, AWS S3
+Technologies used: PostGreSQL, Ruby on Rails, Javascript, React & Redux, Amazon Web Services S3 (AWS), HTML, CSS
 
 Facecrook is a Facebook clone, with a slight spin. Originally, the plan was to give it a theme and populate the database with "missing person" reports as posts. After two weeks of learning and struggling, I ended up populating the database with fun facts!
 
