@@ -26,7 +26,7 @@ If you visit your own profile, you're able to change the cover photo and profile
 A count of your friends will appear underneath your profile, along with different profile components that you can visit.
 <img width="248" alt="Screen Shot 2022-04-04 at 3 24 15 PM" src="https://user-images.githubusercontent.com/89431346/161641786-aebe849d-4937-4f7c-bac3-ffe08bf4de9f.png">
 
-The left side of the profile houses the photos and friends component. The right side is an index of all posts that have been authored by the user, as well as posts that have been authored by friends on the user's profile.
+The left side of the profile houses the photos and friends component. The right side is an index of all posts that have been authored by the user, as well as posts that have been authored by friends on the user's profile. <br />
 <img width="400" alt="Screen Shot 2022-04-04 at 3 25 32 PM" src="https://user-images.githubusercontent.com/89431346/161641926-2ccaffdb-ccb9-42f5-a416-188f78eb50fe.png">
 
 If you select "See all friends", you are shown a friends index. This displays all the friends of that particular user.
