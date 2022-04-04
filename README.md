@@ -14,7 +14,6 @@ Once logged in, users are redirected to the feed page. While a user is logged in
 <img width="300" alt="Screen Shot 2022-04-04 at 3 09 07 PM" src="https://user-images.githubusercontent.com/89431346/161640243-7b1766d2-f70e-4385-aeb2-a484e6239b57.png">
 
 Users can also create a post on the feed by clicking the "What's on your mind?" prompt, which opens up a post modal.
-<img width="300" alt="Screen Shot 2022-04-04 at 3 10 59 PM" src="https://user-images.githubusercontent.com/89431346/161640397-185f60b2-4422-4459-b6a8-16ee8f87cf83.png">
 <img width="300" alt="Screen Shot 2022-04-04 at 3 10 49 PM" src="https://user-images.githubusercontent.com/89431346/161640420-e5180c60-fc88-493a-a580-70594e24c882.png">
 
 
