@@ -10,7 +10,8 @@ In Facecrook, users are able to sign up, log in, and sign in as a guest, using t
 <img height="200" alt="Screen Shot 2022-02-04 at 10 06 08 AM" src="https://user-images.githubusercontent.com/89431346/152580293-f9f47e97-8b2e-47b5-b712-9790d6108e72.png">
 <img height="200" alt="Screen Shot 2022-02-04 at 10 06 58 AM" src="https://user-images.githubusercontent.com/89431346/152580415-b7504e01-460b-48de-8bb3-942207ee8836.png">
 
-Once logged in, users are redirected to the feed page. While a user is logged in, he/she can no longer navigate to the sign up or login page. On the feed, users have access to all the posts that are authored by their friends.
+Once logged in, users are redirected to the feed page. While a user is logged in, he/she can no longer navigate to the sign up or login page. 
+On the feed, users have access to all the posts that are authored by their friends.
 <img width="300" alt="Screen Shot 2022-04-04 at 3 09 07 PM" src="https://user-images.githubusercontent.com/89431346/161640243-7b1766d2-f70e-4385-aeb2-a484e6239b57.png">
 
 Users can also create a post on the feed by clicking the "What's on your mind?" prompt, which opens up a post modal.
