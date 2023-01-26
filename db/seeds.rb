@@ -10,7 +10,7 @@ Post.destroy_all
 User.destroy_all 
 Friend.destroy_all
 Like.destroy_all
-Comment.destroy_all
+Comment.destroy_all 
 
 user01 = User.create!({first_name: 'Guest', last_name: 'User', email: 'guestuser@gmail.com', password: 'NobodyWillGuessThisPassword17'})
 user02 = User.create!({first_name: 'Larry', last_name: 'Johnson', email: 'larryjohnson@gmail.com', password: 'NobodyWillGuessThisPassword17'})

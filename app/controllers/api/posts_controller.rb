@@ -15,7 +15,7 @@ class Api::PostsController < ApplicationController
     end
     render :index
   end
-
+  
   def show
     @post = Post.find(params[:id])
     if @post
@@ -24,7 +24,7 @@ class Api::PostsController < ApplicationController
       render json: ["Post doesn't exist"], status: 404
     end
   end
-
+  
   def create
     @post = Post.new(post_params)
     if @post.save
